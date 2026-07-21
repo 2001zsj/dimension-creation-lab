@@ -1,9 +1,10 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const workerPath = join(projectRoot, "dist", "server", "index.js");
+const hostingOutputPath = join(projectRoot, "dist", ".openai", "hosting.json");
 
 const workerSource = `const STATIC_FILE_RE = /\\.[a-z0-9]+$/i;
 
@@ -57,3 +58,8 @@ export default {
 
 await mkdir(dirname(workerPath), { recursive: true });
 await writeFile(workerPath, workerSource);
+await mkdir(dirname(hostingOutputPath), { recursive: true });
+await copyFile(
+  join(projectRoot, ".openai", "hosting.json"),
+  hostingOutputPath,
+);
