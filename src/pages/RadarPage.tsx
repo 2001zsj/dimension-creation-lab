@@ -1,8 +1,8 @@
 import { Filter, RadioTower, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { animeList } from '../data';
 import { AnimeCard } from '../components/AnimeCard';
 import { SectionHeader } from '../components/SectionHeader';
+import { useAnimeList } from '../liveAnime';
 import type { AnimeSourceType, InformationStatus, SeasonName } from '../types';
 import { formatSeason, informationLabels, sourceLabels } from '../utils';
 
@@ -11,6 +11,7 @@ const statusOptions: Array<'all' | InformationStatus> = ['all', 'announced', 'sc
 const seasonOrder: SeasonName[] = ['summer', 'autumn', 'winter', 'spring', 'undecided'];
 
 export function RadarPage() {
+  const animeList = useAnimeList();
   const [keyword, setKeyword] = useState('');
   const [source, setSource] = useState<'all' | AnimeSourceType>('all');
   const [status, setStatus] = useState<'all' | InformationStatus>('all');
@@ -19,7 +20,7 @@ export function RadarPage() {
     const future = anime.year >= 2026 && anime.informationStatus !== 'finished';
     const matchesKeyword = !keyword || `${anime.title}${anime.originalTitle}${anime.genres.join('')}`.toLowerCase().includes(keyword.toLowerCase());
     return future && matchesKeyword && (source === 'all' || anime.sourceType === source) && (status === 'all' || anime.informationStatus === status);
-  }), [keyword, source, status]);
+  }), [animeList, keyword, source, status]);
 
   const groups = useMemo(() => {
     const labels: Array<{ key: string; title: string; description: string; year: number; season: SeasonName }> = [

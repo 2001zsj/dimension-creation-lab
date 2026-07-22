@@ -1,13 +1,14 @@
 import { Archive, ArrowRight, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { animeList } from '../data';
 import { Cover } from '../components/Cover';
+import { useAnimeList } from '../liveAnime';
 import type { SeasonName } from '../types';
 import { formatSeason, seasonKey, seasonLabels } from '../utils';
 
 const seasonOrder: SeasonName[] = ['winter', 'spring', 'summer', 'autumn'];
 
 export function SeasonsPage() {
+  const animeList = useAnimeList();
   const years = Array.from(new Set(animeList.filter((anime) => anime.season !== 'undecided').map((anime) => anime.year))).sort((a, b) => b - a);
   return (
     <div className="container page-top page-bottom">

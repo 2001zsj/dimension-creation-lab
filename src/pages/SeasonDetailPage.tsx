@@ -1,10 +1,10 @@
 import { ArrowLeft, BookOpen, CalendarDays, Gamepad2, PenLine, Sparkles } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { animeList } from '../data';
 import { AnimeCard } from '../components/AnimeCard';
 import { SectionHeader } from '../components/SectionHeader';
 import { StatCard } from '../components/StatCard';
+import { useAnimeList } from '../liveAnime';
 import type { SeasonName } from '../types';
 import { formatSeason, sourceLabels, weekdayLabels } from '../utils';
 
@@ -13,6 +13,7 @@ const validSeasons: SeasonName[] = ['winter', 'spring', 'summer', 'autumn'];
 type SortMode = 'date' | 'rating' | 'weekday';
 
 export function SeasonDetailPage() {
+  const animeList = useAnimeList();
   const params = useParams();
   const year = Number(params.year);
   const season = validSeasons.includes(params.season as SeasonName) ? params.season as SeasonName : undefined;
@@ -27,7 +28,7 @@ export function SeasonDetailPage() {
       if (sort === 'weekday') return (a.broadcast?.weekday ?? '').localeCompare(b.broadcast?.weekday ?? '');
       return (a.broadcast?.startDate ?? '').localeCompare(b.broadcast?.startDate ?? '');
     });
-  }, [season, sort, watchFilter, year]);
+  }, [animeList, season, sort, watchFilter, year]);
 
   if (!season || !Number.isFinite(year) || animeList.every((anime) => anime.year !== year || anime.season !== season)) {
     return <div className="container page-top page-bottom"><div className="empty-panel large"><h1>没有找到这个季度</h1><Link className="button primary" to="/seasons">返回季度档案</Link></div></div>;

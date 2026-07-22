@@ -1,11 +1,12 @@
 import { ArrowLeft, CalendarDays, ExternalLink, PlayCircle, ShieldAlert, Star, Users } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { animeList } from '../data';
 import { Badge } from '../components/Badge';
 import { Cover } from '../components/Cover';
+import { useAnimeList } from '../liveAnime';
 import { formatSeason, informationLabels, safePercent, sourceLabels, watchLabels, weekdayLabels } from '../utils';
 
 export function AnimeDetailPage() {
+  const animeList = useAnimeList();
   const { id } = useParams();
   const anime = animeList.find((item) => item.id === id);
 

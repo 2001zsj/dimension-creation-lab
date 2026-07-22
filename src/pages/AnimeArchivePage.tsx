@@ -1,11 +1,12 @@
 import { LayoutGrid, List, Search, SlidersHorizontal } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { animeList } from '../data';
 import { AnimeCard } from '../components/AnimeCard';
+import { useAnimeList } from '../liveAnime';
 import { sourceLabels, watchLabels } from '../utils';
 import type { AnimeSourceType, WatchStatus } from '../types';
 
 export function AnimeArchivePage() {
+  const animeList = useAnimeList();
   const [keyword, setKeyword] = useState('');
   const [source, setSource] = useState<'all' | AnimeSourceType>('all');
   const [watch, setWatch] = useState<'all' | WatchStatus>('all');
@@ -18,7 +19,7 @@ export function AnimeArchivePage() {
       return (!keyword || haystack.includes(keyword.toLowerCase())) && (source === 'all' || anime.sourceType === source) && (watch === 'all' || anime.watchStatus === watch);
     });
     return [...filtered].sort((a, b) => sort === 'rating' ? (b.rating ?? 0) - (a.rating ?? 0) : sort === 'year' ? b.year - a.year : b.lastUpdated.localeCompare(a.lastUpdated));
-  }, [keyword, sort, source, watch]);
+  }, [animeList, keyword, sort, source, watch]);
 
   return (
     <div className="container page-top page-bottom">

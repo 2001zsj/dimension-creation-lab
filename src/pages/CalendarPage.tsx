@@ -1,9 +1,9 @@
 import { CalendarDays, Clock3, LayoutGrid, List, Radio } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { animeList } from '../data';
 import { Badge } from '../components/Badge';
 import { Cover } from '../components/Cover';
+import { useAnimeList } from '../liveAnime';
 import type { Weekday } from '../types';
 import { currentWeekday, watchLabels, weekdayLabels } from '../utils';
 
@@ -11,6 +11,7 @@ const weekdays: Weekday[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'frid
 const todayWeekday: Weekday = currentWeekday();
 
 export function CalendarPage() {
+  const animeList = useAnimeList();
   const [activeDay, setActiveDay] = useState<Weekday>(todayWeekday);
   const [onlyWatching, setOnlyWatching] = useState(false);
   const [compact, setCompact] = useState(false);
@@ -19,7 +20,7 @@ export function CalendarPage() {
   const items = useMemo(() => animeList
     .filter((anime) => anime.informationStatus === 'airing' && anime.broadcast?.weekday === activeDay)
     .filter((anime) => !onlyWatching || anime.watchStatus === 'watching')
-    .sort((a, b) => (a.broadcast?.time ?? '').localeCompare(b.broadcast?.time ?? '')), [activeDay, onlyWatching]);
+    .sort((a, b) => (a.broadcast?.time ?? '').localeCompare(b.broadcast?.time ?? '')), [activeDay, animeList, onlyWatching]);
 
   return (
     <div className="container page-top page-bottom">

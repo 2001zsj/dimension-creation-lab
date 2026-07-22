@@ -1,20 +1,24 @@
 import { ArrowRight, CalendarClock, Clock3, Eye, RadioTower, Sparkles, Tv2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { aiWorks, animeList, articles } from '../data';
+import { aiWorks, articles } from '../data';
 import { AnimeCard } from '../components/AnimeCard';
 import { Cover } from '../components/Cover';
 import { SectionHeader } from '../components/SectionHeader';
 import { StatCard } from '../components/StatCard';
+import { useAnimeList, useAnimeMeta } from '../liveAnime';
 import { currentWeekday, weekdayLabels } from '../utils';
 
-const currentSeason = animeList.filter((anime) => anime.year === 2026 && anime.season === 'summer');
 const todayKey = currentWeekday();
-const todayAnime = currentSeason.filter((anime) => anime.broadcast?.weekday === todayKey);
-const upcoming = animeList.filter((anime) => anime.informationStatus === 'scheduled' || anime.informationStatus === 'announced').slice(0, 4);
-const featured = currentSeason.filter((anime) => anime.featured).slice(0, 3);
 
 export function HomePage() {
+  const animeList = useAnimeList();
+  const animeMeta = useAnimeMeta();
+  const currentSeason = animeList.filter((anime) => anime.year === 2026 && anime.season === 'summer');
+  const todayAnime = currentSeason.filter((anime) => anime.broadcast?.weekday === todayKey);
+  const upcoming = animeList.filter((anime) => anime.informationStatus === 'scheduled' || anime.informationStatus === 'announced').slice(0, 4);
+  const featured = currentSeason.filter((anime) => anime.featured).slice(0, 3);
   const latestLog = animeList.flatMap((anime) => anime.logs.map((log) => ({ ...log, anime }))).sort((a, b) => b.date.localeCompare(a.date))[0];
+  const syncLabel = animeMeta.status === 'live' ? '实时同步自長門番堂' : '显示本地缓存，实时源稍后重试';
 
   return (
     <>
@@ -34,7 +38,7 @@ export function HomePage() {
           <div className="season-console">
             <div className="console-top"><span>SEASON CONSOLE</span><strong>2026 / SUMMER</strong></div>
             <div className="console-radar"><span className="radar-ring ring-a" /><span className="radar-ring ring-b" /><span className="radar-sweep" /><Sparkles size={28} /></div>
-            <div className="console-row"><span>资料更新时间</span><strong>2026.07.20</strong></div>
+            <div className="console-row"><span>资料更新时间</span><strong>{animeMeta.updatedAt?.slice(0, 10) ?? '同步中'}</strong></div>
             <div className="console-row"><span>今日星期</span><strong>{weekdayLabels[todayKey]}</strong></div>
           </div>
         </div>
@@ -116,7 +120,7 @@ export function HomePage() {
       </section>
 
       <section className="container notice-panel section-space-tight">
-        <Clock3 size={20} /><p><strong>资料说明：</strong>本站动漫条目来自 AniList 公开 API 与资料页链接整理；播出平台请以官方公告为准，本站不提供播放或下载资源。</p>
+        <Clock3 size={20} /><p><strong>{syncLabel}：</strong>本季新番、放送日历与资料入口根据 <a href={animeMeta.sourceUrl} target="_blank" rel="noopener noreferrer">長門番堂 2026 年 7 月新番表</a> 获取；本站只整理公开资料，不提供动画播放、下载或盗版资源。</p>
       </section>
     </>
   );

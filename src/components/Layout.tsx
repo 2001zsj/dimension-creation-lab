@@ -1,7 +1,8 @@
 import { Menu, Moon, Search, Sparkles, Sun, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { aiWorks, animeList, articles, prompts } from '../data';
+import { aiWorks, articles, prompts } from '../data';
+import { useAnimeList } from '../liveAnime';
 import { Badge } from './Badge';
 
 interface LayoutProps {
@@ -22,6 +23,7 @@ const navItems = [
 ] as const;
 
 function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const animeList = useAnimeList();
   const [query, setQuery] = useState('');
   const [active, setActive] = useState(0);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
       }
     });
     return items.slice(0, 12);
-  }, [query]);
+  }, [animeList, query]);
 
   useEffect(() => setActive(0), [query]);
 
