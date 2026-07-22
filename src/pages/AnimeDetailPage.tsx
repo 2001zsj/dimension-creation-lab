@@ -36,7 +36,24 @@ export function AnimeDetailPage() {
 
       <div className="container detail-layout">
         <aside className="detail-aside">
-          <nav className="sticky-toc" aria-label="页面目录"><strong>页面目录</strong><a href="#archive">资料档案</a><a href="#broadcast">放送信息</a><a href="#staff">制作阵容</a><a href="#personal">我的记录</a><a href="#logs">观看日志</a></nav>
+          <nav className="sticky-toc" aria-label="页面目录">
+            <div className="toc-heading">
+              <span className="toc-kicker">INDEX</span>
+              <strong>资料索引</strong>
+              <small>{anime.externalLinks[0]?.label ?? '公开资料'} · {anime.lastUpdated}</small>
+            </div>
+            <div className="toc-links">
+              <a className="toc-link" href="#archive"><span className="toc-index">01</span><span><strong>资料档案</strong><small>标题、题材、状态</small></span></a>
+              <a className="toc-link" href="#broadcast"><span className="toc-index">02</span><span><strong>放送信息</strong><small>日期、时间、平台入口</small></span></a>
+              <a className="toc-link" href="#staff"><span className="toc-index">03</span><span><strong>制作阵容</strong><small>动画制作与公开 STAFF</small></span></a>
+              <a className="toc-link" href="#personal"><span className="toc-index">04</span><span><strong>我的记录</strong><small>进度、短评、提醒</small></span></a>
+              <a className="toc-link" href="#logs"><span className="toc-index">05</span><span><strong>观看日志</strong><small>同步与追踪记录</small></span></a>
+            </div>
+            <div className="toc-meta">
+              <span>REAL DATA</span>
+              <strong>{anime.broadcast?.weekday ? weekdayLabels[anime.broadcast.weekday] : '放送未定'}</strong>
+            </div>
+          </nav>
         </aside>
         <article className="detail-content">
           <section id="archive" className="detail-section">
