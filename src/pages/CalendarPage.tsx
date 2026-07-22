@@ -49,7 +49,7 @@ export function CalendarPage() {
           {items.map((anime) => (
             <Link to={`/anime/${anime.id}`} className="schedule-item" key={anime.id}>
               <time><Clock3 size={15} />{anime.broadcast?.time ?? '未定'}</time>
-              <Cover seed={anime.coverSeed} className="schedule-cover" />
+              <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="schedule-cover" />
               <div className="schedule-copy"><span className="row gap-sm wrap"><Badge tone="green">放送中</Badge><Badge>{watchLabels[anime.watchStatus]}</Badge></span><h3>{anime.title}</h3><p>{anime.originalTitle}</p></div>
               <div className="schedule-detail"><strong>第 {anime.progress + 1} 话</strong><span>{anime.broadcast?.platforms.join(' / ')}</span><small>总计 {anime.broadcast?.episodeCount ?? '?'} 话</small></div>
             </Link>

@@ -70,6 +70,7 @@ export interface Anime {
   warning?: string;
   logs: WatchLog[];
   coverSeed: number;
+  coverImage?: string;
   featured?: boolean;
 }
 

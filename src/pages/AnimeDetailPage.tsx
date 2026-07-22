@@ -18,12 +18,12 @@ export function AnimeDetailPage() {
   return (
     <div className="page-bottom">
       <section className="detail-hero">
-        <Cover seed={anime.coverSeed + 20} className="detail-hero-cover" />
+        <Cover seed={anime.coverSeed + 20} imageUrl={anime.coverImage} className="detail-hero-cover" />
         <div className="detail-hero-overlay" />
         <div className="container detail-hero-content">
           <Link className="back-link light" to="/anime"><ArrowLeft size={16} />返回动漫档案</Link>
           <div className="detail-title-row">
-            <Cover seed={anime.coverSeed} className="detail-poster"><span className="cover-code">ARCHIVE {anime.year}</span></Cover>
+            <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="detail-poster"><span className="cover-code">ARCHIVE {anime.year}</span></Cover>
             <div className="detail-title-copy">
               <div className="row gap-sm wrap"><Badge tone="purple">{formatSeason(anime.year, anime.season)}</Badge><Badge tone="cyan">{sourceLabels[anime.sourceType]}</Badge><Badge tone={anime.informationStatus === 'airing' ? 'green' : 'gray'}>{informationLabels[anime.informationStatus]}</Badge></div>
               <h1>{anime.title}</h1><p className="detail-original">{anime.originalTitle}</p>{anime.englishTitle && <p>{anime.englishTitle}</p>}

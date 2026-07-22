@@ -53,6 +53,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 4,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a18b8b3a456f658eb2634d88904e1ffb512995925.jpg",
     "featured": true
   },
   {
@@ -112,6 +113,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 39,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2310b9a8587d0f846f7f2b529a00065a512995925.jpg",
     "featured": true
   },
   {
@@ -171,6 +173,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 80,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e2cf0e4959454310e6390adaa601408e512995925.jpg",
     "featured": true
   },
   {
@@ -230,6 +233,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 26,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/8e9503bd8008ea81d32421b071433630512995925.jpg",
     "featured": true
   },
   {
@@ -289,6 +293,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 12,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/48182894e97ace76cc821e9ddd039aa5512995925.jpg",
     "featured": true
   },
   {
@@ -348,6 +353,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 3,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/754bdefab9bc7be8114fc0429988daee512995925.jpg",
     "featured": true
   },
   {
@@ -405,6 +411,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 6,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/4bfa8cc4febe963d9851462e7ed4642a512995925.jpg",
     "featured": false
   },
   {
@@ -464,6 +471,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 37,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/db81bd26acafcf3803b416d61f779df1512995925.jpg",
     "featured": false
   },
   {
@@ -523,6 +531,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 3,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/dcc058e1d03a8f4d35cb6994bb619299512995925.jpg",
     "featured": false
   },
   {
@@ -582,6 +591,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 35,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5e56eb53f26add20de1049642088ae14512995925.jpg",
     "featured": false
   },
   {
@@ -641,6 +651,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 65,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/f4893bcd78c847adf298bc5dbaa9e539512995925.jpg",
     "featured": false
   },
   {
@@ -700,6 +711,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 26,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9c329ec79e3f688d9e240fe296f93cd0512995925.jpg",
     "featured": false
   },
   {
@@ -754,6 +766,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 38,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1fcbbe12b8d8652618de138a0026d767512995925.jpg",
     "featured": false
   },
   {
@@ -813,6 +826,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 92,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b8dbcf0c89324fd89cae8ea4ca820e52512995925.jpg",
     "featured": false
   },
   {
@@ -867,6 +881,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 69,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/40b55bdf78f61985869b82bbd08c75f7512995925.jpg",
     "featured": false
   },
   {
@@ -926,6 +941,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 86,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/19ab196439099d086e1eb62a803cd1b1512995925.jpg",
     "featured": false
   },
   {
@@ -985,6 +1001,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 35,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/36ca0fd3c8b535ea4f5675d0c4462342512995925.jpg",
     "featured": false
   },
   {
@@ -1044,6 +1061,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 43,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2be64aa4e4554dfd6e4454f101574e48512995925.jpg",
     "featured": false
   },
   {
@@ -1103,6 +1121,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 42,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1940e5804d1d53a81238b8c27c23e9b7512995925.jpg",
     "featured": false
   },
   {
@@ -1162,6 +1181,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 83,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/28a51ffa05536c0f7605980cfc3aafbf512995925.jpg",
     "featured": false
   },
   {
@@ -1221,6 +1241,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 46,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a33eb3e319f9c8508a6fee4aefa3891a512995925.jpg",
     "featured": false
   },
   {
@@ -1280,6 +1301,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 35,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a6d48c024d22dc6ce261ed92b0f39a67512995925.jpg",
     "featured": false
   },
   {
@@ -1339,6 +1361,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 6,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/f6fd144e178bc398971b6a24294ef061512995925.jpg",
     "featured": false
   },
   {
@@ -1397,6 +1420,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 16,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e5498ee6e63f87ba626eb1a643692635512995925.jpg",
     "featured": false
   },
   {
@@ -1456,6 +1480,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 27,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b41e34d9c820c3ddd15e91b48eaab2a7512995925.jpg",
     "featured": false
   },
   {
@@ -1515,6 +1540,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 26,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/da557193091701a3d8201ae3a2363ce9512995925.jpg",
     "featured": false
   },
   {
@@ -1567,6 +1593,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 81,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1f69329fcadb72424dc1afe5b3a1ff5c512995925.jpg",
     "featured": false
   },
   {
@@ -1626,6 +1653,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 6,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/39ee0f846560cdf5f63c9ddfee8d21ac512995925.jpg",
     "featured": false
   },
   {
@@ -1685,6 +1713,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 14,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/67a6f69c0e2fe29493629da4c6dd394c512995925.jpg",
     "featured": false
   },
   {
@@ -1739,6 +1768,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 91,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/02763b6fa9298a0804a71dc67052c457512995925.jpg",
     "featured": false
   },
   {
@@ -1798,6 +1828,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 86,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7063238a511a436b56c01bf4762978bc512995925.jpg",
     "featured": false
   },
   {
@@ -1857,6 +1888,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 48,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9043ebde02deb628f2871c88c19b3275512995925.jpg",
     "featured": false
   },
   {
@@ -1916,6 +1948,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 81,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/611633a85663932cb5c2a9cae13b057e512995925.jpg",
     "featured": false
   },
   {
@@ -1973,6 +2006,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 76,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/dffacfcc81daa70300e7d7ec5afd7e1c512995925.jpg",
     "featured": false
   },
   {
@@ -2032,6 +2066,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 29,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/ce8e23f26026dbc2043aecab806f8af6512995925.jpg",
     "featured": false
   },
   {
@@ -2091,6 +2126,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 17,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/6e1b9ec6fb5177e973546f3d5665e810512995925.jpg",
     "featured": false
   },
   {
@@ -2150,6 +2186,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 39,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/737c88e9bbea1adb267b6c4f19c153ba512995925.jpg",
     "featured": false
   },
   {
@@ -2209,6 +2246,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 41,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/91f134e4d0dd02fab86e3ff1c508769a512995925.jpg",
     "featured": false
   },
   {
@@ -2268,6 +2306,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 43,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/609257722f4bf239207a72d33c82408c512995925.jpg",
     "featured": false
   },
   {
@@ -2326,6 +2365,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 45,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/71b9d57fb31b6a53c3565632f461861c512995925.jpg",
     "featured": false
   },
   {
@@ -2383,6 +2423,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 67,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2651151e2fe96b889565e33a7d4b69d9512995925.jpg",
     "featured": false
   },
   {
@@ -2440,6 +2481,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 93,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e102567e0958ad8d2656dd3bf5c65050512995925.jpg",
     "featured": false
   },
   {
@@ -2510,6 +2552,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 55,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a391a1fc78171684a9584086d0a95af8512995925.jpg",
     "featured": false
   },
   {
@@ -2569,6 +2612,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 86,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/867341f8f0cedda8c0bd1d470d506cd6512995925.jpg",
     "featured": false
   },
   {
@@ -2628,6 +2672,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 75,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/67adc38f7025cc8c4b030a27fface3da512995925.jpg",
     "featured": false
   },
   {
@@ -2687,6 +2732,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 79,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/d1e05e6cae2a4ee4443c9b7be0af573d512995925.jpg",
     "featured": false
   },
   {
@@ -2744,6 +2790,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 42,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/c9ff953b58e6169ce055034b1da5b160512995925.jpg",
     "featured": false
   },
   {
@@ -2803,6 +2850,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 90,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b6c61ecc8140dd8b41318a46f5585c6d512995925.jpg",
     "featured": false
   },
   {
@@ -2860,6 +2908,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 90,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5be47c5c1e39ce9ce4ebebd5a4f34d1f512995925.jpg",
     "featured": false
   },
   {
@@ -2919,6 +2968,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 88,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/69ee7bf21dd04dfcfcc2b88d035a5b73512995925.jpg",
     "featured": false
   },
   {
@@ -2978,6 +3028,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 48,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1ddf686a54bc913313638157bf5ded46512995925.jpg",
     "featured": false
   },
   {
@@ -3037,6 +3088,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 89,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0e7464dfb9953d64fd2d0133d0e86aa3512995925.jpg",
     "featured": false
   },
   {
@@ -3096,6 +3148,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 5,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e8b05a97ffaed113f2f68668bcc5184e512995925.jpg",
     "featured": false
   },
   {
@@ -3155,6 +3208,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 3,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7abf6ddef094ab555b8e9e4b95bdbb7e512995925.jpg",
     "featured": false
   },
   {
@@ -3214,6 +3268,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 57,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/d39282e5a07f528ea4861fcfbf9e81d4512995925.jpg",
     "featured": false
   },
   {
@@ -3273,6 +3328,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 75,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0baba8c1870b60a0b76af45561a97b65512995925.jpg",
     "featured": false
   },
   {
@@ -3331,6 +3387,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 37,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/8448481231bccefba5b1181dc8652d64512995925.jpg",
     "featured": false
   },
   {
@@ -3383,6 +3440,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 54,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a7692ed66130421268847ff7557c2faa512995925.jpg",
     "featured": false
   },
   {
@@ -3435,6 +3493,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 27,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/04f8e8caa26b49173c93d547011e2000512995925.jpg",
     "featured": false
   },
   {
@@ -3487,6 +3546,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 68,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/121eaf1a4dc9fecb15201af71e8a4fb6512995925.jpg",
     "featured": false
   },
   {
@@ -3539,6 +3599,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 93,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9e394c8578b1aa02e33150658ceef7ba512995925.jpg",
     "featured": false
   },
   {
@@ -3598,6 +3659,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 51,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/86ee784222c121962826aa47e3cfd267512995925.jpg",
     "featured": false
   },
   {
@@ -3657,6 +3719,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 40,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/4081442c76b9d08fc7c34da8e2f4d501512995925.jpg",
     "featured": false
   },
   {
@@ -3716,6 +3779,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 92,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0a7961716aeb38be6352355e05467c07512995925.jpg",
     "featured": false
   },
   {
@@ -3775,6 +3839,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 0,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7ffbb763ee08eb87f2695d02e302134f512995925.jpg",
     "featured": false
   },
   {
@@ -3834,6 +3899,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 78,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/474899f247a75f593180d0759a783635512995925.jpg",
     "featured": false
   },
   {
@@ -3893,6 +3959,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 39,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5691179311a0702b8d5fbec57ed5d05d512995925.jpg",
     "featured": false
   },
   {
@@ -3952,6 +4019,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 58,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/df5578fc4cc578805e5c356fe0c07c6c512995925.jpg",
     "featured": false
   },
   {
@@ -4011,6 +4079,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 26,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a15be389060cf0bf2a8f07a63cd401f6512995925.jpg",
     "featured": false
   },
   {
@@ -4068,6 +4137,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 1,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/ebbf753e84a0c569c5b35940a0644839512995925.jpg",
     "featured": false
   },
   {
@@ -4127,6 +4197,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 86,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/838239e4d2dabeb51b5241535f5821a7512995925.jpg",
     "featured": false
   },
   {
@@ -4186,6 +4257,7 @@ export const animeList: Anime[] = [
       }
     ],
     "coverSeed": 1,
+    "coverImage": "https://i0.hdslb.com/bfs/new_dyn/6122311dd677dc4941f8cb82f56a6c48512995925.jpg",
     "featured": false
   }
 ];

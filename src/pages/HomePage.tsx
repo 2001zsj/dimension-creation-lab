@@ -54,7 +54,7 @@ export function HomePage() {
             {todayAnime.map((anime) => (
               <Link to={`/anime/${anime.id}`} key={anime.id} className="today-item">
                 <span className="today-time">{anime.broadcast?.time}</span>
-                <Cover seed={anime.coverSeed} className="today-cover" />
+                <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="today-cover" />
                 <span className="today-copy"><strong>{anime.title}</strong><small>第 {anime.progress + 1} 话 · {anime.broadcast?.platforms.join(' / ')}</small></span>
                 <span className="status-dot"><span />即将放送</span>
                 <ArrowRight size={18} />
@@ -75,7 +75,7 @@ export function HomePage() {
           <div className="radar-strip">
             {upcoming.map((anime) => (
               <Link to={`/anime/${anime.id}`} key={anime.id} className="radar-mini-card">
-                <Cover seed={anime.coverSeed} className="radar-mini-cover"><span>{anime.year}</span></Cover>
+                <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="radar-mini-cover"><span>{anime.year}</span></Cover>
                 <div><span className="mini-label">{anime.season === 'undecided' ? '档期未定' : `${anime.year} ${anime.season}`}</span><strong>{anime.title}</strong><small>{anime.staff.studio.join(' / ')}</small></div>
               </Link>
             ))}
@@ -88,7 +88,7 @@ export function HomePage() {
           <SectionHeader eyebrow="WATCH LOG" title="最近观看记录" />
           {latestLog ? (
             <Link to={`/anime/${latestLog.anime.id}`} className="log-card">
-              <Cover seed={latestLog.anime.coverSeed} className="log-cover" />
+              <Cover seed={latestLog.anime.coverSeed} imageUrl={latestLog.anime.coverImage} className="log-cover" />
               <div><span>{latestLog.date} · 第 {latestLog.episode} 话</span><h3>{latestLog.anime.title}</h3><p>{latestLog.note}</p></div>
             </Link>
           ) : <div className="empty-panel">暂无观看日志。</div>}
