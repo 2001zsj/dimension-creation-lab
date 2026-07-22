@@ -49,7 +49,7 @@ export function AnimeDetailPage() {
 
           <section id="broadcast" className="detail-section">
             <span className="eyebrow">BROADCAST</span><h2>放送信息</h2>
-            {anime.broadcast ? <dl className="definition-grid"><div><dt>首播日期</dt><dd>{anime.broadcast.startDate ?? '未定'}</dd></div><div><dt>星期与时间</dt><dd>{weekdayLabels[anime.broadcast.weekday]} {anime.broadcast.time ?? ''}</dd></div><div><dt>总集数</dt><dd>{anime.broadcast.episodeCount ?? '未公开'}</dd></div><div><dt>模拟平台</dt><dd>{anime.broadcast.platforms.join(' / ')}</dd></div></dl> : <div className="empty-panel">放送信息尚未公开。</div>}
+            {anime.broadcast ? <dl className="definition-grid"><div><dt>首播日期</dt><dd>{anime.broadcast.startDate ?? '未定'}</dd></div><div><dt>星期与时间</dt><dd>{weekdayLabels[anime.broadcast.weekday]} {anime.broadcast.time ?? ''}</dd></div><div><dt>总集数</dt><dd>{anime.broadcast.episodeCount ?? '未公开'}</dd></div><div><dt>播出平台</dt><dd>{anime.broadcast.platforms.join(' / ')}</dd></div></dl> : <div className="empty-panel">放送信息尚未公开。</div>}
             <div className="external-links">{anime.externalLinks.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer"><ExternalLink size={16} />{link.label}</a>)}</div>
           </section>
 

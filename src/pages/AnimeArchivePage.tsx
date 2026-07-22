@@ -22,7 +22,7 @@ export function AnimeArchivePage() {
 
   return (
     <div className="container page-top page-bottom">
-      <div className="page-title-grid"><div><span className="eyebrow">PERSONAL ANIME DATABASE</span><h1>动漫档案</h1><p>资料字段与个人观看记录分层维护，共 {items.length} 条结果。</p></div><div className="page-title-icon"><SlidersHorizontal size={34} /></div></div>
+      <div className="page-title-grid"><div><span className="eyebrow">PERSONAL ANIME DATABASE</span><h1>动漫档案</h1><p>按公开资料字段分层维护，共 {items.length} 条结果。</p></div><div className="page-title-icon"><SlidersHorizontal size={34} /></div></div>
       <div className="archive-toolbar archive-toolbar-large">
         <label className="search-field grow"><Search size={17} /><input value={keyword} onChange={(event) => setKeyword(event.target.value)} placeholder="搜索标题、原名或题材" /></label>
         <label className="select-label">来源<select value={source} onChange={(event) => setSource(event.target.value as 'all' | AnimeSourceType)}><option value="all">全部</option>{Object.entries(sourceLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>

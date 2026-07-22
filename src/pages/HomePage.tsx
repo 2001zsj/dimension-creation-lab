@@ -41,8 +41,8 @@ export function HomePage() {
       </section>
 
       <section className="container stats-grid section-space-tight">
-        <StatCard label="本季收录" value={currentSeason.length} note="原创模拟条目" icon={Tv2} />
-        <StatCard label="正在追番" value={animeList.filter((anime) => anime.watchStatus === 'watching').length} note="个人观看状态" icon={Eye} />
+        <StatCard label="本季收录" value={currentSeason.length} note="公开资料条目" icon={Tv2} />
+        <StatCard label="正在追番" value={animeList.filter((anime) => anime.watchStatus === 'watching').length} note="资料同步状态" icon={Eye} />
         <StatCard label="今日放送" value={todayAnime.length} note={`${weekdayLabels[todayKey]}更新`} icon={CalendarClock} />
         <StatCard label="雷达目标" value={upcoming.length} note="已公开或已定档" icon={RadioTower} />
       </section>
@@ -61,11 +61,11 @@ export function HomePage() {
               </Link>
             ))}
           </div>
-        ) : <div className="empty-panel">今日没有模拟放送条目。</div>}
+        ) : <div className="empty-panel">今日没有公开放送条目。</div>}
       </section>
 
       <section className="container section-space">
-        <SectionHeader eyebrow="SEASON PICKS" title="本季重点关注" description="兼顾资料字段与个人观看记录的精选条目。" action={<Link className="text-link" to="/anime">浏览全部 <ArrowRight size={15} /></Link>} />
+        <SectionHeader eyebrow="SEASON PICKS" title="本季重点关注" description="按公开评分、热度与资料完整度挑选的重点条目。" action={<Link className="text-link" to="/anime">浏览全部 <ArrowRight size={15} /></Link>} />
         <div className="anime-grid three-col">{featured.map((anime) => <AnimeCard key={anime.id} anime={anime} />)}</div>
       </section>
 
@@ -116,7 +116,7 @@ export function HomePage() {
       </section>
 
       <section className="container notice-panel section-space-tight">
-        <Clock3 size={20} /><p><strong>资料说明：</strong>本项目中的动画、档期、制作人员和放送平台均为原创模拟数据，用于展示资料库结构与交互。</p>
+        <Clock3 size={20} /><p><strong>资料说明：</strong>本站动漫条目来自 AniList 公开 API 与资料页链接整理；播出平台请以官方公告为准，本站不提供播放或下载资源。</p>
       </section>
     </>
   );

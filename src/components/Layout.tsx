@@ -194,9 +194,9 @@ export function Layout({ children }: LayoutProps) {
       <footer className="site-footer">
         <div>
           <strong>次元生成局</strong>
-          <p>动漫资料库、新番观测、个人观看记录与 AI 创作实验室。</p>
+          <p>动漫公开资料库、新番观测、放送日历与 AI 创作实验室。</p>
         </div>
-        <p>本站资料均为原创模拟数据，不提供动画播放、下载或未经授权的资源。</p>
+        <p>本站整理公开资料来源，不提供动画播放、下载或未经授权的资源。</p>
       </footer>
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>

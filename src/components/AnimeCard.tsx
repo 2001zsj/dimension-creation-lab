@@ -13,7 +13,7 @@ interface AnimeCardProps {
 export function AnimeCard({ anime, compact = false }: AnimeCardProps) {
   return (
     <Link to={`/anime/${anime.id}`} className={`anime-card ${compact ? 'anime-card-compact' : ''}`}>
-      <Cover seed={anime.coverSeed} className="anime-cover" label={`${anime.title}原创渐变封面`}>
+      <Cover seed={anime.coverSeed} className="anime-cover" label={`${anime.title}资料卡片封面`}>
         <span className="cover-code">#{anime.id.slice(0, 2).toUpperCase()}</span>
       </Cover>
       <div className="anime-card-body">

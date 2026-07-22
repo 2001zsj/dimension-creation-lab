@@ -24,7 +24,7 @@ export function CalendarPage() {
   return (
     <div className="container page-top page-bottom">
       <div className="page-title-grid">
-        <div><span className="eyebrow">WEEKLY BROADCAST</span><h1>每周放送表</h1><p>按星期、时间和观看状态整理本季模拟播出信息。</p></div>
+        <div><span className="eyebrow">WEEKLY BROADCAST</span><h1>每周放送表</h1><p>按星期、时间和公开播出资料整理本季条目。</p></div>
         <div className="page-title-icon"><CalendarDays size={34} /></div>
       </div>
 
@@ -57,7 +57,7 @@ export function CalendarPage() {
         </div>
       ) : <div className="empty-panel large">当前条件下没有放送条目。</div>}
 
-      <div className="notice-panel"><CalendarDays size={20} /><p>时间、平台和集数均为本地模拟数据；“本地时间”仅展示浏览器时区名称，不对模拟时间执行跨时区换算。</p></div>
+      <div className="notice-panel"><CalendarDays size={20} /><p>时间和集数来自公开资料整理；具体地区平台与上架时间请以官方公告为准。</p></div>
     </div>
   );
 }

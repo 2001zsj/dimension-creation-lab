@@ -34,7 +34,7 @@ export function RadarPage() {
   return (
     <div className="container page-top page-bottom">
       <div className="page-title-grid">
-        <div><span className="eyebrow">SATELLITE OBSERVATORY</span><h1>新番雷达</h1><p>参考长期资料站的分档逻辑，但使用原创模拟数据和现代化筛选体验。</p></div>
+        <div><span className="eyebrow">SATELLITE OBSERVATORY</span><h1>新番雷达</h1><p>参考长期资料站的分档逻辑，使用 AniList 公开资料与现代化筛选体验。</p></div>
         <div className="page-title-icon"><RadioTower size={34} /></div>
       </div>
 

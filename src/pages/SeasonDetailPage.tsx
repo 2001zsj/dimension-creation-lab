@@ -40,12 +40,12 @@ export function SeasonDetailPage() {
     <div className="container page-top page-bottom">
       <Link className="back-link" to="/seasons"><ArrowLeft size={16} />返回季度档案</Link>
       <div className="page-title-grid season-detail-title">
-        <div><span className="eyebrow">SEASON DATABASE</span><h1>{formatSeason(year, season)}新番档案</h1><p>从放送节奏、改编来源到个人观看状态，集中查看本季度模拟条目。</p></div>
+        <div><span className="eyebrow">SEASON DATABASE</span><h1>{formatSeason(year, season)}新番档案</h1><p>从放送节奏、改编来源到公开评分，集中查看本季度真实资料条目。</p></div>
         <div className="season-big-number"><span>{String(year).slice(2)}</span><strong>{season.toUpperCase()}</strong></div>
       </div>
 
       <div className="stats-grid section-space-tight">
-        <StatCard label="本季作品" value={allItems.length} note="原创模拟数据" icon={CalendarDays} />
+        <StatCard label="本季作品" value={allItems.length} note="公开资料" icon={CalendarDays} />
         <StatCard label={sourceLabels.original} value={countBySource('original')} note="原创企划" icon={Sparkles} />
         <StatCard label={sourceLabels.manga} value={countBySource('manga')} note="漫画来源" icon={PenLine} />
         <StatCard label="小说 / 游戏" value={countBySource('novel') + countBySource('game')} note="其他主要来源" icon={BookOpen} />
@@ -70,7 +70,7 @@ export function SeasonDetailPage() {
         {items.length > 0 ? <div className="anime-grid three-col">{items.map((anime) => <AnimeCard key={anime.id} anime={anime} />)}</div> : <div className="empty-panel">当前筛选下没有条目。</div>}
       </section>
 
-      <div className="notice-panel"><Gamepad2 size={20} /><p>季度数量、分布与放送安排均根据项目内的原创模拟数据实时计算。</p></div>
+      <div className="notice-panel"><Gamepad2 size={20} /><p>季度数量、分布与放送安排均根据项目内的公开资料实时计算。</p></div>
     </div>
   );
 }
