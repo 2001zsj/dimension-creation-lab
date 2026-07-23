@@ -144,7 +144,7 @@ export function HomePage() {
       </section>
 
       <section className="container notice-panel section-space-tight">
-        <Clock3 size={20} /><p><strong>{syncLabel}：</strong>本季新番、放送日历与资料入口根据 <a href={animeMeta.sourceUrl} target="_blank" rel="noopener noreferrer">長門番堂 {sourcePeriod}新番表</a> 整理；本站只呈现公开资料，不提供动画播放、下载或盗版资源。</p>
+        <Clock3 size={20} /><p><strong>{syncLabel}：</strong>本季新番、放送日历与资料入口根据 <a href={animeMeta.sourceUrl} target="_blank" rel="noopener noreferrer">長門番堂 {sourcePeriod}新番表</a> 整理；资源入口会保留来源、核验状态和授权状态，使用前请自行确认可用性。</p>
       </section>
     </>
   );

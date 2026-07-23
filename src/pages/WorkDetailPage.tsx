@@ -19,7 +19,7 @@ export function WorkDetailPage() {
       <div className="work-detail-grid"><Cover seed={work.coverSeed} className="work-detail-cover"><ImageIcon size={40} /></Cover><div className="work-detail-intro"><div className="row gap-sm wrap"><Badge tone="pink">{work.type}</Badge><Badge tone="purple">{work.style}</Badge><Badge>{work.tool}</Badge></div><h1>{work.title}</h1><p>{work.background}</p><small>完成于 {work.date}</small></div></div>
       <div className="process-grid section-space-tight"><section><span className="step-number">01</span><h2>初始提示词</h2><pre>{work.initialPrompt}</pre></section><section><span className="step-number">02</span><h2>发现的问题</h2><p>{work.problem}</p></section><section><span className="step-number">03</span><h2>调整过程</h2><ol>{work.adjustments.map((item) => <li key={item}><CheckCircle2 size={17} />{item}</li>)}</ol></section><section className="final-prompt"><span className="step-number">04</span><div className="row between"><h2>最终提示词</h2><button className="button secondary compact" onClick={copyFinal}>{copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}{copied ? '已复制' : '复制'}</button></div><pre>{work.finalPrompt}</pre></section></div>
       {related.length > 0 && <section className="section-space-tight"><h2>相关作品</h2><div className="related-work-grid">{related.map((item) => <Link key={item.id} to={`/works/${item.id}`}><Cover seed={item.coverSeed} className="related-cover" /><div><strong>{item.title}</strong><span>{item.style}</span></div><ArrowRight size={16} /></Link>)}</div></section>}
-      <div className="notice-panel"><WandSparkles size={20} /><p>本页展示的是资料整理与界面实验复盘，不提供播放、下载或盗版资源。</p></div>
+      <div className="notice-panel"><WandSparkles size={20} /><p>本页展示资料整理与界面实验复盘；外部资源均保留来源和核验状态。</p></div>
     </div>
   );
 }

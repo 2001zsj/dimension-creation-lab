@@ -1,5 +1,5 @@
 import { Check, Copy, Dice5, Fingerprint, Palette, RefreshCcw, Sparkles, Type } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import { useLocation } from 'react-router-dom';
 import { characterPresets, prompts, styleResearch } from '../data';
 import { Badge } from '../components/Badge';
@@ -99,7 +99,7 @@ export function AILabPage() {
       {tab === 'characters' && <div id="lab-panel-characters" role="tabpanel" aria-labelledby="lab-tab-characters" className="character-lab">
         <section className="character-form card-panel">
           <div className="row between"><div><span className="eyebrow">CHARACTER COMPOSER</span><h2>原创角色设定</h2><p className="muted">根据本地预设随机组合字段，不会调用外部模型。</p></div><Dice5 /></div>
-          {(Object.keys(emptyForm) as Array<keyof CharacterForm>).map((key) => <label key={key}><span>{fieldLabels[key]}</span>{key === 'background' ? <textarea value={form[key]} onChange={(event) => setForm({ ...form, [key]: event.target.value })} placeholder={`输入${fieldLabels[key]}`} /> : <input value={form[key]} onChange={(event) => setForm({ ...form, [key]: event.target.value })} placeholder={`输入${fieldLabels[key]}`} />}</label>)}
+          {(Object.keys(emptyForm) as Array<keyof CharacterForm>).map((key) => <label key={key}><span>{fieldLabels[key]}</span>{key === 'background' ? <textarea value={form[key]} onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setForm({ ...form, [key]: event.target.value })} placeholder={`输入${fieldLabels[key]}`} /> : <input value={form[key]} onChange={(event: ChangeEvent<HTMLInputElement>) => setForm({ ...form, [key]: event.target.value })} placeholder={`输入${fieldLabels[key]}`} />}</label>)}
           <div className="row gap-sm wrap"><button className="button secondary" onClick={randomFill}><Dice5 size={16} />随机补全</button><button className="button secondary" onClick={() => { setForm(emptyForm); setGenerated(null); }}><RefreshCcw size={16} />清空</button><button className="button primary" onClick={generate}>组合角色设定</button></div>
         </section>
         <section className="character-preview card-panel">{generated ? <><Cover seed={generated.name.length * 7} className="character-cover" label={`${generated.name}角色视觉占位图`} /><div className="row between"><div><span className="eyebrow">COMPOSED PROFILE</span><h2>{generated.name}</h2></div><button className="icon-button" aria-label={copied === 'character' ? '角色设定已复制' : '复制角色设定'} onClick={() => copyText('character', generatedText)}>{copied === 'character' ? <Check /> : <Copy />}</button></div><div className="character-data"><p><strong>身份</strong>{generated.identity}</p><p><strong>世界</strong>{generated.world}</p><p><strong>外貌</strong>{generated.appearance}</p><p><strong>性格</strong>{generated.personality}</p><p><strong>能力</strong>{generated.ability}</p><p><strong>背景</strong>{generated.background}</p></div></> : <div className="empty-panel large">填写部分信息，或使用随机补全后组合角色设定。</div>}</section>

@@ -1,26 +1,60 @@
-import { ArrowLeft, Bookmark, CalendarDays, Database, ExternalLink, HardDrive, PlayCircle, RotateCcw, ShieldAlert, Star, Users } from 'lucide-react';
-import type { ChangeEvent } from 'react';
+import { ArrowLeft, Bookmark, CalendarDays, Database, ExternalLink, HardDrive, LoaderCircle, PlayCircle, RotateCcw, ShieldAlert, Star, Users } from 'lucide-react';
+import { useEffect, useState, type ChangeEvent } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Badge } from '../components/Badge';
 import { Cover } from '../components/Cover';
-import { useAnimeList } from '../liveAnime';
+import { useRegistry, type AgeDetail, type AgePlayResult } from '../dataRegistry';
 import { useLocalLibrary } from '../localLibrary';
 import type { WatchStatus } from '../types';
 import { formatSeason, informationLabels, isPersonalRecord, safePercent, sourceLabels, watchLabels, weekdayLabels } from '../utils';
 
+function Field({ label, value }: { label: string; value: unknown }) {
+  if (value === undefined || value === null || value === '' || (Array.isArray(value) && value.length === 0)) return null;
+  return <div><dt>{label}</dt><dd>{Array.isArray(value) ? value.join(' / ') : String(value)}</dd></div>;
+}
+
 export function AnimeDetailPage() {
-  const animeList = useAnimeList();
+  const { items, loadAgeDetail, loadAgePlay } = useRegistry();
   const { getRecord, toggleFavorite, setStatus, setProgress, clearRecord } = useLocalLibrary();
   const { id } = useParams();
-  const anime = animeList.find((item) => item.id === id);
+  const anime = items.find((item) => item.id === id);
+  const [ageDetail, setAgeDetail] = useState<AgeDetail | undefined>(undefined);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [playLoading, setPlayLoading] = useState<string | undefined>(undefined);
+  const [playResults, setPlayResults] = useState<Record<string, AgePlayResult>>({});
+
+  useEffect(() => {
+    if (!anime?.sourceIds.age) { setAgeDetail(undefined); return; }
+    let active = true;
+    setAgeDetail(undefined);
+    setPlayResults({});
+    setDetailLoading(true);
+    void loadAgeDetail(anime.sourceIds.age).then((detail) => { if (active) setAgeDetail(detail); }).finally(() => { if (active) setDetailLoading(false); });
+    return () => { active = false; };
+  }, [anime?.sourceIds.age, loadAgeDetail]);
 
   if (!anime) {
-    return <div className="container page-top page-bottom"><div className="empty-panel large"><h1>没有找到对应的动漫记录</h1><p>该条目可能已被移除，或地址不正确。</p><div className="row gap-md wrap"><Link className="button secondary" to="/anime">返回动漫档案</Link><Link className="button primary" to="/">返回首页</Link></div></div></div>;
+    return <div className="container page-top page-bottom"><div className="empty-panel large"><h1>没有找到对应的动漫记录</h1><p>该条目可能尚未载入。AGE 数据可在资源中心按页载入后再打开。</p><div className="row gap-md wrap"><Link className="button secondary" to="/resources">前往资源中心</Link><Link className="button primary" to="/anime">返回动漫档案</Link></div></div></div>;
   }
 
   const personalRecord = isPersonalRecord(anime);
   const localRecord = getRecord(anime.id);
   const scoreEntries = personalRecord && anime.scores ? Object.entries(anime.scores) : [];
+  const mergedSynopsis = anime.synopsis || ageDetail?.synopsis || '';
+  const director = anime.staff.director || ageDetail?.director;
+  const hasStaff = anime.staff.studio.length > 0 || director || anime.staff.seriesComposition || anime.staff.characterDesign || anime.staff.music || anime.staff.cast.length > 0;
+  const castDisplay = anime.staff.castCredits?.length
+    ? anime.staff.castCredits.map((credit) => credit.character ? `${credit.character} / ${credit.actor}` : credit.actor)
+    : anime.staff.cast;
+  const allResources = anime.resources;
+  const sourceEntries = Object.entries(anime.fieldSources);
+
+  const resolvePlay = async (episodeUrl: string) => {
+    setPlayLoading(episodeUrl);
+    const result = await loadAgePlay(episodeUrl);
+    if (result) setPlayResults((current) => ({ ...current, [episodeUrl]: result }));
+    setPlayLoading(undefined);
+  };
 
   return (
     <div className="page-bottom">
@@ -30,12 +64,12 @@ export function AnimeDetailPage() {
         <div className="container detail-hero-content">
           <Link className="back-link light" to="/anime"><ArrowLeft size={16} />返回动漫档案</Link>
           <div className="detail-title-row">
-            <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="detail-poster" label={`${anime.title}海报`}><span className="cover-code">ARCHIVE {anime.year}</span></Cover>
+            <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="detail-poster" label={`${anime.title}海报`}><span className="cover-code">{anime.year > 0 ? `ARCHIVE ${anime.year}` : 'YEAR UNKNOWN'}</span></Cover>
             <div className="detail-title-copy">
-              <div className="row gap-sm wrap"><Badge tone="purple">{formatSeason(anime.year, anime.season)}</Badge><Badge tone="cyan">{sourceLabels[anime.sourceType]}</Badge><Badge tone={anime.informationStatus === 'airing' ? 'green' : 'gray'}>{informationLabels[anime.informationStatus]}</Badge>{localRecord?.favorite && <Badge tone="pink">已收藏</Badge>}</div>
-              <h1>{anime.title}</h1><p className="detail-original">{anime.originalTitle}</p>{anime.englishTitle && <p>{anime.englishTitle}</p>}
+              <div className="row gap-sm wrap"><Badge tone="purple">{formatSeason(anime.year, anime.season)}</Badge><Badge tone="cyan">{sourceLabels[anime.sourceType]}</Badge><Badge tone={anime.informationStatus === 'airing' ? 'green' : 'gray'}>{informationLabels[anime.informationStatus]}</Badge>{anime.dataSources.map((source) => <Badge key={source} tone="gray">{source.toUpperCase()}</Badge>)}{localRecord?.favorite && <Badge tone="pink">已收藏</Badge>}</div>
+              <h1>{anime.title}</h1>{anime.originalTitle && anime.originalTitle !== anime.title && <p className="detail-original">{anime.originalTitle}</p>}{anime.englishTitle && <p>{anime.englishTitle}</p>}
               <div className="row gap-md wrap detail-quick">
-                <span><CalendarDays size={16} />{anime.broadcast ? `${weekdayLabels[anime.broadcast.weekday]} ${anime.broadcast.time ?? '时间未定'}（日本时间）` : '放送时间未定'}</span>
+                <span><CalendarDays size={16} />{anime.broadcast ? `${weekdayLabels[anime.broadcast.weekday]} ${anime.broadcast.time ?? '时间未定'}（日本时间）` : '放送时间未提供'}</span>
                 {anime.rating !== undefined && <span><Star size={16} />{anime.rating.toFixed(1)}</span>}
                 {localRecord?.status ? <span><HardDrive size={16} />本地 · {watchLabels[localRecord.status]}</span> : personalRecord ? <span><Users size={16} />{watchLabels[anime.watchStatus]}</span> : <span><Database size={16} />公开资料条目</span>}
               </div>
@@ -45,85 +79,19 @@ export function AnimeDetailPage() {
       </section>
 
       <div className="container detail-layout">
-        <aside className="detail-aside">
-          <nav className="sticky-toc" aria-label="页面目录">
-            <div className="toc-heading">
-              <span className="toc-kicker">INDEX</span>
-              <strong>资料索引</strong>
-              <small>{anime.externalLinks[0]?.label ?? '公开资料'} · {anime.lastUpdated}</small>
-            </div>
-            <div className="toc-links">
-              <a className="toc-link" href="#archive"><span className="toc-index">01</span><span><strong>资料档案</strong><small>标题、题材、状态</small></span></a>
-              <a className="toc-link" href="#broadcast"><span className="toc-index">02</span><span><strong>放送信息</strong><small>日期、时间、平台入口</small></span></a>
-              <a className="toc-link" href="#staff"><span className="toc-index">03</span><span><strong>制作阵容</strong><small>动画制作与公开 STAFF</small></span></a>
-              <a className="toc-link" href="#local-library"><span className="toc-index">04</span><span><strong>本地追番</strong><small>收藏、状态与进度</small></span></a>
-              {personalRecord ? <>
-                <a className="toc-link" href="#personal"><span className="toc-index">05</span><span><strong>个人记录</strong><small>项目内评分与短评</small></span></a>
-                <a className="toc-link" href="#logs"><span className="toc-index">06</span><span><strong>观看日志</strong><small>项目内追踪记录</small></span></a>
-              </> : <a className="toc-link" href="#notes"><span className="toc-index">05</span><span><strong>资料备注</strong><small>来源说明与使用提醒</small></span></a>}
-            </div>
-            <div className="toc-meta">
-              <span>{localRecord ? 'LOCAL TRACKING' : personalRecord ? 'PERSONAL RECORD' : 'PUBLIC SOURCE'}</span>
-              <strong>{anime.broadcast?.weekday ? weekdayLabels[anime.broadcast.weekday] : '放送未定'}</strong>
-            </div>
-          </nav>
-        </aside>
+        <aside className="detail-aside"><nav className="sticky-toc" aria-label="页面目录"><div className="toc-heading"><span className="toc-kicker">INDEX</span><strong>资料索引</strong><small>{anime.dataSources.map((source) => source.toUpperCase()).join(' + ')} · {anime.lastUpdated}</small></div><div className="toc-links"><a className="toc-link" href="#archive"><span className="toc-index">01</span><span><strong>资料档案</strong><small>标题与状态</small></span></a>{anime.broadcast && <a className="toc-link" href="#broadcast"><span className="toc-index">02</span><span><strong>放送信息</strong><small>日期与平台</small></span></a>}{hasStaff && <a className="toc-link" href="#staff"><span className="toc-index">03</span><span><strong>制作阵容</strong><small>STAFF 与 CAST</small></span></a>}<a className="toc-link" href="#resources"><span className="toc-index">04</span><span><strong>资料与资源</strong><small>来源、分集与线路</small></span></a><a className="toc-link" href="#local-library"><span className="toc-index">05</span><span><strong>本地追番</strong><small>收藏与进度</small></span></a></div></nav></aside>
         <article className="detail-content">
-          <section id="archive" className="detail-section">
-            <span className="eyebrow">PUBLIC PROFILE</span><h2>资料档案</h2><p className="lead-text">{anime.synopsis}</p>
-            <dl className="definition-grid">
-              <div><dt>播出季度</dt><dd>{formatSeason(anime.year, anime.season)}</dd></div><div><dt>原作类型</dt><dd>{sourceLabels[anime.sourceType]}</dd></div>
-              <div><dt>题材标签</dt><dd>{anime.genres.join(' / ')}</dd></div><div><dt>情报状态</dt><dd>{informationLabels[anime.informationStatus]}</dd></div>
-              <div><dt>最后更新</dt><dd>{anime.lastUpdated}</dd></div><div><dt>资料说明</dt><dd>{anime.sourceNote}</dd></div>
-            </dl>
-          </section>
+          <section id="archive" className="detail-section"><span className="eyebrow">PUBLIC PROFILE</span><h2>资料档案</h2>{mergedSynopsis && <p className="lead-text">{mergedSynopsis}</p>}<dl className="definition-grid"><Field label="播出季度" value={formatSeason(anime.year, anime.season)} /><Field label="原作类型" value={sourceLabels[anime.sourceType]} /><Field label="题材标签" value={anime.genres} /><Field label="情报状态" value={informationLabels[anime.informationStatus]} /><Field label="地区" value={ageDetail?.region} /><Field label="语言" value={ageDetail?.language} /><Field label="最后更新" value={anime.lastUpdated} /><Field label="资料说明" value={anime.sourceNote} /></dl></section>
 
-          <section id="broadcast" className="detail-section">
-            <span className="eyebrow">BROADCAST</span><h2>放送信息</h2>
-            {anime.broadcast ? <dl className="definition-grid"><div><dt>首播日期</dt><dd>{anime.broadcast.startDate ?? '未定'}</dd></div><div><dt>星期与时间</dt><dd>{weekdayLabels[anime.broadcast.weekday]} {anime.broadcast.time ?? '时间未定'}（{anime.broadcast.timezone}）</dd></div><div><dt>总集数</dt><dd>{anime.broadcast.episodeCount ?? '未公开'}</dd></div><div><dt>资料入口</dt><dd>{anime.broadcast.platforms.join(' / ')}</dd></div></dl> : <div className="empty-panel">放送信息尚未公开。</div>}
-            <div className="external-links">{anime.externalLinks.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer"><ExternalLink size={16} />{link.label}<span className="sr-only">（在新窗口打开）</span></a>)}</div>
-          </section>
+          {anime.broadcast && <section id="broadcast" className="detail-section"><span className="eyebrow">BROADCAST</span><h2>放送信息</h2><dl className="definition-grid"><Field label="首播日期" value={anime.broadcast.startDate} /><Field label="星期与时间" value={`${weekdayLabels[anime.broadcast.weekday]} ${anime.broadcast.time ?? ''}`.trim()} /><Field label="总集数" value={anime.broadcast.episodeCount} /><Field label="平台" value={anime.broadcast.platforms} /></dl></section>}
 
-          <section id="staff" className="detail-section">
-            <span className="eyebrow">STAFF & CAST</span><h2>制作阵容</h2>
-            <dl className="definition-grid"><div><dt>动画制作</dt><dd>{anime.staff.studio.join(' / ') || '未公开'}</dd></div><div><dt>导演</dt><dd>{anime.staff.director ?? '未公开'}</dd></div><div><dt>系列构成</dt><dd>{anime.staff.seriesComposition ?? '未公开'}</dd></div><div><dt>人物设计</dt><dd>{anime.staff.characterDesign ?? '未公开'}</dd></div><div><dt>音乐</dt><dd>{anime.staff.music ?? '未公开'}</dd></div><div><dt>主要声优</dt><dd>{anime.staff.cast.join(' / ') || '未公开'}</dd></div></dl>
-          </section>
+          {hasStaff && <section id="staff" className="detail-section"><span className="eyebrow">STAFF & CAST</span><h2>制作阵容</h2><dl className="definition-grid"><Field label="动画制作" value={anime.staff.studio} /><Field label="导演" value={director} /><Field label="系列构成" value={anime.staff.seriesComposition} /><Field label="人物设计" value={anime.staff.characterDesign} /><Field label="音乐" value={anime.staff.music} /><Field label="主要声优" value={castDisplay} /></dl></section>}
 
-          <section id="local-library" className="detail-section local-library-panel">
-            <span className="eyebrow">LOCAL LIBRARY</span><h2>本地收藏与追番</h2>
-            <p className="muted local-library-intro">这里的状态只保存在当前浏览器，不会写入公开资料，也不会上传账号信息。</p>
-            <div className="local-library-actions">
-              <button type="button" className={localRecord?.favorite ? 'button primary' : 'button secondary'} onClick={() => toggleFavorite(anime.id)} aria-pressed={localRecord?.favorite ?? false}>
-                <Bookmark size={17} fill={localRecord?.favorite ? 'currentColor' : 'none'} />{localRecord?.favorite ? '已收藏' : '加入收藏'}
-              </button>
-              <label className="select-label local-field">追番状态
-                <select value={localRecord?.status ?? ''} onChange={(event: ChangeEvent<HTMLSelectElement>) => setStatus(anime.id, (event.target.value || undefined) as WatchStatus | undefined)}>
-                  <option value="">未设置</option>
-                  {Object.entries(watchLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-                </select>
-              </label>
-              <label className="local-progress-field">观看进度
-                <input type="number" min="0" max={anime.broadcast?.episodeCount} value={localRecord?.progress ?? 0} onChange={(event: ChangeEvent<HTMLInputElement>) => setProgress(anime.id, Number(event.target.value))} />
-                <span>话</span>
-              </label>
-              {localRecord && <button type="button" className="button secondary" onClick={() => clearRecord(anime.id)}><RotateCcw size={16} />清除本地记录</button>}
-            </div>
-            {(localRecord?.progress ?? 0) > 0 && <div className="watch-progress local-watch-progress"><div><span>本地观看进度</span><strong>{localRecord?.progress ?? 0} / {anime.broadcast?.episodeCount ?? '?'}</strong></div><div className="progress-track"><span style={{ width: `${safePercent(localRecord?.progress ?? 0, anime.broadcast?.episodeCount)}%` }} /></div></div>}
-          </section>
+          <section id="resources" className="detail-section"><span className="eyebrow">SOURCES & RESOURCES</span><h2>资料与资源</h2>{detailLoading && <p className="muted"><LoaderCircle className="spin" size={16} />正在读取 AGE 详情……</p>}<div className="external-links">{allResources.map((resource) => <a key={resource.id} href={resource.url} target="_blank" rel="noopener noreferrer"><ExternalLink size={16} />{resource.label ?? resource.kind} · {resource.status}</a>)}{ageDetail?.siteResources?.map((resource) => <a key={`${resource.kind}-${resource.url}`} href={resource.url} target="_blank" rel="noopener noreferrer"><ExternalLink size={16} />{resource.label} · {resource.kind}</a>)}</div>{ageDetail?.episodes?.length ? <div className="episode-resource-list">{ageDetail.episodes.map((episode) => { const result = playResults[episode.url]; return <div className="episode-resource-row" key={episode.url}><div><strong>{episode.episode || `第 ${episode.episodeIndex ?? '?'} 集`}</strong><small>线路 {episode.line ?? '未标注'}</small></div><a className="button secondary compact" href={episode.url} target="_blank" rel="noreferrer">打开页面</a><button className="button secondary compact" onClick={() => void resolvePlay(episode.url)} disabled={playLoading === episode.url}>{playLoading === episode.url ? <LoaderCircle className="spin" size={14} /> : <PlayCircle size={14} />}解析媒体</button>{result?.resources?.map((resource, index) => resource.url ? <a key={`${resource.url}-${index}`} className="text-link" href={resource.url} target="_blank" rel="noreferrer">媒体地址 · {resource.authorizationStatus ?? 'unknown'}</a> : null)}</div>; })}</div> : anime.sourceIds.age ? <div className="empty-panel">AGE 详情未提供可识别的分集列表。</div> : null}<div className="field-source-list"><strong>字段来源</strong>{sourceEntries.map(([field, sources]) => <div key={field}><span>{field}</span><small>{sources.map((source) => `${source.source.toUpperCase()}${source.inferred ? '（推断）' : ''}`).join('、')}</small></div>)}</div></section>
 
-          {personalRecord ? <>
-            <section id="personal" className="detail-section personal-panel">
-              <span className="eyebrow">PERSONAL WATCH RECORD</span><h2>项目内个人记录</h2>
-              <div className="watch-progress"><div><span>观看进度</span><strong>{anime.progress} / {anime.broadcast?.episodeCount ?? '?'}</strong></div><div className="progress-track"><span style={{ width: `${safePercent(anime.progress, anime.broadcast?.episodeCount)}%` }} /></div></div>
-              {scoreEntries.length > 0 && <div className="score-grid">{scoreEntries.map(([label, score]) => <div key={label}><span>{label}</span><strong>{score}</strong><div><i style={{ width: `${Number(score) * 10}%` }} /></div></div>)}</div>}
-              <div className="review-grid"><div><h3>无剧透短评</h3><p>{anime.shortComment ?? '暂无短评。'}</p></div><div><h3>推荐理由</h3><p>{anime.recommendation ?? '暂无。'}</p></div><div><h3>适合人群</h3><p>{anime.audience ?? '暂无。'}</p></div><div><h3><ShieldAlert size={17} />劝退点</h3><p>{anime.warning ?? '暂无。'}</p></div></div>
-              {anime.spoilerReview && <details className="spoiler-box"><summary><PlayCircle size={18} />展开剧透感想</summary><p>{anime.spoilerReview}</p></details>}
-            </section>
-            <section id="logs" className="detail-section"><span className="eyebrow">WATCH LOG</span><h2>观看日志</h2>{anime.logs.length > 0 ? <div className="timeline">{anime.logs.map((log) => <div key={`${log.date}-${log.episode}`}><time>{log.date}</time><span /><article><strong>第 {log.episode} 话</strong><p>{log.note}</p></article></div>)}</div> : <div className="empty-panel">还没有观看日志。</div>}</section>
-          </> : <section id="notes" className="detail-section source-note-panel">
-            <span className="eyebrow">SOURCE NOTES</span><h2>资料备注</h2>
-            <div className="review-grid"><div><h3>表记摘要</h3><p>{anime.shortComment ?? anime.sourceNote}</p></div><div><h3>资料用途</h3><p>{anime.recommendation ?? '用于核对季度、放送时间和公开资料入口。'}</p></div><div><h3>适合关注</h3><p>{anime.audience ?? '关注本季度新番资料的读者。'}</p></div><div><h3><ShieldAlert size={17} />使用提醒</h3><p>{anime.warning ?? '档期和平台可能调整，请以官方公告为准。'}</p></div></div>
-          </section>}
+          <section id="local-library" className="detail-section local-library-panel"><span className="eyebrow">LOCAL LIBRARY</span><h2>本地收藏与追番</h2><p className="muted local-library-intro">状态只保存在当前浏览器，不会改写公开资料。</p><div className="local-library-actions"><button type="button" className={localRecord?.favorite ? 'button primary' : 'button secondary'} onClick={() => toggleFavorite(anime.id)} aria-pressed={localRecord?.favorite ?? false}><Bookmark size={17} fill={localRecord?.favorite ? 'currentColor' : 'none'} />{localRecord?.favorite ? '已收藏' : '加入收藏'}</button><label className="select-label local-field">追番状态<select value={localRecord?.status ?? ''} onChange={(event: ChangeEvent<HTMLSelectElement>) => setStatus(anime.id, (event.target.value || undefined) as WatchStatus | undefined)}><option value="">未设置</option>{Object.entries(watchLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label className="local-progress-field">观看进度<input type="number" min="0" max={anime.broadcast?.episodeCount} value={localRecord?.progress ?? 0} onChange={(event: ChangeEvent<HTMLInputElement>) => setProgress(anime.id, Number(event.target.value))} /><span>话</span></label>{localRecord && <button type="button" className="button secondary" onClick={() => clearRecord(anime.id)}><RotateCcw size={16} />清除记录</button>}</div>{(localRecord?.progress ?? 0) > 0 && <div className="watch-progress local-watch-progress"><div><span>本地观看进度</span><strong>{localRecord?.progress ?? 0} / {anime.broadcast?.episodeCount ?? '?'}</strong></div><div className="progress-track"><span style={{ width: `${safePercent(localRecord?.progress ?? 0, anime.broadcast?.episodeCount)}%` }} /></div></div>}</section>
+
+          {personalRecord && <section className="detail-section personal-panel"><span className="eyebrow">PERSONAL WATCH RECORD</span><h2>项目内个人记录</h2>{scoreEntries.length > 0 && <div className="score-grid">{scoreEntries.map(([label, score]) => <div key={label}><span>{label}</span><strong>{score}</strong><div><i style={{ width: `${Number(score) * 10}%` }} /></div></div>)}</div>}{anime.shortComment && <p>{anime.shortComment}</p>}{anime.warning && <p><ShieldAlert size={17} />{anime.warning}</p>}</section>}
         </article>
       </div>
     </div>

@@ -180,7 +180,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 export const seasonKey = (year: number, season: SeasonName): string => `${year}-${season}`;
 
 export const formatSeason = (year: number, season: SeasonName): string =>
-  season === 'undecided' ? `${year} 档期未定` : `${year} ${seasonLabels[season]}`;
+  year <= 0 ? '档期未定' : season === 'undecided' ? `${year} 档期未定` : `${year} ${seasonLabels[season]}`;
 
 export const safePercent = (progress: number, total?: number): number => {
   if (!total || total <= 0) return 0;
@@ -244,7 +244,7 @@ export function buildWeeklyBroadcastIcs(animeItems: Anime[], generatedAt = new D
     const description = [
       formatSeason(anime.year, anime.season),
       anime.broadcast.platforms.join(' / '),
-      '档期与平台请以官方公告为准。',
+      '档期与平台信息仅在有明确公开来源时展示。',
     ].filter(Boolean).join(' · ');
     return [
       'BEGIN:VEVENT',

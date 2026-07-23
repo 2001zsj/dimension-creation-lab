@@ -7,26 +7,22 @@ export const animeList: Anime[] = [
     "originalTitle": "最强出涸皇子的暗跃帝位争夺",
     "year": 2026,
     "season": "summer",
-    "sourceType": "novel",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "monday",
       "time": "20:30",
       "startDate": "2026-07-06",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -42,9 +38,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：20:30~ 7/6~，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 4,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a18b8b3a456f658eb2634d88904e1ffb512995925.jpg",
@@ -63,11 +57,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -97,9 +89,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 7/13~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 39,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2310b9a8587d0f846f7f2b529a00065a512995925.jpg",
@@ -112,17 +102,15 @@ export const animeList: Anime[] = [
     "originalTitle": "世界舞动",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -152,9 +140,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 6/29~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 80,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e2cf0e4959454310e6390adaa601408e512995925.jpg",
@@ -167,17 +153,15 @@ export const animeList: Anime[] = [
     "originalTitle": "暴怒千金誓要复仇",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -207,9 +191,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/6~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/8e9503bd8008ea81d32421b071433630512995925.jpg",
@@ -222,17 +204,15 @@ export const animeList: Anime[] = [
     "originalTitle": "被遗弃圣女的异世界美食之旅",
     "year": 2026,
     "season": "summer",
-    "sourceType": "novel",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -262,9 +242,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/6~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 12,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/48182894e97ace76cc821e9ddd039aa5512995925.jpg",
@@ -277,17 +255,15 @@ export const animeList: Anime[] = [
     "originalTitle": "炎之斗球女 弹子",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -317,9 +293,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/6~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 3,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/754bdefab9bc7be8114fc0429988daee512995925.jpg",
@@ -332,17 +306,15 @@ export const animeList: Anime[] = [
     "originalTitle": "欺诈游戏",
     "year": 2026,
     "season": "summer",
-    "sourceType": "game",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -370,9 +342,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 6,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/4bfa8cc4febe963d9851462e7ed4642a512995925.jpg",
@@ -391,11 +361,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -425,9 +393,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/6~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 37,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/db81bd26acafcf3803b416d61f779df1512995925.jpg",
@@ -440,17 +406,15 @@ export const animeList: Anime[] = [
     "originalTitle": "感谢对战 大小姐 才不玩格斗游戏",
     "year": 2026,
     "season": "summer",
-    "sourceType": "game",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -480,9 +444,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：19:30~ 7/7~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 3,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/dcc058e1d03a8f4d35cb6994bb619299512995925.jpg",
@@ -495,17 +457,15 @@ export const animeList: Anime[] = [
     "originalTitle": "与你相恋到 生命尽头",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -535,9 +495,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：20:30~ 7/7~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 35,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5e56eb53f26add20de1049642088ae14512995925.jpg",
@@ -550,17 +508,15 @@ export const animeList: Anime[] = [
     "originalTitle": "无自觉圣女今天也无意识地释放力量",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -590,9 +546,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 6/30~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 65,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/f4893bcd78c847adf298bc5dbaa9e539512995925.jpg",
@@ -605,17 +559,15 @@ export const animeList: Anime[] = [
     "originalTitle": "新 攻壳机动队",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -645,9 +597,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/7~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9c329ec79e3f688d9e240fe296f93cd0512995925.jpg",
@@ -660,26 +610,22 @@ export const animeList: Anime[] = [
     "originalTitle": "新 魔神坛斗士 Part.2",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "tuesday",
       "time": "22:30",
       "startDate": "2026-07-07",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -695,9 +641,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/7~，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 38,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1fcbbe12b8d8652618de138a0026d767512995925.jpg",
@@ -710,17 +654,15 @@ export const animeList: Anime[] = [
     "originalTitle": "底牌很多的 维多利亚",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -750,9 +692,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/7~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 92,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b8dbcf0c89324fd89cae8ea4ca820e52512995925.jpg",
@@ -765,26 +705,22 @@ export const animeList: Anime[] = [
     "originalTitle": "天是红河岸",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "tuesday",
       "time": "24:35",
       "startDate": "2026-07-07",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -800,9 +736,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:35~ 7/7~，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 69,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/40b55bdf78f61985869b82bbd08c75f7512995925.jpg",
@@ -821,11 +755,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -855,9 +787,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：20:00~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/19ab196439099d086e1eb62a803cd1b1512995925.jpg",
@@ -876,11 +806,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -910,9 +838,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 35,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/36ca0fd3c8b535ea4f5675d0c4462342512995925.jpg",
@@ -925,17 +851,15 @@ export const animeList: Anime[] = [
     "originalTitle": "不虐待我的 继母与继姐",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -965,9 +889,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 43,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2be64aa4e4554dfd6e4454f101574e48512995925.jpg",
@@ -986,11 +908,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1020,9 +940,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:45~ 7/8~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 42,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1940e5804d1d53a81238b8c27c23e9b7512995925.jpg",
@@ -1035,17 +953,15 @@ export const animeList: Anime[] = [
     "originalTitle": "LV999的村民",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1075,9 +991,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/1~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 83,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/28a51ffa05536c0f7605980cfc3aafbf512995925.jpg",
@@ -1096,11 +1010,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1130,9 +1042,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:30~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 46,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a33eb3e319f9c8508a6fee4aefa3891a512995925.jpg",
@@ -1145,17 +1055,15 @@ export const animeList: Anime[] = [
     "originalTitle": "雷霆三人行",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1185,9 +1093,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:45~ 7/8~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 35,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a6d48c024d22dc6ce261ed92b0f39a67512995925.jpg",
@@ -1206,11 +1112,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1240,9 +1144,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：25:00~ 7/1~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 6,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/f6fd144e178bc398971b6a24294ef061512995925.jpg",
@@ -1261,11 +1163,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1294,9 +1194,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 日期未定，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 16,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e5498ee6e63f87ba626eb1a643692635512995925.jpg",
@@ -1309,17 +1207,15 @@ export const animeList: Anime[] = [
     "originalTitle": "令和的斑小姐",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1349,9 +1245,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：20:30~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 27,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b41e34d9c820c3ddd15e91b48eaab2a7512995925.jpg",
@@ -1370,11 +1264,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1404,9 +1296,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：20:40~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/da557193091701a3d8201ae3a2363ce9512995925.jpg",
@@ -1419,24 +1309,20 @@ export const animeList: Anime[] = [
     "originalTitle": "元祖 小邦多利",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "thursday",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -1452,9 +1338,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (泡面)，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 81,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1f69329fcadb72424dc1afe5b3a1ff5c512995925.jpg",
@@ -1467,17 +1351,15 @@ export const animeList: Anime[] = [
     "originalTitle": "BanG Dream! YUME∞MITA",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1507,9 +1389,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 6,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/39ee0f846560cdf5f63c9ddfee8d21ac512995925.jpg",
@@ -1522,17 +1402,15 @@ export const animeList: Anime[] = [
     "originalTitle": "梅比乌斯之尘",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1562,9 +1440,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/9~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 14,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/67a6f69c0e2fe29493629da4c6dd394c512995925.jpg",
@@ -1577,26 +1453,22 @@ export const animeList: Anime[] = [
     "originalTitle": "躲在超市后门 抽烟的两人",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "thursday",
       "time": "22:56",
       "startDate": "2026-07-09",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -1612,9 +1484,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:56~ 7/9~，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 91,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/02763b6fa9298a0804a71dc67052c457512995925.jpg",
@@ -1627,17 +1497,15 @@ export const animeList: Anime[] = [
     "originalTitle": "落第贤者的 学院无双",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1667,9 +1535,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 6/25~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7063238a511a436b56c01bf4762978bc512995925.jpg",
@@ -1682,17 +1548,15 @@ export const animeList: Anime[] = [
     "originalTitle": "尼古喵喵",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1722,9 +1586,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 48,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9043ebde02deb628f2871c88c19b3275512995925.jpg",
@@ -1737,17 +1599,15 @@ export const animeList: Anime[] = [
     "originalTitle": "少女怪兽焦糖味",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1777,9 +1637,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：25:28~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 81,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/611633a85663932cb5c2a9cae13b057e512995925.jpg",
@@ -1792,17 +1650,15 @@ export const animeList: Anime[] = [
     "originalTitle": "神之水滴",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1830,9 +1686,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 76,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/dffacfcc81daa70300e7d7ec5afd7e1c512995925.jpg",
@@ -1845,17 +1699,15 @@ export const animeList: Anime[] = [
     "originalTitle": "从0位居民开始的 边境领主大人",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1885,9 +1737,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 29,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/ce8e23f26026dbc2043aecab806f8af6512995925.jpg",
@@ -1900,17 +1750,15 @@ export const animeList: Anime[] = [
     "originalTitle": "画完这个再去死",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1940,9 +1788,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:35~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 17,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/6e1b9ec6fb5177e973546f3d5665e810512995925.jpg",
@@ -1955,17 +1801,15 @@ export const animeList: Anime[] = [
     "originalTitle": "我家的弟弟们真是让您费心了",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -1995,9 +1839,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 39,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/737c88e9bbea1adb267b6c4f19c153ba512995925.jpg",
@@ -2016,11 +1858,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2050,9 +1890,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 41,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/91f134e4d0dd02fab86e3ff1c508769a512995925.jpg",
@@ -2065,17 +1903,15 @@ export const animeList: Anime[] = [
     "originalTitle": "正后方的神威",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2105,9 +1941,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 43,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/609257722f4bf239207a72d33c82408c512995925.jpg",
@@ -2126,11 +1960,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2159,9 +1991,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 日期未定，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 45,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/71b9d57fb31b6a53c3565632f461861c512995925.jpg",
@@ -2174,17 +2004,15 @@ export const animeList: Anime[] = [
     "originalTitle": "轻松熊",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2212,9 +2040,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (泡面)，收录 台湾 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 67,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2651151e2fe96b889565e33a7d4b69d9512995925.jpg",
@@ -2233,11 +2059,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2265,9 +2089,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 93,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e102567e0958ad8d2656dd3bf5c65050512995925.jpg",
@@ -2286,11 +2108,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2331,9 +2151,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：19:00~ (全24话)，收录 港台 / 港台 / 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 55,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a391a1fc78171684a9584086d0a95af8512995925.jpg",
@@ -2346,17 +2164,15 @@ export const animeList: Anime[] = [
     "originalTitle": "猫与龙",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2386,9 +2202,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 6/27~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/867341f8f0cedda8c0bd1d470d506cd6512995925.jpg",
@@ -2401,17 +2215,15 @@ export const animeList: Anime[] = [
     "originalTitle": "暗黑灯火",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2441,9 +2253,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 75,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/67adc38f7025cc8c4b030a27fface3da512995925.jpg",
@@ -2456,17 +2266,15 @@ export const animeList: Anime[] = [
     "originalTitle": "岩元前辈的推荐",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2496,9 +2304,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 79,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/d1e05e6cae2a4ee4443c9b7be0af573d512995925.jpg",
@@ -2511,17 +2317,15 @@ export const animeList: Anime[] = [
     "originalTitle": "摩绪",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2549,9 +2353,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 42,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/c9ff953b58e6169ce055034b1da5b160512995925.jpg",
@@ -2570,11 +2372,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2604,9 +2404,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:55~ 7/4~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 90,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b6c61ecc8140dd8b41318a46f5585c6d512995925.jpg",
@@ -2619,17 +2417,15 @@ export const animeList: Anime[] = [
     "originalTitle": "黄泉的使者",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2657,9 +2453,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 台湾 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 90,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5be47c5c1e39ce9ce4ebebd5a4f34d1f512995925.jpg",
@@ -2672,17 +2466,15 @@ export const animeList: Anime[] = [
     "originalTitle": "穹庐下的魔女",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2712,9 +2504,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 88,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/69ee7bf21dd04dfcfcc2b88d035a5b73512995925.jpg",
@@ -2727,17 +2517,15 @@ export const animeList: Anime[] = [
     "originalTitle": "GrowUpShow 向日葵马戏团",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2767,9 +2555,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 48,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1ddf686a54bc913313638157bf5ded46512995925.jpg",
@@ -2782,17 +2568,15 @@ export const animeList: Anime[] = [
     "originalTitle": "声称不爱我的下任公爵为何会溺爱我",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2822,9 +2606,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/4~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 89,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0e7464dfb9953d64fd2d0133d0e86aa3512995925.jpg",
@@ -2837,17 +2619,15 @@ export const animeList: Anime[] = [
     "originalTitle": "鬼的新娘",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2877,9 +2657,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：25:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 5,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e8b05a97ffaed113f2f68668bcc5184e512995925.jpg",
@@ -2892,17 +2670,15 @@ export const animeList: Anime[] = [
     "originalTitle": "魔法少女奈叶 EGBV",
     "year": 2026,
     "season": "summer",
-    "sourceType": "novel",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2932,9 +2708,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：25:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 3,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7abf6ddef094ab555b8e9e4b95bdbb7e512995925.jpg",
@@ -2947,17 +2721,15 @@ export const animeList: Anime[] = [
     "originalTitle": "花织同学转生后 还是想干架",
     "year": 2026,
     "season": "summer",
-    "sourceType": "novel",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -2987,9 +2759,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：25:30~ 7/11~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 57,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/d39282e5a07f528ea4861fcfbf9e81d4512995925.jpg",
@@ -3002,17 +2772,15 @@ export const animeList: Anime[] = [
     "originalTitle": "才女的侍从",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3042,9 +2810,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：27:08~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 75,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0baba8c1870b60a0b76af45561a97b65512995925.jpg",
@@ -3057,17 +2823,15 @@ export const animeList: Anime[] = [
     "originalTitle": "死神 千年血战篇 Part.4 祸进谭",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3096,9 +2860,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 日期未定，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 37,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/8448481231bccefba5b1181dc8652d64512995925.jpg",
@@ -3117,18 +2879,14 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "sunday",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -3144,9 +2902,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (长篇)，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 54,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a7692ed66130421268847ff7557c2faa512995925.jpg",
@@ -3159,24 +2915,20 @@ export const animeList: Anime[] = [
     "originalTitle": "名侦探 光之美少女",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "sunday",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -3192,9 +2944,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (年番)，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 27,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/04f8e8caa26b49173c93d547011e2000512995925.jpg",
@@ -3207,24 +2957,20 @@ export const animeList: Anime[] = [
     "originalTitle": "数码宝贝 BEATBREAK",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "sunday",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -3240,9 +2986,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (长篇)，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 68,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/121eaf1a4dc9fecb15201af71e8a4fb6512995925.jpg",
@@ -3255,24 +2999,20 @@ export const animeList: Anime[] = [
     "originalTitle": "拜托了偶像公主",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
       "weekday": "sunday",
-      "platforms": [
-        "平台请以官方公告为准"
-      ],
+      "platforms": [],
       "timezone": "Asia/Tokyo"
     },
     "externalLinks": [
@@ -3288,9 +3028,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (长篇)，暂无平台入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 93,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9e394c8578b1aa02e33150658ceef7ba512995925.jpg",
@@ -3303,17 +3041,15 @@ export const animeList: Anime[] = [
     "originalTitle": "Let's Go 怪奇组",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3343,9 +3079,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：15:30~ 7/5~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 51,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/86ee784222c121962826aa47e3cfd267512995925.jpg",
@@ -3364,11 +3098,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3398,9 +3130,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：16:30~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 40,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/4081442c76b9d08fc7c34da8e2f4d501512995925.jpg",
@@ -3413,17 +3143,15 @@ export const animeList: Anime[] = [
     "originalTitle": "炒翻天",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3453,9 +3181,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：16:30~ 7/5~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 92,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0a7961716aeb38be6352355e05467c07512995925.jpg",
@@ -3468,17 +3194,15 @@ export const animeList: Anime[] = [
     "originalTitle": "世界最强后卫 迷宫国的新人探索者",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3508,9 +3232,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 0,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7ffbb763ee08eb87f2695d02e302134f512995925.jpg",
@@ -3529,11 +3251,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3563,9 +3283,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 78,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/474899f247a75f593180d0759a783635512995925.jpg",
@@ -3578,17 +3296,15 @@ export const animeList: Anime[] = [
     "originalTitle": "二十世纪 电气目录",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3618,9 +3334,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/5~，收录 环大陆 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 39,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5691179311a0702b8d5fbec57ed5d05d512995925.jpg",
@@ -3633,17 +3347,15 @@ export const animeList: Anime[] = [
     "originalTitle": "虽然我是 不完美恶女",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3673,9 +3385,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:45~ 7/12~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 58,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/df5578fc4cc578805e5c356fe0c07c6c512995925.jpg",
@@ -3694,11 +3404,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3728,9 +3436,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/12~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a15be389060cf0bf2a8f07a63cd401f6512995925.jpg",
@@ -3743,17 +3449,15 @@ export const animeList: Anime[] = [
     "originalTitle": "黑猫和魔女的课堂",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3781,9 +3485,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 1,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/ebbf753e84a0c569c5b35940a0644839512995925.jpg",
@@ -3796,17 +3498,15 @@ export const animeList: Anime[] = [
     "originalTitle": "再见 拉拉",
     "year": 2026,
     "season": "summer",
-    "sourceType": "manga",
+    "sourceType": "other",
     "genres": [
       "新番",
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3836,9 +3536,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:30~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/838239e4d2dabeb51b5241535f5821a7512995925.jpg",
@@ -3857,11 +3555,9 @@ export const animeList: Anime[] = [
       "TV 动画",
       "2026 夏季"
     ],
-    "synopsis": "收录自長門番堂「2026年7月新番表」的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+    "synopsis": "",
     "staff": {
-      "studio": [
-        "公开资料待补充"
-      ],
+      "studio": [],
       "cast": []
     },
     "broadcast": {
@@ -3891,9 +3587,7 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：24:45~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "可用于核对本季放送安排与公开资料入口。",
-    "audience": "关注本季度新番资料与放送时间的读者。",
-    "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
+    "warning": undefined,
     "logs": [],
     "coverSeed": 1,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/6122311dd677dc4941f8cb82f56a6c48512995925.jpg",
@@ -3913,33 +3607,33 @@ export const articles: Article[] = [
     tags: ['長門番堂', '新番表', '公开资料'],
     sections: [
       { heading: '主要来源', body: '本季标题、周播时间、开播日期与港台/大陆等资料入口整理自長門番堂（Yuc\'s Anime List）2026 年 7 月新番表。本站保留来源链接，方便回到原表核对。' },
-      { heading: '资料边界', body: '新番表可能随官方公告调整；本站只做资料整理，不把平台链接包装成播放入口，也不提供下载、磁力、字幕或盗版资源。' },
+      { heading: '资料边界', body: '新番表可能随官方公告调整；播放、下载、网盘、字幕和镜像等入口必须保留原始来源、授权状态、可用性和抓取时间。' },
     ],
   },
   {
     id: 'broadcast-note',
     title: '放送日历如何阅读',
-    summary: '时间按新番表表记整理，跨地区上线时间、字幕与授权平台请以官方公告为准。',
+    summary: '时间按新番表表记整理；跨地区上线时间、字幕与授权平台字段仅在有明确公开来源时展示。',
     category: '放送说明',
     date: '2026-07-22',
     readTime: '3 分钟',
     tags: ['放送日历', '平台', '时区'],
     sections: [
       { heading: '周播时间', body: '日历中的周几和时间来自長門番堂表记。若平台后续调整上架时间，本站会在资料同步时更新。' },
-      { heading: '平台入口', body: '港台、大陆等标签仅表示原表收录的公开资料入口，不代表本站提供观看服务。观看请前往授权平台。' },
+      { heading: '平台入口', body: '港台、大陆等标签表示原表收录的平台或资源入口；本站保留来源、授权状态、可用性与抓取时间，便于核对。' },
     ],
   },
   {
     id: 'site-policy',
     title: '版权与隐私边界',
-    summary: '本站只做资料整理与创作工具展示，不收集个人身份信息，不嵌入盗版资源。',
+    summary: '本站进行资料整理、资源来源记录与创作工具展示，不收集个人身份信息，不把未知来源伪装成官方资源。',
     category: '站点原则',
     date: '2026-07-22',
     readTime: '2 分钟',
     tags: ['版权', '隐私', '公开访问'],
     sections: [
       { heading: '隐私', body: '站内不展示真实姓名、所在地、工作单位、联系方式或个人照片。' },
-      { heading: '版权', body: '所有外部资料入口都指向公开资料页或授权平台页面；本站不托管视频、不提供播放和下载。' },
+      { heading: '版权', body: '所有外部资料与资源入口均记录原始来源、抓取时间、核验状态和授权状态；未知状态会明确标注。' },
     ],
   },
 ];
@@ -3947,7 +3641,7 @@ export const articles: Article[] = [
 export const aiWorks: AIWork[] = [
   { id: 'data-card-layout', title: '资料卡片布局实验', type: '界面设计', tool: 'React + CSS', style: '资料库界面', date: '2026-07-22', coverSeed: 31, background: '把真实动漫资料整理为可扫描卡片，突出标题、季度、来源、评分和播出状态。', initialPrompt: 'anime database card, dense but readable', problem: '字段很多时容易变成信息噪音。', adjustments: ['提高标题层级', '把评分与状态并列', '将来源链接放入详情页'], finalPrompt: 'structured anime database card, clear hierarchy, source-aware metadata, no streaming links', relatedWorkIds: ['broadcast-calendar'] },
   { id: 'broadcast-calendar', title: '放送日历信息架构', type: '交互整理', tool: '公开资料 API', style: '日历视图', date: '2026-07-22', coverSeed: 32, background: '将下一集播出时间与首播日期归一到每周视图中。', initialPrompt: 'weekly anime broadcast calendar', problem: '不同平台和地区时间容易混淆。', adjustments: ['统一标注 Asia/Tokyo', '平台信息改为以官方公告为准', '未定档条目进入雷达页'], finalPrompt: 'weekly anime broadcast calendar with timezone caveat and official-source boundary', relatedWorkIds: ['data-card-layout'] },
-  { id: 'source-policy', title: '资料来源与版权边界', type: '内容策略', tool: '長門番堂 / yuc.wiki 链接', style: '公开资料整理', date: '2026-07-22', coverSeed: 33, background: '把资料来源、版权边界和不可提供内容写进站点说明。', initialPrompt: 'anime information site policy', problem: '资料站容易被误解为播放站。', adjustments: ['统一真实资料来源说明', '明确不提供播放下载', '保留资料页外链'], finalPrompt: 'anime database source policy, public data, no piracy, no private identity data', relatedWorkIds: [] },
+  { id: 'source-policy', title: '资料来源与版权边界', type: '内容策略', tool: '長門番堂 / yuc.wiki 链接', style: '公开资料整理', date: '2026-07-22', coverSeed: 33, background: '把资料来源、授权状态、可用性与核验边界写进站点说明。', initialPrompt: 'anime information site policy', problem: '资料站容易被误解为播放站。', adjustments: ['统一真实资料来源说明', '记录授权与可用性状态', '保留原始资源入口'], finalPrompt: 'anime database source policy, public data, no piracy, no private identity data', relatedWorkIds: [] },
 ];
 
 export const prompts: PromptItem[] = [
@@ -3958,8 +3652,8 @@ export const prompts: PromptItem[] = [
 
 export const characterPresets: CharacterPreset[] = [
   { id: 'metadata-editor', name: '资料编辑模板', identity: '公开资料整理员', world: '动漫资料库后台', appearance: '中性资料卡片模板', personality: '谨慎、注明来源、不编造未确认信息', ability: '把标题、季度、状态和资料链接整理成结构化字段', background: '用于演示 AI 实验室如何辅助资料整理，不代表真实个人。', seed: 51 },
-  { id: 'calendar-reviewer', name: '日历校对模板', identity: '放送时间校对员', world: '周播日历工作台', appearance: '时间线与日历视图', personality: '关注时区和更新日期', ability: '区分首播日期、下一集时间和平台公告', background: '用于校对公开资料，不生成播放入口。', seed: 52 },
-  { id: 'policy-checker', name: '版权边界模板', identity: '站点政策检查员', world: '公开资料站', appearance: '清单式检查面板', personality: '严格、保守、避免误导', ability: '发现播放下载暗示并改写为授权观看提示', background: '用于确保站点只做资料整理。', seed: 53 },
+  { id: 'calendar-reviewer', name: '日历校对模板', identity: '放送时间校对员', world: '周播日历工作台', appearance: '时间线与日历视图', personality: '关注时区和更新日期', ability: '区分首播日期、下一集时间和平台公告', background: '用于校对公开资料、播放入口、时区和更新时间，不凭空生成链接。', seed: 52 },
+  { id: 'policy-checker', name: '版权边界模板', identity: '站点政策检查员', world: '公开资料站', appearance: '清单式检查面板', personality: '严格、保守、避免误导', ability: '检查播放、下载、网盘与镜像入口的来源、授权状态和可用性', background: '用于确保资源不串位、不伪装成官方入口。', seed: 53 },
 ];
 
 export const styleResearch: StyleResearch[] = [

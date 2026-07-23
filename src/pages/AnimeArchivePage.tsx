@@ -1,7 +1,8 @@
-import { Bookmark, LayoutGrid, List, Search, SlidersHorizontal } from 'lucide-react';
+import { Bookmark, Database, LayoutGrid, List, Search, SlidersHorizontal } from 'lucide-react';
 import { useMemo, useState, type ChangeEvent } from 'react';
 import { AnimeCard } from '../components/AnimeCard';
 import { useAnimeList } from '../liveAnime';
+import { useRegistry } from '../dataRegistry';
 import { useLocalLibrary } from '../localLibrary';
 import { sourceLabels, watchLabels } from '../utils';
 import type { AnimeSourceType, WatchStatus } from '../types';
@@ -10,6 +11,7 @@ type SortMode = 'updated' | 'rating' | 'year' | 'favorite';
 
 export function AnimeArchivePage() {
   const animeList = useAnimeList();
+  const { agePages, loadedAgePages, loadingAgePage, loadAgePage } = useRegistry();
   const { records } = useLocalLibrary();
   const [keyword, setKeyword] = useState('');
   const [source, setSource] = useState<'all' | AnimeSourceType>('all');
@@ -69,6 +71,7 @@ export function AnimeArchivePage() {
         <label className="select-label">排序<select value={sort} onChange={(event: ChangeEvent<HTMLSelectElement>) => setSort(event.target.value as SortMode)}><option value="updated">最近更新</option><option value="favorite">收藏优先</option><option value="rating">项目内评分</option><option value="year">年份</option></select></label>
         <div className="segmented icon-segment" aria-label="选择列表密度"><button aria-label="卡片模式" aria-pressed={view === 'grid'} className={view === 'grid' ? 'active' : ''} onClick={() => setView('grid')}><LayoutGrid size={16} /></button><button aria-label="紧凑模式" aria-pressed={view === 'compact'} className={view === 'compact' ? 'active' : ''} onClick={() => setView('compact')}><List size={16} /></button></div>
       </div>
+      {agePages > 0 && loadedAgePages.length < agePages && <div className="notice-panel archive-local-notice"><Database size={19} /><p>AGE 数据按页载入，当前已载入 {loadedAgePages.length} / {agePages} 页。继续载入后会自动加入本档案和全局搜索。</p><button className="button secondary compact" type="button" disabled={Boolean(loadingAgePage)} onClick={() => void loadAgePage(Math.min(agePages, (loadedAgePages.at(-1) ?? 0) + 1))}>{loadingAgePage ? `正在载入第 ${loadingAgePage} 页` : '载入下一页'}</button></div>}
       {items.length > 0 ? <div className={view === 'grid' ? 'anime-grid four-col' : 'anime-grid compact-grid'}>{items.map((anime) => <AnimeCard key={anime.id} anime={anime} compact={view === 'compact'} />)}</div> : <div className="empty-panel large"><h2>没有找到符合条件的动漫</h2><p>尝试更换关键词或清除筛选条件。</p><button className="button secondary" onClick={resetFilters}>清除筛选</button></div>}
       <div className="notice-panel archive-local-notice"><Bookmark size={19} /><p>收藏、追番状态和进度只保存在当前浏览器，与公开资料字段相互独立。</p></div>
     </div>

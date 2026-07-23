@@ -145,7 +145,7 @@ export function CalendarPage() {
                     <span className="row gap-sm wrap"><Badge tone="green">{informationLabels[anime.informationStatus]}</Badge>{localRecord?.favorite && <Badge tone="pink">已收藏</Badge>}{localRecord?.status && <Badge>本地 · {watchLabels[localRecord.status]}</Badge>}</span>
                     <h3>{anime.title}</h3><p>{anime.originalTitle}</p>
                   </div>
-                  <div className="schedule-detail"><strong>{formatBroadcastEpisode(anime)}</strong><span>{anime.broadcast?.platforms.join(' / ')}</span><small>总计 {anime.broadcast?.episodeCount ?? '未公开'} 话</small></div>
+                  <div className="schedule-detail"><strong>{formatBroadcastEpisode(anime)}</strong>{anime.broadcast?.platforms.length ? <span>{anime.broadcast.platforms.join(' / ')}</span> : null}{anime.broadcast?.episodeCount ? <small>总计 {anime.broadcast.episodeCount} 话</small> : null}</div>
                 </Link>
               );
             })}

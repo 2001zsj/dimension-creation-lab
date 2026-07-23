@@ -16,14 +16,12 @@ import { WorksPage } from './pages/WorksPage';
 import { ResourceCenterPage } from './pages/ResourceCenterPage';
 import { WritingStudioPage } from './pages/WritingStudioPage';
 import { DataAuditPage } from './pages/DataAuditPage';
-import { AnimeDataProvider } from './liveAnime';
 import { LocalLibraryProvider } from './localLibrary';
 import { DataRegistryProvider } from './dataRegistry';
 
 export default function App() {
   return (
-    <AnimeDataProvider>
-      <DataRegistryProvider>
+    <DataRegistryProvider>
       <LocalLibraryProvider>
         <Layout>
         <Routes>
@@ -46,7 +44,6 @@ export default function App() {
         </Routes>
         </Layout>
       </LocalLibraryProvider>
-      </DataRegistryProvider>
-    </AnimeDataProvider>
+    </DataRegistryProvider>
   );
 }

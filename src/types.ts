@@ -27,6 +27,7 @@ export interface WatchLog {
 }
 
 export interface AnimeStaff {
+  castCredits?: Array<{ character?: string; actor: string }>;
   director?: string;
   seriesComposition?: string;
   characterDesign?: string;

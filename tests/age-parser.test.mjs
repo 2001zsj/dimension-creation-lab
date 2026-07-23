@@ -64,3 +64,25 @@ test("AGE parser does not invent records when required identity is absent", () =
   assert.deepEqual(ageParser.parseAgeDetail("<title>暂无</title>", pages.detail), undefined);
   assert.deepEqual(ageParser.parseAgePlay("<html></html>", pages.play), undefined);
 });
+
+test("AGE card parsing is independent of attribute order and isolates malformed URLs", () => {
+  const reordered = '<li><a data-original="/cover.webp" title="属性换序作品" href="/anime/reordered123.html" class="lazyload bCBBJ"><span>日语/2026</span><span>更新至01集</span></a></li>';
+  const result = ageParser.parseAgeCategory(reordered, pages.category);
+  assert.equal(result.items.length, 1);
+  assert.equal(result.items[0].id, "reordered123");
+  assert.equal(result.items[0].year, 2026);
+  assert.equal(result.items[0].coverImage, "https://cn.agekkkk.com/cover.webp");
+
+  const invalid = '<li><a class="bCBBJ" href="/anime/valid123.html" title="坏图片仍保留作品" data-original="http://%"><span>日语/2025</span><span>完结</span></a></li>';
+  const invalidResult = ageParser.parseAgeCategory(invalid, pages.category);
+  assert.equal(invalidResult.items.length, 1);
+  assert.equal(invalidResult.items[0].coverImage, undefined);
+});
+
+test("AGE play parser does not crash on malformed percent encoding", () => {
+  const html = '<script>var player_aaaa = {"url":"bad%zz","from":"line-a","link_next":""}</script>';
+  const result = ageParser.parseAgePlay(html, pages.play);
+  assert.equal(result.animeId, "38241bf798cf918917082c8e");
+  assert.equal(result.resources.length, 1);
+  assert.match(result.resources[0].url, /bad%zz$/);
+});
