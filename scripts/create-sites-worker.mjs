@@ -60,6 +60,12 @@ async function collectAssets(dir, urlPrefix = "") {
 
 const assets = await collectAssets(distRoot);
 
+const ageParserSource = (await readFile(join(projectRoot, "scripts", "age-parser.mjs"), "utf8"))
+  .replace(/export function/g, "function")
+  .replace(/export const ageParser[\s\S]*?;\s*$/m, "")
+  .replaceAll("`", "\\`")
+  .replaceAll("${", "\\${");
+
 const yucRuntimeSource = String.raw`
 const YUC_PERIOD = "${yucPeriod}";
 const YUC_YEAR = ${yucYear};
@@ -256,9 +262,42 @@ async function yucAnimeResponse(request) {
 }
 `;
 
+const ageRuntimeSource = String.raw`${ageParserSource}
+
+const AGE_SOURCE_URL = "https://cn.agekkkk.com/type/1.html";
+
+async function ageAnimeResponse(request) {
+  const response = await fetch(AGE_SOURCE_URL, {
+    headers: {
+      "accept": "text/html,application/xhtml+xml",
+      "user-agent": "DimensionLabSite/1.0 (+https://chatgpt.site)",
+    },
+    cf: { cacheTtl: 0, cacheEverything: false },
+  });
+  if (!response.ok) {
+    return new Response(JSON.stringify({ error: "Unable to fetch AGE", status: response.status, sourceUrl: AGE_SOURCE_URL }), {
+      status: 502,
+      headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+    });
+  }
+  const html = await response.text();
+  const parsed = parseAgeCategory(html, AGE_SOURCE_URL);
+  if (!parsed.items.length) {
+    return new Response(JSON.stringify({ error: "AGE parser returned no verified items", sourceUrl: AGE_SOURCE_URL }), {
+      status: 502,
+      headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+    });
+  }
+  return new Response(JSON.stringify({ ...parsed, updatedAt: new Date().toISOString() }), {
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+  });
+}
+`;
+
 const workerSource = `const ASSETS = ${JSON.stringify(assets)};
 const STATIC_FILE_RE = /\\.[a-z0-9]+$/i;
 ${yucRuntimeSource}
+${ageRuntimeSource}
 
 function decodeBase64(value) {
   const binary = atob(value);
@@ -288,6 +327,10 @@ export default {
 
     if (url.pathname === "/api/anime/current" || url.pathname === "/api/yuc/${yucPeriod}") {
       return yucAnimeResponse(request);
+    }
+
+    if (url.pathname === "/api/age/current") {
+      return ageAnimeResponse(request);
     }
 
     const exactAsset = ASSETS[url.pathname];
