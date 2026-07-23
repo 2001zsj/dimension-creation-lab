@@ -25,7 +25,7 @@ export function SeasonsPage() {
               {seasonOrder.map((season, index) => {
                 const items = animeList.filter((anime) => seasonKey(anime.year, anime.season) === seasonKey(year, season));
                 if (items.length === 0) return null;
-                const watching = items.filter((anime) => anime.watchStatus === 'watching').length;
+                const airing = items.filter((anime) => anime.informationStatus === 'airing').length;
                 const originals = items.filter((anime) => anime.sourceType === 'original').length;
                 return (
                   <Link key={season} to={`/season/${year}/${season}`} className="season-card">
@@ -33,7 +33,7 @@ export function SeasonsPage() {
                     <div className="season-card-body">
                       <span className="eyebrow">{formatSeason(year, season)}</span>
                       <h2>{items.length} 部作品</h2>
-                      <div className="season-metrics"><span><BarChart3 size={15} />原创 {originals}</span><span>在追 {watching}</span></div>
+                      <div className="season-metrics"><span><BarChart3 size={15} />原创 {originals}</span><span>放送中 {airing}</span></div>
                       <span className="text-link">打开季度档案 <ArrowRight size={15} /></span>
                     </div>
                   </Link>

@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarClock, Clock3, Eye, RadioTower, Sparkles, Tv2 } from 'lucide-react';
+import { ArrowRight, CalendarClock, Clock3, Database, RadioTower, Sparkles, Tv2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aiWorks, articles } from '../data';
 import { AnimeCard } from '../components/AnimeCard';
@@ -6,19 +6,27 @@ import { Cover } from '../components/Cover';
 import { SectionHeader } from '../components/SectionHeader';
 import { StatCard } from '../components/StatCard';
 import { useAnimeList, useAnimeMeta } from '../liveAnime';
-import { currentWeekday, weekdayLabels } from '../utils';
-
-const todayKey = currentWeekday();
+import { currentWeekday, formatBroadcastEpisode, formatSeason, getActiveSeason, isPersonalRecord, seasonMonths, weekdayLabels } from '../utils';
 
 export function HomePage() {
   const animeList = useAnimeList();
   const animeMeta = useAnimeMeta();
-  const currentSeason = animeList.filter((anime) => anime.year === 2026 && anime.season === 'summer');
-  const todayAnime = currentSeason.filter((anime) => anime.broadcast?.weekday === todayKey);
-  const upcoming = animeList.filter((anime) => anime.informationStatus === 'scheduled' || anime.informationStatus === 'announced').slice(0, 4);
-  const featured = currentSeason.filter((anime) => anime.featured).slice(0, 3);
-  const latestLog = animeList.flatMap((anime) => anime.logs.map((log) => ({ ...log, anime }))).sort((a, b) => b.date.localeCompare(a.date))[0];
-  const syncLabel = animeMeta.status === 'live' ? '实时同步自長門番堂' : '显示本地缓存，实时源稍后重试';
+  const activeSeason = getActiveSeason(animeList);
+  const todayKey = currentWeekday('Asia/Tokyo');
+  const currentSeason = animeList.filter((anime) => anime.year === activeSeason.year && anime.season === activeSeason.season);
+  const todayAnime = currentSeason.filter((anime) => anime.informationStatus === 'airing' && anime.broadcast?.weekday === todayKey);
+  const upcomingTargets = animeList.filter((anime) => ['scheduled', 'announced', 'delayed'].includes(anime.informationStatus));
+  const upcomingPreview = upcomingTargets.slice(0, 4);
+  const featuredCandidates = currentSeason.filter((anime) => anime.featured);
+  const featured = (featuredCandidates.length ? featuredCandidates : currentSeason).slice(0, 3);
+  const latestPersonalLog = animeList
+    .filter(isPersonalRecord)
+    .flatMap((anime) => anime.logs.map((log) => ({ ...log, anime })))
+    .sort((a, b) => b.date.localeCompare(a.date))[0];
+  const latestUpdated = [...animeList].sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated))[0];
+  const syncLabel = animeMeta.status === 'live' ? '实时资料已更新' : animeMeta.status === 'loading' ? '正在连接资料源' : '当前显示本地缓存';
+  const seasonTitle = formatSeason(activeSeason.year, activeSeason.season);
+  const sourcePeriod = `${activeSeason.year} 年 ${seasonMonths[activeSeason.season]}`;
 
   return (
     <>
@@ -27,75 +35,80 @@ export function HomePage() {
         <div className="hero-orb hero-orb-b" />
         <div className="container hero-grid">
           <div className="hero-copy">
-            <span className="live-pill"><span />2026 夏季观测中</span>
+            <span className="live-pill"><span />{seasonTitle}观测中</span>
             <h1>把每一季新番，整理成一座会持续生长的资料库。</h1>
-            <p>记录放送时间、制作资料和观看进度，也保存文章、提示词与 AI 创作过程。</p>
+            <p>记录放送时间、制作资料和公开来源，也保存文章、提示词与 AI 创作过程。</p>
             <div className="hero-actions">
-              <Link className="button primary" to="/season/2026/summer">进入本季档案 <ArrowRight size={17} /></Link>
+              <Link className="button primary" to={`/season/${activeSeason.year}/${activeSeason.season}`}>进入本季档案 <ArrowRight size={17} /></Link>
               <Link className="button secondary" to="/calendar">查看今日放送</Link>
             </div>
           </div>
           <div className="season-console">
-            <div className="console-top"><span>SEASON CONSOLE</span><strong>2026 / SUMMER</strong></div>
+            <div className="console-top"><span>SEASON CONSOLE</span><strong>{activeSeason.year} / {activeSeason.season.toUpperCase()}</strong></div>
             <div className="console-radar"><span className="radar-ring ring-a" /><span className="radar-ring ring-b" /><span className="radar-sweep" /><Sparkles size={28} /></div>
             <div className="console-row"><span>资料更新时间</span><strong>{animeMeta.updatedAt?.slice(0, 10) ?? '同步中'}</strong></div>
-            <div className="console-row"><span>今日星期</span><strong>{weekdayLabels[todayKey]}</strong></div>
+            <div className="console-row"><span>日本星期</span><strong>{weekdayLabels[todayKey]}</strong></div>
           </div>
         </div>
       </section>
 
       <section className="container stats-grid section-space-tight">
         <StatCard label="本季收录" value={currentSeason.length} note="公开资料条目" icon={Tv2} />
-        <StatCard label="正在追番" value={animeList.filter((anime) => anime.watchStatus === 'watching').length} note="资料同步状态" icon={Eye} />
-        <StatCard label="今日放送" value={todayAnime.length} note={`${weekdayLabels[todayKey]}更新`} icon={CalendarClock} />
-        <StatCard label="雷达目标" value={upcoming.length} note="已公开或已定档" icon={RadioTower} />
+        <StatCard label="正在放送" value={animeList.filter((anime) => anime.informationStatus === 'airing').length} note="按资料状态统计" icon={Database} />
+        <StatCard label="今日放送" value={todayAnime.length} note={`${weekdayLabels[todayKey]} · 日本时间`} icon={CalendarClock} />
+        <StatCard label="雷达目标" value={upcomingTargets.length} note="已公开、已定档或延期" icon={RadioTower} />
       </section>
 
       <section className="container section-space">
-        <SectionHeader eyebrow="ON AIR TODAY" title="今日放送" description="按星期与时间快速查看，不必在长列表里寻找。" action={<Link className="text-link" to="/calendar">完整放送表 <ArrowRight size={15} /></Link>} />
+        <SectionHeader eyebrow="ON AIR TODAY" title="今日放送" description="按日本星期与公开表记时间快速查看。" action={<Link className="text-link" to="/calendar">完整放送表 <ArrowRight size={15} /></Link>} />
         {todayAnime.length > 0 ? (
           <div className="today-list">
             {todayAnime.map((anime) => (
               <Link to={`/anime/${anime.id}`} key={anime.id} className="today-item">
-                <span className="today-time">{anime.broadcast?.time}</span>
-                <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="today-cover" />
-                <span className="today-copy"><strong>{anime.title}</strong><small>第 {anime.progress + 1} 话 · {anime.broadcast?.platforms.join(' / ')}</small></span>
-                <span className="status-dot"><span />即将放送</span>
+                <span className="today-time">{anime.broadcast?.time ?? '未定'}</span>
+                <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="today-cover" label={`${anime.title}封面`} />
+                <span className="today-copy"><strong>{anime.title}</strong><small>{formatBroadcastEpisode(anime)} · {anime.broadcast?.platforms.join(' / ')}</small></span>
+                <span className="status-dot"><span />放送中</span>
                 <ArrowRight size={18} />
               </Link>
             ))}
           </div>
-        ) : <div className="empty-panel">今日没有公开放送条目。</div>}
+        ) : <div className="empty-panel">今天没有已收录的公开放送条目。</div>}
       </section>
 
       <section className="container section-space">
-        <SectionHeader eyebrow="SEASON PICKS" title="本季重点关注" description="按公开评分、热度与资料完整度挑选的重点条目。" action={<Link className="text-link" to="/anime">浏览全部 <ArrowRight size={15} /></Link>} />
-        <div className="anime-grid three-col">{featured.map((anime) => <AnimeCard key={anime.id} anime={anime} />)}</div>
+        <SectionHeader eyebrow="SEASON PICKS" title="本季重点关注" description="根据资料完整度与站内标记展示重点条目，不代表个人评分。" action={<Link className="text-link" to="/anime">浏览全部 <ArrowRight size={15} /></Link>} />
+        {featured.length > 0 ? <div className="anime-grid three-col">{featured.map((anime) => <AnimeCard key={anime.id} anime={anime} />)}</div> : <div className="empty-panel">本季度暂无条目。</div>}
       </section>
 
       <section className="band-section section-space">
         <div className="container">
-          <SectionHeader eyebrow="SATELLITE RADAR" title="新番雷达" description="把下一季、远期企划和档期未定项目分层观察。" action={<Link className="button secondary compact" to="/radar">打开雷达</Link>} />
-          <div className="radar-strip">
-            {upcoming.map((anime) => (
+          <SectionHeader eyebrow="SATELLITE RADAR" title="新番雷达" description="把已公开、已定档、延期和档期未定项目分层观察。" action={<Link className="button secondary compact" to="/radar">打开雷达</Link>} />
+          {upcomingPreview.length > 0 ? <div className="radar-strip">
+            {upcomingPreview.map((anime) => (
               <Link to={`/anime/${anime.id}`} key={anime.id} className="radar-mini-card">
-                <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="radar-mini-cover"><span>{anime.year}</span></Cover>
-                <div><span className="mini-label">{anime.season === 'undecided' ? '档期未定' : `${anime.year} ${anime.season}`}</span><strong>{anime.title}</strong><small>{anime.staff.studio.join(' / ')}</small></div>
+                <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="radar-mini-cover" label={`${anime.title}封面`}><span>{anime.year}</span></Cover>
+                <div><span className="mini-label">{formatSeason(anime.year, anime.season)}</span><strong>{anime.title}</strong><small>{anime.staff.studio.join(' / ')}</small></div>
               </Link>
             ))}
-          </div>
+          </div> : <div className="empty-panel">当前没有远期雷达条目。</div>}
         </div>
       </section>
 
       <section className="container section-space two-column-home">
         <div>
-          <SectionHeader eyebrow="WATCH LOG" title="最近观看记录" />
-          {latestLog ? (
-            <Link to={`/anime/${latestLog.anime.id}`} className="log-card">
-              <Cover seed={latestLog.anime.coverSeed} imageUrl={latestLog.anime.coverImage} className="log-cover" />
-              <div><span>{latestLog.date} · 第 {latestLog.episode} 话</span><h3>{latestLog.anime.title}</h3><p>{latestLog.note}</p></div>
+          <SectionHeader eyebrow={latestPersonalLog ? 'WATCH LOG' : 'DATA UPDATE'} title={latestPersonalLog ? '最近观看记录' : '最近资料更新'} />
+          {latestPersonalLog ? (
+            <Link to={`/anime/${latestPersonalLog.anime.id}`} className="log-card">
+              <Cover seed={latestPersonalLog.anime.coverSeed} imageUrl={latestPersonalLog.anime.coverImage} className="log-cover" label={`${latestPersonalLog.anime.title}封面`} />
+              <div><span>{latestPersonalLog.date} · 第 {latestPersonalLog.episode} 话</span><h3>{latestPersonalLog.anime.title}</h3><p>{latestPersonalLog.note}</p></div>
             </Link>
-          ) : <div className="empty-panel">暂无观看日志。</div>}
+          ) : latestUpdated ? (
+            <Link to={`/anime/${latestUpdated.id}`} className="log-card">
+              <Cover seed={latestUpdated.coverSeed} imageUrl={latestUpdated.coverImage} className="log-cover" label={`${latestUpdated.title}封面`} />
+              <div><span>{latestUpdated.lastUpdated} · 公开资料</span><h3>{latestUpdated.title}</h3><p>{latestUpdated.sourceNote}</p></div>
+            </Link>
+          ) : <div className="empty-panel">暂无资料更新。</div>}
         </div>
         <div>
           <SectionHeader eyebrow="LATEST NOTES" title="最新文章" />
@@ -112,7 +125,7 @@ export function HomePage() {
         <div className="work-preview-grid">
           {aiWorks.map((work) => (
             <Link to={`/works/${work.id}`} key={work.id} className="work-preview">
-              <Cover seed={work.coverSeed} className="work-preview-cover" />
+              <Cover seed={work.coverSeed} className="work-preview-cover" label={`${work.title}视觉占位图`} />
               <div><span>{work.type}</span><h3>{work.title}</h3><p>{work.background}</p></div>
             </Link>
           ))}
@@ -120,7 +133,7 @@ export function HomePage() {
       </section>
 
       <section className="container notice-panel section-space-tight">
-        <Clock3 size={20} /><p><strong>{syncLabel}：</strong>本季新番、放送日历与资料入口根据 <a href={animeMeta.sourceUrl} target="_blank" rel="noopener noreferrer">長門番堂 2026 年 7 月新番表</a> 获取；本站只整理公开资料，不提供动画播放、下载或盗版资源。</p>
+        <Clock3 size={20} /><p><strong>{syncLabel}：</strong>本季新番、放送日历与资料入口根据 <a href={animeMeta.sourceUrl} target="_blank" rel="noopener noreferrer">長門番堂 {sourcePeriod}新番表</a> 整理；本站只呈现公开资料，不提供动画播放、下载或盗版资源。</p>
       </section>
     </>
   );

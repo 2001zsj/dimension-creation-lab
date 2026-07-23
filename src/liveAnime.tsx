@@ -17,15 +17,38 @@ interface LiveAnimeState {
 
 const yucUrl = 'https://yuc.wiki/202607/';
 
+function normalizeAnimeList(items: Anime[]): Anime[] {
+  return items.map((anime) => {
+    const sourceOnly = anime.recordSource === 'source'
+      || anime.sourceNote.includes('長門番堂')
+      || anime.externalLinks.some((link) => link.url.includes('yuc.wiki'));
+
+    if (!sourceOnly) return { ...anime, recordSource: anime.recordSource ?? 'personal' };
+
+    return {
+      ...anime,
+      recordSource: 'source',
+      watchStatus: 'planned',
+      progress: 0,
+      rating: undefined,
+      scores: undefined,
+      spoilerReview: undefined,
+      logs: [],
+    };
+  });
+}
+
+const normalizedFallback = normalizeAnimeList(fallbackAnimeList);
+
 const LiveAnimeContext = createContext<LiveAnimeState>({
-  animeList: fallbackAnimeList,
+  animeList: normalizedFallback,
   sourceUrl: yucUrl,
   status: 'loading',
 });
 
 export function AnimeDataProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<LiveAnimeState>({
-    animeList: fallbackAnimeList,
+    animeList: normalizedFallback,
     sourceUrl: yucUrl,
     status: 'loading',
   });
@@ -35,7 +58,7 @@ export function AnimeDataProvider({ children }: { children: ReactNode }) {
 
     async function loadLiveData() {
       try {
-        const response = await fetch('/api/yuc/202607', { cache: 'no-store' });
+        const response = await fetch('/api/anime/current', { cache: 'no-store' });
         if (!response.ok) throw new Error(`Live anime API ${response.status}`);
         const payload = (await response.json()) as LiveAnimePayload;
         if (!Array.isArray(payload.items) || payload.items.length === 0) {
@@ -43,7 +66,7 @@ export function AnimeDataProvider({ children }: { children: ReactNode }) {
         }
         if (!active) return;
         setState({
-          animeList: payload.items,
+          animeList: normalizeAnimeList(payload.items),
           sourceUrl: payload.sourceUrl ?? yucUrl,
           updatedAt: payload.updatedAt,
           status: 'live',
@@ -51,9 +74,9 @@ export function AnimeDataProvider({ children }: { children: ReactNode }) {
       } catch {
         if (!active) return;
         setState({
-          animeList: fallbackAnimeList,
+          animeList: normalizedFallback,
           sourceUrl: yucUrl,
-          updatedAt: fallbackAnimeList[0]?.lastUpdated,
+          updatedAt: normalizedFallback[0]?.lastUpdated,
           status: 'fallback',
         });
       }

@@ -39,22 +39,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：20:30~ 7/6~，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-06。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 4,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a18b8b3a456f658eb2634d88904e1ffb512995925.jpg",
-    "featured": true
+    "featured": true,
+    "recordSource": "source"
   },
   {
     "id": "骸骨骑士大人异世界冒险中-第2期",
@@ -99,22 +94,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 7/13~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-13。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 39,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2310b9a8587d0f846f7f2b529a00065a512995925.jpg",
-    "featured": true
+    "featured": true,
+    "recordSource": "source"
   },
   {
     "id": "世界舞动",
@@ -159,22 +149,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 6/29~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-06-29。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 80,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e2cf0e4959454310e6390adaa601408e512995925.jpg",
-    "featured": true
+    "featured": true,
+    "recordSource": "source"
   },
   {
     "id": "暴怒千金誓要复仇",
@@ -219,22 +204,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/6~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-06。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/8e9503bd8008ea81d32421b071433630512995925.jpg",
-    "featured": true
+    "featured": true,
+    "recordSource": "source"
   },
   {
     "id": "被遗弃圣女的异世界美食之旅",
@@ -279,22 +259,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/6~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-06。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 12,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/48182894e97ace76cc821e9ddd039aa5512995925.jpg",
-    "featured": true
+    "featured": true,
+    "recordSource": "source"
   },
   {
     "id": "炎之斗球女-弹子",
@@ -339,22 +314,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/6~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-06。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 3,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/754bdefab9bc7be8114fc0429988daee512995925.jpg",
-    "featured": true
+    "featured": true,
+    "recordSource": "source"
   },
   {
     "id": "欺诈游戏",
@@ -400,19 +370,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 6,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/4bfa8cc4febe963d9851462e7ed4642a512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "碧蓝之海-第3期",
@@ -457,22 +422,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/6~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-06。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 37,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/db81bd26acafcf3803b416d61f779df1512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "感谢对战-大小姐-才不玩格斗游戏",
@@ -517,22 +477,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：19:30~ 7/7~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-07。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 3,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/dcc058e1d03a8f4d35cb6994bb619299512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "与你相恋到-生命尽头",
@@ -577,22 +532,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：20:30~ 7/7~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-07。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 35,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5e56eb53f26add20de1049642088ae14512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "无自觉圣女今天也无意识地释放力量",
@@ -637,22 +587,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 6/30~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-06-30。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 65,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/f4893bcd78c847adf298bc5dbaa9e539512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "新-攻壳机动队",
@@ -697,22 +642,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/7~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-07。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9c329ec79e3f688d9e240fe296f93cd0512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "新-魔神坛斗士-part-2",
@@ -752,22 +692,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/7~，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-07。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 38,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1fcbbe12b8d8652618de138a0026d767512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "底牌很多的-维多利亚",
@@ -812,22 +747,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/7~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-07。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 92,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b8dbcf0c89324fd89cae8ea4ca820e52512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "天是红河岸",
@@ -867,22 +797,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:35~ 7/7~，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-07。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 69,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/40b55bdf78f61985869b82bbd08c75f7512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "clevatess-第2期",
@@ -927,22 +852,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：20:00~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-08。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/19ab196439099d086e1eb62a803cd1b1512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "幼女战记-第2期",
@@ -987,22 +907,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-08。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 35,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/36ca0fd3c8b535ea4f5675d0c4462342512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "不虐待我的-继母与继姐",
@@ -1047,22 +962,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-08。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 43,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2be64aa4e4554dfd6e4454f101574e48512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "乡下大叔成为剑圣-第2期",
@@ -1107,22 +1017,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:45~ 7/8~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-08。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 42,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1940e5804d1d53a81238b8c27c23e9b7512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "lv999的村民",
@@ -1167,22 +1072,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/1~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-01。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 83,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/28a51ffa05536c0f7605980cfc3aafbf512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "乙游世界对路人-很不友好-第2期",
@@ -1227,22 +1127,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:30~ 7/8~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-08。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 46,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a33eb3e319f9c8508a6fee4aefa3891a512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "雷霆三人行",
@@ -1287,22 +1182,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:45~ 7/8~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-08。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 35,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a6d48c024d22dc6ce261ed92b0f39a67512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "花样少年少女-第2期",
@@ -1347,22 +1237,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：25:00~ 7/1~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-01。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 6,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/f6fd144e178bc398971b6a24294ef061512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "re-从零开始的异世界生活-第4期-p2",
@@ -1409,19 +1294,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 日期未定，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 16,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e5498ee6e63f87ba626eb1a643692635512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "令和的斑小姐",
@@ -1466,22 +1346,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：20:30~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-02。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 27,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b41e34d9c820c3ddd15e91b48eaab2a7512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "文豪野犬-汪-第2期",
@@ -1526,22 +1401,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：20:40~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-02。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/da557193091701a3d8201ae3a2363ce9512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "元祖-小邦多利",
@@ -1582,19 +1452,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (泡面)，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 81,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1f69329fcadb72424dc1afe5b3a1ff5c512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "bang-dream-yume-mita",
@@ -1639,22 +1504,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-02。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 6,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/39ee0f846560cdf5f63c9ddfee8d21ac512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "梅比乌斯之尘",
@@ -1699,22 +1559,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:30~ 7/9~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-09。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 14,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/67a6f69c0e2fe29493629da4c6dd394c512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "躲在超市后门-抽烟的两人",
@@ -1754,22 +1609,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:56~ 7/9~，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-09。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 91,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/02763b6fa9298a0804a71dc67052c457512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "落第贤者的-学院无双",
@@ -1814,22 +1664,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 6/25~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-06-25。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7063238a511a436b56c01bf4762978bc512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "尼古喵喵",
@@ -1874,22 +1719,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-02。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 48,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9043ebde02deb628f2871c88c19b3275512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "少女怪兽焦糖味",
@@ -1934,22 +1774,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：25:28~ 7/2~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-02。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 81,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/611633a85663932cb5c2a9cae13b057e512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "神之水滴",
@@ -1995,19 +1830,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 76,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/dffacfcc81daa70300e7d7ec5afd7e1c512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "从0位居民开始的-边境领主大人",
@@ -2052,22 +1882,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-03。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 29,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/ce8e23f26026dbc2043aecab806f8af6512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "画完这个再去死",
@@ -2112,22 +1937,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:35~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-03。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 17,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/6e1b9ec6fb5177e973546f3d5665e810512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "我家的弟弟们真是让您费心了",
@@ -2172,22 +1992,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-03。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 39,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/737c88e9bbea1adb267b6c4f19c153ba512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "地狱模式-第2期",
@@ -2232,22 +2047,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-03。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 41,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/91f134e4d0dd02fab86e3ff1c508769a512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "正后方的神威",
@@ -2292,22 +2102,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/3~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-03。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 43,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/609257722f4bf239207a72d33c82408c512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "擅长逃跑的殿下-第2期",
@@ -2354,19 +2159,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 日期未定，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 45,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/71b9d57fb31b6a53c3565632f461861c512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "轻松熊",
@@ -2412,19 +2212,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (泡面)，收录 台湾 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 67,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/2651151e2fe96b889565e33a7d4b69d9512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "小书痴的下克上-第4期",
@@ -2470,19 +2265,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 93,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e102567e0958ad8d2656dd3bf5c65050512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "入间同学入魔了-第4期",
@@ -2541,19 +2331,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：19:00~ (全24话)，收录 港台 / 港台 / 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 55,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a391a1fc78171684a9584086d0a95af8512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "猫与龙",
@@ -2598,22 +2383,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 6/27~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-06-27。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/867341f8f0cedda8c0bd1d470d506cd6512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "暗黑灯火",
@@ -2658,22 +2438,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 75,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/67adc38f7025cc8c4b030a27fface3da512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "岩元前辈的推荐",
@@ -2718,22 +2493,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:30~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 79,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/d1e05e6cae2a4ee4443c9b7be0af573d512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "摩绪",
@@ -2779,19 +2549,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 42,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/c9ff953b58e6169ce055034b1da5b160512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "柔光魔女股份-有限公司-第2期",
@@ -2836,22 +2601,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:55~ 7/4~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 90,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/b6c61ecc8140dd8b41318a46f5585c6d512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "黄泉的使者",
@@ -2897,19 +2657,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 台湾 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 90,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5be47c5c1e39ce9ce4ebebd5a4f34d1f512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "穹庐下的魔女",
@@ -2954,22 +2709,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 88,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/69ee7bf21dd04dfcfcc2b88d035a5b73512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "growupshow-向日葵马戏团",
@@ -3014,22 +2764,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 48,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/1ddf686a54bc913313638157bf5ded46512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "声称不爱我的下任公爵为何会溺爱我",
@@ -3074,22 +2819,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:30~ 7/4~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 89,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0e7464dfb9953d64fd2d0133d0e86aa3512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "鬼的新娘",
@@ -3134,22 +2874,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：25:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 5,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/e8b05a97ffaed113f2f68668bcc5184e512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "魔法少女奈叶-egbv",
@@ -3194,22 +2929,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：25:00~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 3,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7abf6ddef094ab555b8e9e4b95bdbb7e512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "花织同学转生后-还是想干架",
@@ -3254,22 +2984,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：25:30~ 7/11~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-11。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 57,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/d39282e5a07f528ea4861fcfbf9e81d4512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "才女的侍从",
@@ -3314,22 +3039,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：27:08~ 7/4~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-04。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 75,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0baba8c1870b60a0b76af45561a97b65512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "死神-千年血战篇-part-4-祸进谭",
@@ -3376,19 +3096,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 日期未定，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 37,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/8448481231bccefba5b1181dc8652d64512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "小鲨鱼去郊游-第2期",
@@ -3429,19 +3144,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (长篇)，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 54,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a7692ed66130421268847ff7557c2faa512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "名侦探-光之美少女",
@@ -3482,19 +3192,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (年番)，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 27,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/04f8e8caa26b49173c93d547011e2000512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "数码宝贝-beatbreak",
@@ -3535,19 +3240,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (长篇)，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 68,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/121eaf1a4dc9fecb15201af71e8a4fb6512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "拜托了偶像公主",
@@ -3588,19 +3288,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (长篇)，暂无平台入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 93,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/9e394c8578b1aa02e33150658ceef7ba512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "let-s-go-怪奇组",
@@ -3645,22 +3340,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：15:30~ 7/5~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 51,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/86ee784222c121962826aa47e3cfd267512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "相反的你和我-第2期",
@@ -3705,22 +3395,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：16:30~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 40,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/4081442c76b9d08fc7c34da8e2f4d501512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "炒翻天",
@@ -3765,22 +3450,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：16:30~ 7/5~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 92,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/0a7961716aeb38be6352355e05467c07512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "世界最强后卫-迷宫国的新人探索者",
@@ -3825,22 +3505,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：21:00~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 0,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/7ffbb763ee08eb87f2695d02e302134f512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "超超超超喜欢你的100个女孩子-第3期",
@@ -3885,22 +3560,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 78,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/474899f247a75f593180d0759a783635512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "二十世纪-电气目录",
@@ -3945,22 +3615,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:00~ 7/5~，收录 环大陆 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 39,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/5691179311a0702b8d5fbec57ed5d05d512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "虽然我是-不完美恶女",
@@ -4005,22 +3670,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：22:45~ 7/12~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-12。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 58,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/df5578fc4cc578805e5c356fe0c07c6c512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "无职转生-第3期",
@@ -4065,22 +3725,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:00~ 7/12~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-12。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 26,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/a15be389060cf0bf2a8f07a63cd401f6512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "黑猫和魔女的课堂",
@@ -4126,19 +3781,14 @@ export const animeList: Anime[] = [
     "watchStatus": "planned",
     "progress": 0,
     "shortComment": "長門番堂表记：时间未定 (全24话)，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "0",
-        "note": "已同步自長門番堂 2026 年 7 月新番表。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 1,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/ebbf753e84a0c569c5b35940a0644839512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "再见-拉拉",
@@ -4183,22 +3833,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：23:30~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 86,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/838239e4d2dabeb51b5241535f5821a7512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   },
   {
     "id": "碧蓝航线-微速前行-第2期",
@@ -4243,22 +3888,17 @@ export const animeList: Anime[] = [
     "informationStatus": "airing",
     "lastUpdated": "2026-07-22",
     "sourceNote": "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变动，请以官方公告为准。",
-    "watchStatus": "watching",
-    "progress": 1,
+    "watchStatus": "planned",
+    "progress": 0,
     "shortComment": "長門番堂表记：24:45~ 7/5~，收录 港台 资料入口。",
-    "recommendation": "真实新番表条目，适合作为放送日历和季度档案追踪。",
-    "audience": "关注 2026 年 7 月新番的观众。",
+    "recommendation": "可用于核对本季放送安排与公开资料入口。",
+    "audience": "关注本季度新番资料与放送时间的读者。",
     "warning": "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-    "logs": [
-      {
-        "date": "2026-07-22",
-        "episode": "1",
-        "note": "已同步自長門番堂 2026 年 7 月新番表，表记开播日：2026-07-05。"
-      }
-    ],
+    "logs": [],
     "coverSeed": 1,
     "coverImage": "https://i0.hdslb.com/bfs/new_dyn/6122311dd677dc4941f8cb82f56a6c48512995925.jpg",
-    "featured": false
+    "featured": false,
+    "recordSource": "source"
   }
 ];
 

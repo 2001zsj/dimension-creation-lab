@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 
 interface CoverProps {
   seed: number;
@@ -16,14 +16,27 @@ const palettes = [
 ];
 
 export function Cover({ seed, className = '', children, label, imageUrl }: CoverProps) {
+  const [imageFailed, setImageFailed] = useState(false);
   const [from, to] = palettes[Math.abs(seed) % palettes.length];
   const style: CSSProperties = {
     backgroundImage: `radial-gradient(circle at 78% 16%, rgba(255,255,255,.35), transparent 28%), linear-gradient(135deg, ${from}, ${to})`,
   };
 
+  useEffect(() => setImageFailed(false), [imageUrl]);
+
   return (
-    <div className={`cover ${className}`} style={style} aria-label={label} role={label ? 'img' : undefined}>
-      {imageUrl ? <img className="cover-image" src={imageUrl} alt="" loading="lazy" referrerPolicy="no-referrer" /> : <span className="cover-grid" aria-hidden="true" />}
+    <div className={`cover ${className}`} style={style} role={!imageUrl && label ? 'img' : undefined} aria-label={!imageUrl ? label : undefined}>
+      {imageUrl && !imageFailed ? (
+        <img
+          className="cover-image"
+          src={imageUrl}
+          alt={label ?? ''}
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
+          onError={() => setImageFailed(true)}
+        />
+      ) : <span className="cover-grid" aria-hidden="true" />}
       {children}
     </div>
   );

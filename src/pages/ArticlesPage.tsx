@@ -1,12 +1,17 @@
 import { BookOpen, Clock3 } from 'lucide-react';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { articles } from '../data';
 import { Badge } from '../components/Badge';
 
 export function ArticlesPage() {
+  const location = useLocation();
+
   useEffect(() => {
-    if (window.location.hash) document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, []);
+    if (!location.hash) return;
+    const timer = window.setTimeout(() => document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 20);
+    return () => window.clearTimeout(timer);
+  }, [location.hash]);
 
   return (
     <div className="container page-top page-bottom article-page">

@@ -7,6 +7,15 @@ const distRoot = join(projectRoot, "dist");
 const workerPath = join(projectRoot, "dist", "server", "index.js");
 const hostingOutputPath = join(projectRoot, "dist", ".openai", "hosting.json");
 
+const yucPeriod = process.env.YUC_PERIOD ?? "202607";
+if (!/^\d{6}$/.test(yucPeriod)) {
+  throw new Error("YUC_PERIOD must use YYYYMM format, for example 202607");
+}
+const yucYear = Number(yucPeriod.slice(0, 4));
+const yucMonth = Number(yucPeriod.slice(4, 6));
+const yucSeason = yucMonth <= 3 ? "winter" : yucMonth <= 6 ? "spring" : yucMonth <= 9 ? "summer" : "autumn";
+const yucSeasonLabel = { winter: "冬季", spring: "春季", summer: "夏季", autumn: "秋季" }[yucSeason];
+
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -52,7 +61,12 @@ async function collectAssets(dir, urlPrefix = "") {
 const assets = await collectAssets(distRoot);
 
 const yucRuntimeSource = String.raw`
-const YUC_SOURCE_URL = "https://yuc.wiki/202607/";
+const YUC_PERIOD = "${yucPeriod}";
+const YUC_YEAR = ${yucYear};
+const YUC_MONTH = ${yucMonth};
+const YUC_SEASON = "${yucSeason}";
+const YUC_SEASON_LABEL = "${yucSeasonLabel}";
+const YUC_SOURCE_URL = "https://yuc.wiki/" + YUC_PERIOD + "/";
 
 function decodeHtml(value) {
   return String(value ?? "")
@@ -90,7 +104,7 @@ function statusForDate(dateText) {
   const dateMatch = String(dateText ?? "").match(/^\d{1,2}\/\d{1,2}/)?.[0];
   if (!dateMatch) return "announced";
   const parts = dateMatch.split("/").map(Number);
-  const start = new Date(Date.UTC(2026, parts[0] - 1, parts[1]));
+  const start = new Date(Date.UTC(YUC_YEAR, parts[0] - 1, parts[1]));
   const now = new Date();
   const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   return start <= today ? "airing" : "scheduled";
@@ -148,9 +162,8 @@ function parseYucAnime(html) {
       const image = block.match(/<img[^>]+data-src="([^"]+)"/)?.[1];
       const links = parseLinks(block);
       const dateMatch = String(date ?? "").match(/^\d{1,2}\/\d{1,2}/)?.[0];
-      const startDate = dateMatch ? "2026-" + dateMatch.split("/").map((part) => part.padStart(2, "0")).join("-") : undefined;
+      const startDate = dateMatch ? YUC_YEAR + "-" + dateMatch.split("/").map((part) => part.padStart(2, "0")).join("-") : undefined;
       const informationStatus = statusForDate(date);
-      const progress = informationStatus === "airing" ? 1 : 0;
       const decodedTime = time ? decodeHtml(time).replace("~", "") : undefined;
       const decodedDate = decodeHtml(date ?? "日期未定");
       const id = slugify(title, items.length);
@@ -159,11 +172,11 @@ function parseYucAnime(html) {
         id,
         title,
         originalTitle: title,
-        year: 2026,
-        season: "summer",
+        year: YUC_YEAR,
+        season: YUC_SEASON,
         sourceType: sourceForTitle(title),
-        genres: ["新番", "TV 动画", "2026 夏季"],
-        synopsis: "收录自長門番堂《2026年7月新番表》的真实新番条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
+        genres: ["新番", "TV 动画", YUC_YEAR + " " + YUC_SEASON_LABEL],
+        synopsis: "收录自長門番堂《" + YUC_YEAR + "年" + YUC_MONTH + "月新番表》的公开新番资料条目。本站只整理标题、放送日与公开资料入口，剧情与授权平台请以官方资料为准。",
         staff: {
           studio: ["公开资料待补全"],
           cast: [],
@@ -176,25 +189,20 @@ function parseYucAnime(html) {
           timezone: "Asia/Tokyo",
         },
         externalLinks: [
-          { label: "長門番堂 2026年7月新番表", url: YUC_SOURCE_URL, type: "reference" },
+          { label: "長門番堂 " + YUC_YEAR + "年" + YUC_MONTH + "月新番表", url: YUC_SOURCE_URL, type: "reference" },
           ...links,
         ],
         informationStatus,
         lastUpdated: today,
-        sourceNote: "主资料来自長門番堂（Yuc's Anime List）2026年7月新番表；平台与档期可能变化，请以官方公告为准。",
-        watchStatus: informationStatus === "airing" ? "watching" : "planned",
-        progress,
+        sourceNote: "主资料来自長門番堂（Yuc's Anime List）" + YUC_YEAR + "年" + YUC_MONTH + "月新番表；平台与档期可能变化，请以官方公告为准。",
+        recordSource: "source",
+        watchStatus: "planned",
+        progress: 0,
         shortComment: "長門番堂表记：" + (decodedTime ?? "时间未定") + " " + decodedDate + "；" + (links.length ? "收录 " + links.map((link) => link.label).join(" / ") + " 资料入口" : "暂无平台入口") + "。",
-        recommendation: "真实新番表条目，适合作为放送日历和季度档案追踪。",
-        audience: "关注 2026 年 7 月新番的观众。",
+        recommendation: "可用于核对本季放送安排与公开资料入口。",
+        audience: "关注 " + YUC_YEAR + " 年 " + YUC_MONTH + " 月新番的读者。",
         warning: "本站仅整理公开资料链接，不提供动画播放、下载或盗版资源。",
-        logs: [
-          {
-            date: today,
-            episode: String(progress),
-            note: "已同步自長門番堂 2026 年 7 月新番表" + (startDate ? "，表记开播日：" + startDate : "") + "。",
-          },
-        ],
+        logs: [],
         coverSeed: image ? [...image].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 97 : items.length + 1,
         coverImage: image,
         featured: items.length < 6,
@@ -278,7 +286,7 @@ export default {
       return new Response("Method Not Allowed", { status: 405 });
     }
 
-    if (url.pathname === "/api/yuc/202607") {
+    if (url.pathname === "/api/anime/current" || url.pathname === "/api/yuc/${yucPeriod}") {
       return yucAnimeResponse(request);
     }
 

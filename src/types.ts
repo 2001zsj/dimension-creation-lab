@@ -3,6 +3,7 @@ export type SeasonName = 'winter' | 'spring' | 'summer' | 'autumn' | 'undecided'
 export type Weekday = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday' | 'streaming';
 export type WatchStatus = 'planned' | 'watching' | 'completed' | 'paused' | 'dropped';
 export type InformationStatus = 'announced' | 'scheduled' | 'airing' | 'finished' | 'delayed';
+export type RecordSource = 'source' | 'personal';
 
 export interface ExternalLink {
   label: string;
@@ -59,6 +60,8 @@ export interface Anime {
   informationStatus: InformationStatus;
   lastUpdated: string;
   sourceNote: string;
+  /** source 表示公开资料条目；personal 才能展示个人观看进度、评分与日志。 */
+  recordSource?: RecordSource;
   watchStatus: WatchStatus;
   progress: number;
   rating?: number;
