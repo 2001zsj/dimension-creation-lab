@@ -103,6 +103,10 @@ main { min-height: calc(100vh - 220px); }
 .console-row span { color: var(--muted); }
 
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+.table-wrap table { width: 100%; min-width: 620px; border-collapse: collapse; }
+.table-wrap th, .table-wrap td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; font-size: 13px; }
+.table-wrap th { color: var(--muted); font-weight: 600; background: var(--surface-2); }
 .stat-card { min-height: 124px; padding: 19px; display: flex; align-items: flex-start; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--soft-shadow); }
 .stat-icon { width: 40px; height: 40px; flex: 0 0 auto; display: grid; place-items: center; color: var(--primary); border-radius: 12px; background: color-mix(in srgb, var(--primary) 11%, transparent); }
 .stat-card div:last-child { display: grid; }

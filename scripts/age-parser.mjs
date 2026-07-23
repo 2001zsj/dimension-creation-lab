@@ -34,7 +34,9 @@ function parseCardItems(html, sourcePage) {
 
 function parsePagination(html) {
   const match = html.match(/class=(?:"active num"|'active num')[^>]*>[\s\S]*?<a[^>]*>(\d+)\s*\/\s*(\d+)/i);
-  return match ? { page: Number(match[1]), pageCount: Number(match[2]) } : undefined;
+  if (!match) return undefined;
+  const next = html.match(/href=(?:"([^"]*\/type\/\d+-\d+\.html)"|'([^']*\/type\/\d+-\d+\.html)')[^>]*>下一页/i);
+  return { page: Number(match[1]), pageCount: Number(match[2]), nextUrl: next ? (next[1] ?? next[2]) : undefined };
 }
 
 function parseCollection(html, sourcePage, kind) {

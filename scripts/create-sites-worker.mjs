@@ -262,36 +262,55 @@ async function yucAnimeResponse(request) {
 
 const ageRuntimeSource = String.raw`const AGE_PARSER = (() => {
 ${ageParserSource}
-  return { parseAgeCategory };
+  return { parseAgeHome, parseAgeCategory, parseAgeWeek, parseAgeTopic, parseAgeDetail, parseAgePlay };
 })();
 
-const AGE_SOURCE_URL = "https://cn.agekkkk.com/type/1.html";
+const AGE_ORIGIN = "https://cn.agekkkk.com";
+const AGE_SOURCE_URL = AGE_ORIGIN + "/type/1.html";
+
+async function ageFetch(url) {
+  const response = await fetch(url, { headers: { "accept": "text/html,application/xhtml+xml", "user-agent": "DimensionLabSite/1.0 (+https://chatgpt.site)" }, cf: { cacheTtl: 0, cacheEverything: false } });
+  if (!response.ok) throw new Error("AGE " + response.status + " " + url);
+  return response.text();
+}
+
+function ageJson(value, status = 200) {
+  return new Response(JSON.stringify(value), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
+}
 
 async function ageAnimeResponse(request) {
-  const response = await fetch(AGE_SOURCE_URL, {
-    headers: {
-      "accept": "text/html,application/xhtml+xml",
-      "user-agent": "DimensionLabSite/1.0 (+https://chatgpt.site)",
-    },
-    cf: { cacheTtl: 0, cacheEverything: false },
-  });
-  if (!response.ok) {
-    return new Response(JSON.stringify({ error: "Unable to fetch AGE", status: response.status, sourceUrl: AGE_SOURCE_URL }), {
-      status: 502,
-      headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
-    });
+  try {
+    const firstHtml = await ageFetch(AGE_SOURCE_URL);
+    const first = AGE_PARSER.parseAgeCategory(firstHtml, AGE_SOURCE_URL);
+    const pageCount = Math.min(first.pagination?.pageCount ?? 1, 181);
+    const pages = [first];
+    for (let start = 2; start <= pageCount; start += 8) {
+      const batch = await Promise.all(Array.from({ length: Math.min(8, pageCount - start + 1) }, (_, offset) => {
+        const page = start + offset;
+        const url = AGE_ORIGIN + "/type/1-" + page + ".html";
+        return ageFetch(url).then((html) => AGE_PARSER.parseAgeCategory(html, url));
+      }));
+      pages.push(...batch);
+    }
+    const items = [...new Map(pages.flatMap((page) => page.items).map((item) => [item.id, item])).values()];
+    if (!items.length) return ageJson({ error: "AGE parser returned no verified items", sourceUrl: AGE_SOURCE_URL }, 502);
+    const homeHtml = await ageFetch(AGE_ORIGIN + "/");
+    const weekHtml = await ageFetch(AGE_ORIGIN + "/week");
+    const topicHtml = await ageFetch(AGE_ORIGIN + "/topic");
+    return ageJson({ kind: "registry", sourceSite: "cn.agekkkk.com", sourceUrl: AGE_SOURCE_URL, updatedAt: new Date().toISOString(), count: items.length, pageCount, pagesFetched: pages.length, items, collections: { home: AGE_PARSER.parseAgeHome(homeHtml, AGE_ORIGIN + "/"), week: AGE_PARSER.parseAgeWeek(weekHtml, AGE_ORIGIN + "/week"), topic: AGE_PARSER.parseAgeTopic(topicHtml, AGE_ORIGIN + "/topic") } });
+  } catch (error) {
+    return ageJson({ error: error instanceof Error ? error.message : "Unable to fetch AGE", sourceUrl: AGE_SOURCE_URL }, 502);
   }
-  const html = await response.text();
-  const parsed = AGE_PARSER.parseAgeCategory(html, AGE_SOURCE_URL);
-  if (!parsed.items.length) {
-    return new Response(JSON.stringify({ error: "AGE parser returned no verified items", sourceUrl: AGE_SOURCE_URL }), {
-      status: 502,
-      headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
-    });
-  }
-  return new Response(JSON.stringify({ ...parsed, updatedAt: new Date().toISOString() }), {
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
-  });
+}
+
+async function ageDetailResponse(id) {
+  try { const url = AGE_ORIGIN + "/anime/" + encodeURIComponent(id) + ".html"; return ageJson(AGE_PARSER.parseAgeDetail(await ageFetch(url), url) ?? { error: "AGE detail identity not verified" }, 200); }
+  catch (error) { return ageJson({ error: error instanceof Error ? error.message : "Unable to fetch AGE detail" }, 502); }
+}
+
+async function agePlayResponse(requestUrl) {
+  try { const url = new URL(requestUrl); const sourceUrl = AGE_ORIGIN + url.searchParams.get("source") ; const parsed = AGE_PARSER.parseAgePlay(await ageFetch(sourceUrl), sourceUrl); if (!parsed) return ageJson({ error: "AGE play identity not verified" }, 502); return ageJson({ ...parsed, resources: parsed.resources.map((resource) => ({ ...resource, url: undefined, status: "unverified" })) }); }
+  catch (error) { return ageJson({ error: error instanceof Error ? error.message : "Unable to fetch AGE play" }, 502); }
 }
 `;
 
@@ -332,6 +351,14 @@ export default {
 
     if (url.pathname === "/api/age/current") {
       return ageAnimeResponse(request);
+    }
+
+    if (url.pathname.startsWith("/api/age/detail/")) {
+      return ageDetailResponse(decodeURIComponent(url.pathname.slice("/api/age/detail/".length)));
+    }
+
+    if (url.pathname === "/api/age/play") {
+      return agePlayResponse(request.url);
     }
 
     const exactAsset = ASSETS[url.pathname];

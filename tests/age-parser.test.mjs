@@ -25,6 +25,7 @@ test("AGE collection fixtures keep real titles, IDs, images and source pages", a
   assert.match(item.coverImage, /90d1cec2d8254ed6ce5a77d7f7966c12\.webp$/);
   assert.equal(item.sourcePage, pages.category);
   assert.equal(category.pagination.pageCount, 181);
+  assert.equal(category.pagination.nextUrl, "/type/1-2.html");
 });
 
 test("AGE week fixture assigns weekday from its real data-key sections", async () => {

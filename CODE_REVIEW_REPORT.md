@@ -53,3 +53,24 @@ node --check scripts/create-sites-worker.mjs
 - 按真实周更页的实际星期覆盖范围修正回归断言。
 - 按真实详情页四线路合计 61 个分集链接修正资源数量断言。
 - 修复 Worker 打包时 AGE 解析器与 yuc 解析器函数名冲突，并移除多余模板字面量转义；生成的 `dist/server/index.js` 已通过 Node 语法检查。
+
+## V3 第一阶段恢复与 AGE 第二阶段合并
+
+本次以当前工作区可追溯的 V3/AGE 源码为基础恢复了第一阶段能力边界：
+
+- `src/dataQuality.ts`：资源状态、热度指标、字段来源、占位过滤、字段覆盖率和安全合并。
+- `src/dataRegistry.tsx`：YUC/AGE 统一注册表；AGE 条目使用 `age-` 命名空间，避免与 YUC ID 串位。
+- `ResourceCenterPage`、`WritingStudioPage`、`DataAuditPage` 及 `/resources`、`/writing`、`/audit` 路由。
+- `tests/data-quality.test.mjs` 和 AGE 分页断言；已有 YUC 详情解析与 AGE 六类真实 fixtures 未删除。
+
+AGE Worker 现在先读取日漫分类第一页获取分页总数，再以 8 页批次采集 `/type/1.html` 至 `/type/1-181.html`，并额外采集首页、周更表和新番表。详情与播放通过独立只读接口采集；播放媒体只保留 `unverified` 审查状态并移除可用 URL，不进入前台播放功能。
+
+### 真实覆盖统计
+
+2026-07-23 通过真实网络采集验证：181/181 页，原始卡片 6494 条，按 AGE ID 去重后 6479 条；标题 6479/6479，封面 6479/6479，来源页 181/181。首页、周更、新番、详情、播放 fixtures 均有覆盖；当前统一合并冲突为 0，AGE 使用独立命名空间，不覆盖 YUC 有效记录。
+
+### 未完成项
+
+- 当前 AGE 采集为请求时实时抓取，未增加持久化数据库；单次源站不可用时接口返回 502，前端继续保留旧 YUC 数据。
+- 热度指标类型已恢复，但 AGE 当前页面没有可验证热度字段，因此不填入热度数值。
+- 播放页仅做来源、身份和线路审查，不提供播放、下载或盗版资源。

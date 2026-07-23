@@ -13,12 +13,17 @@ import { SeasonDetailPage } from './pages/SeasonDetailPage';
 import { SeasonsPage } from './pages/SeasonsPage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
 import { WorksPage } from './pages/WorksPage';
+import { ResourceCenterPage } from './pages/ResourceCenterPage';
+import { WritingStudioPage } from './pages/WritingStudioPage';
+import { DataAuditPage } from './pages/DataAuditPage';
 import { AnimeDataProvider } from './liveAnime';
 import { LocalLibraryProvider } from './localLibrary';
+import { DataRegistryProvider } from './dataRegistry';
 
 export default function App() {
   return (
     <AnimeDataProvider>
+      <DataRegistryProvider>
       <LocalLibraryProvider>
         <Layout>
         <Routes>
@@ -33,11 +38,15 @@ export default function App() {
           <Route path="/ai-lab" element={<AILabPage />} />
           <Route path="/works" element={<WorksPage />} />
           <Route path="/works/:id" element={<WorkDetailPage />} />
+          <Route path="/resources" element={<ResourceCenterPage />} />
+          <Route path="/writing" element={<WritingStudioPage />} />
+          <Route path="/audit" element={<DataAuditPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Layout>
       </LocalLibraryProvider>
+      </DataRegistryProvider>
     </AnimeDataProvider>
   );
 }
