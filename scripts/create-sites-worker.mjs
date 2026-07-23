@@ -62,9 +62,7 @@ const assets = await collectAssets(distRoot);
 
 const ageParserSource = (await readFile(join(projectRoot, "scripts", "age-parser.mjs"), "utf8"))
   .replace(/export function/g, "function")
-  .replace(/export const ageParser[\s\S]*?;\s*$/m, "")
-  .replaceAll("`", "\\`")
-  .replaceAll("${", "\\${");
+  .replace(/export const ageParser[\s\S]*?;\s*$/m, "");
 
 const yucRuntimeSource = String.raw`
 const YUC_PERIOD = "${yucPeriod}";
@@ -262,7 +260,10 @@ async function yucAnimeResponse(request) {
 }
 `;
 
-const ageRuntimeSource = String.raw`${ageParserSource}
+const ageRuntimeSource = String.raw`const AGE_PARSER = (() => {
+${ageParserSource}
+  return { parseAgeCategory };
+})();
 
 const AGE_SOURCE_URL = "https://cn.agekkkk.com/type/1.html";
 
@@ -281,7 +282,7 @@ async function ageAnimeResponse(request) {
     });
   }
   const html = await response.text();
-  const parsed = parseAgeCategory(html, AGE_SOURCE_URL);
+  const parsed = AGE_PARSER.parseAgeCategory(html, AGE_SOURCE_URL);
   if (!parsed.items.length) {
     return new Response(JSON.stringify({ error: "AGE parser returned no verified items", sourceUrl: AGE_SOURCE_URL }), {
       status: 502,

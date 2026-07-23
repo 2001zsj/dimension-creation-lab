@@ -52,3 +52,4 @@ node --check scripts/create-sites-worker.mjs
 - 按真实页面结构处理 AGE 新番表的 `topicdetail-*` 条目。
 - 按真实周更页的实际星期覆盖范围修正回归断言。
 - 按真实详情页四线路合计 61 个分集链接修正资源数量断言。
+- 修复 Worker 打包时 AGE 解析器与 yuc 解析器函数名冲突，并移除多余模板字面量转义；生成的 `dist/server/index.js` 已通过 Node 语法检查。
