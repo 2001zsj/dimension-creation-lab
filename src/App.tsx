@@ -14,11 +14,13 @@ import { SeasonsPage } from './pages/SeasonsPage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
 import { WorksPage } from './pages/WorksPage';
 import { AnimeDataProvider } from './liveAnime';
+import { LocalLibraryProvider } from './localLibrary';
 
 export default function App() {
   return (
     <AnimeDataProvider>
-      <Layout>
+      <LocalLibraryProvider>
+        <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/radar" element={<RadarPage />} />
@@ -34,7 +36,8 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </Layout>
+        </Layout>
+      </LocalLibraryProvider>
     </AnimeDataProvider>
   );
 }

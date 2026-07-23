@@ -1,8 +1,9 @@
-import { Menu, Moon, Search, Sparkles, Sun, X } from 'lucide-react';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { Bookmark, Command, Menu, Moon, Search, Sparkles, Sun, X } from 'lucide-react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type KeyboardEvent, type ReactNode } from 'react';
 import { Link, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { aiWorks, articles, prompts } from '../data';
 import { useAnimeList } from '../liveAnime';
+import { useLocalLibrary } from '../localLibrary';
 import { Badge } from './Badge';
 
 interface LayoutProps {
@@ -15,12 +16,22 @@ interface SearchItem {
   description: string;
   type: '动漫' | '文章' | '作品' | '提示词';
   path: string;
+  favorite?: boolean;
 }
+
+type SearchCategory = '全部' | SearchItem['type'];
+
+const searchCategories: SearchCategory[] = ['全部', '动漫', '文章', '作品', '提示词'];
 
 const navItems = [
   ['首页', '/'], ['新番雷达', '/radar'], ['放送日历', '/calendar'], ['季度档案', '/seasons'],
   ['动漫档案', '/anime'], ['文章', '/articles'], ['AI 实验室', '/ai-lab'], ['作品集', '/works'], ['关于', '/about'],
 ] as const;
+
+function matchesSearch(fields: string[], query: string): boolean {
+  const haystack = fields.join(' ').toLowerCase();
+  return query.trim().toLowerCase().split(/\s+/).filter(Boolean).every((token) => haystack.includes(token));
+}
 
 function RouteScrollManager() {
   const location = useLocation();
@@ -49,7 +60,9 @@ function RouteScrollManager() {
 
 function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const animeList = useAnimeList();
+  const { records } = useLocalLibrary();
   const [query, setQuery] = useState('');
+  const [category, setCategory] = useState<SearchCategory>('全部');
   const [active, setActive] = useState(0);
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -57,35 +70,60 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
   const navigate = useNavigate();
 
   const results = useMemo<SearchItem[]>(() => {
-    const keyword = query.trim().toLowerCase();
-    if (!keyword) return [];
+    if (!query.trim()) return [];
     const items: SearchItem[] = [];
     animeList.forEach((anime) => {
-      if ([anime.title, anime.originalTitle, anime.englishTitle ?? '', ...anime.genres].join(' ').toLowerCase().includes(keyword)) {
-        items.push({ key: `anime-${anime.id}`, title: anime.title, description: `${anime.year} · ${anime.genres.join(' / ')}`, type: '动漫', path: `/anime/${anime.id}` });
+      const fields = [
+        anime.title,
+        anime.originalTitle,
+        anime.englishTitle ?? '',
+        ...anime.genres,
+        ...anime.staff.studio,
+        anime.staff.director ?? '',
+        anime.staff.seriesComposition ?? '',
+        anime.staff.characterDesign ?? '',
+        anime.staff.music ?? '',
+        ...anime.staff.cast,
+        ...(anime.broadcast?.platforms ?? []),
+        anime.sourceNote,
+        ...anime.externalLinks.map((link) => link.label),
+      ];
+      if (matchesSearch(fields, query)) {
+        const context = [anime.year, anime.staff.studio[0], anime.broadcast?.platforms[0]].filter(Boolean).join(' · ');
+        items.push({
+          key: `anime-${anime.id}`,
+          title: anime.title,
+          description: context || anime.genres.join(' / '),
+          type: '动漫',
+          path: `/anime/${anime.id}`,
+          favorite: records[anime.id]?.favorite,
+        });
       }
     });
     articles.forEach((article) => {
-      if ([article.title, article.summary, ...article.tags].join(' ').toLowerCase().includes(keyword)) {
+      if (matchesSearch([article.title, article.summary, article.category, ...article.tags, ...article.sections.flatMap((section) => [section.heading, section.body])], query)) {
         items.push({ key: `article-${article.id}`, title: article.title, description: article.category, type: '文章', path: `/articles#${article.id}` });
       }
     });
     aiWorks.forEach((work) => {
-      if ([work.title, work.type, work.style].join(' ').toLowerCase().includes(keyword)) {
+      if (matchesSearch([work.title, work.type, work.style, work.tool, work.background, work.initialPrompt, work.finalPrompt], query)) {
         items.push({ key: `work-${work.id}`, title: work.title, description: `${work.type} · ${work.style}`, type: '作品', path: `/works/${work.id}` });
       }
     });
     prompts.forEach((prompt) => {
-      if ([prompt.name, prompt.scene, prompt.style].join(' ').toLowerCase().includes(keyword)) {
+      if (matchesSearch([prompt.name, prompt.scene, prompt.style, prompt.prompt, prompt.negative, prompt.params], query)) {
         items.push({ key: `prompt-${prompt.id}`, title: prompt.name, description: prompt.scene, type: '提示词', path: `/ai-lab#prompt-${prompt.id}` });
       }
     });
-    return items.slice(0, 12);
-  }, [animeList, query]);
+    return items.filter((item) => category === '全部' || item.type === category).slice(0, 18);
+  }, [animeList, category, query, records]);
 
-  useEffect(() => setActive(0), [query]);
+  useEffect(() => setActive(0), [category, query]);
   useEffect(() => {
-    if (!open) setQuery('');
+    if (!open) {
+      setQuery('');
+      setCategory('全部');
+    }
   }, [open]);
 
   useEffect(() => {
@@ -156,17 +194,23 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
           <input
             ref={inputRef}
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => setQuery(event.target.value)}
             onKeyDown={handleInputKey}
-            placeholder="输入动漫、文章、作品或提示词"
+            placeholder="标题、制作公司、声优、平台或题材"
             aria-label="搜索动漫、文章、作品或提示词"
             aria-controls="search-results"
             aria-activedescendant={results[active] ? `result-${results[active].key}` : undefined}
           />
+          <kbd>ESC</kbd>
+        </div>
+        <div className="search-category-row" aria-label="搜索类别">
+          {searchCategories.map((item) => (
+            <button key={item} type="button" aria-pressed={category === item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)}>{item}</button>
+          ))}
         </div>
         <div id="search-results" className="search-results" role="listbox" aria-label="搜索结果">
-          {!query && <p className="empty-hint">可搜索标题、题材、风格和提示词名称。</p>}
-          {query && results.length === 0 && <p className="empty-hint">没有找到匹配内容，请尝试更换关键词。</p>}
+          {!query && <div className="search-empty-state"><Command size={22} /><p>支持多关键词检索，例如“动画工房 恋爱”或“港台 周日”。</p><small>快捷键：Ctrl/⌘ + K，或在非输入状态下按 /</small></div>}
+          {query && results.length === 0 && <p className="empty-hint">没有找到匹配内容，请尝试减少关键词或切换类别。</p>}
           {results.map((item, index) => (
             <button
               id={`result-${item.key}`}
@@ -178,7 +222,7 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
               onClick={() => select(item)}
             >
               <Badge tone={item.type === '动漫' ? 'purple' : item.type === '文章' ? 'cyan' : item.type === '作品' ? 'pink' : 'green'}>{item.type}</Badge>
-              <span><strong>{item.title}</strong><small>{item.description}</small></span>
+              <span><strong>{item.title}{item.favorite && <Bookmark className="search-favorite" size={14} aria-label="已收藏" />}</strong><small>{item.description}</small></span>
             </button>
           ))}
         </div>
@@ -203,6 +247,20 @@ export function Layout({ children }: LayoutProps) {
 
   useEffect(() => setMenuOpen(false), [location.pathname, location.search, location.hash]);
 
+  useEffect(() => {
+    const handleShortcut = (event: globalThis.KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isTyping = target?.matches('input, textarea, select, [contenteditable="true"]');
+      const commandSearch = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
+      const slashSearch = event.key === '/' && !isTyping && !event.ctrlKey && !event.metaKey && !event.altKey;
+      if (!commandSearch && !slashSearch) return;
+      event.preventDefault();
+      setSearchOpen(true);
+    };
+    document.addEventListener('keydown', handleShortcut);
+    return () => document.removeEventListener('keydown', handleShortcut);
+  }, []);
+
   return (
     <div className="app-shell">
       <RouteScrollManager />
@@ -214,11 +272,11 @@ export function Layout({ children }: LayoutProps) {
           </Link>
           <nav className="desktop-nav" aria-label="主要导航">
             {navItems.map(([label, path]) => (
-              <NavLink key={path} to={path} end={path === '/'} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{label}</NavLink>
+              <NavLink key={path} to={path} end={path === '/'} className={({ isActive }: { isActive: boolean }) => isActive ? 'nav-link active' : 'nav-link'}>{label}</NavLink>
             ))}
           </nav>
           <div className="header-actions">
-            <button className="icon-button" onClick={() => setSearchOpen(true)} aria-label="打开全局搜索"><Search size={19} /></button>
+            <button className="icon-button search-trigger" onClick={() => setSearchOpen(true)} aria-label="打开全局搜索" title="搜索（Ctrl/⌘ + K）"><Search size={19} /><span>⌘K</span></button>
             <button className="icon-button" onClick={() => setDark((value) => !value)} aria-label={dark ? '切换到浅色模式' : '切换到深色模式'}>{dark ? <Sun size={19} /> : <Moon size={19} />}</button>
             <button
               className="icon-button mobile-only"
@@ -233,7 +291,7 @@ export function Layout({ children }: LayoutProps) {
         </div>
         {menuOpen && (
           <nav id="mobile-navigation" className="mobile-nav" aria-label="移动端导航">
-            {navItems.map(([label, path]) => <NavLink key={path} to={path} end={path === '/'} className={({ isActive }) => isActive ? 'active' : undefined}>{label}</NavLink>)}
+            {navItems.map(([label, path]) => <NavLink key={path} to={path} end={path === '/'} className={({ isActive }: { isActive: boolean }) => isActive ? 'active' : undefined}>{label}</NavLink>)}
           </nav>
         )}
       </header>
@@ -243,7 +301,7 @@ export function Layout({ children }: LayoutProps) {
           <strong>次元生成局</strong>
           <p>动漫公开资料库、新番观测、放送日历与 AI 创作实验室。</p>
         </div>
-        <p>本站整理公开资料来源，不提供动画播放、下载或未经授权的资源。</p>
+        <p>本站整理公开资料来源，不提供动画播放、下载或未经授权的资源。本地收藏和追番状态仅保存在当前浏览器。</p>
       </footer>
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>

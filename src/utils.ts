@@ -186,3 +186,91 @@ export const safePercent = (progress: number, total?: number): number => {
   if (!total || total <= 0) return 0;
   return Math.min(100, Math.max(0, (progress / total) * 100));
 };
+
+export function nextBroadcastDate(broadcast: BroadcastInfo, from = new Date()): Date | undefined {
+  if (broadcast.weekday === 'streaming') return undefined;
+  const parsed = parseBroadcastTime(broadcast.time);
+  if (!parsed) return undefined;
+
+  const targetDay = (weekdayOrder.indexOf(broadcast.weekday) + parsed.dayOffset) % 7;
+  const jstNow = new Date(from.getTime() + 9 * 60 * 60 * 1000);
+  const currentDay = (jstNow.getUTCDay() + 6) % 7;
+  let daysAhead = (targetDay - currentDay + 7) % 7;
+  let next = new Date(Date.UTC(
+    jstNow.getUTCFullYear(),
+    jstNow.getUTCMonth(),
+    jstNow.getUTCDate() + daysAhead,
+    parsed.hour - 9,
+    parsed.minute,
+  ));
+  if (next.getTime() <= from.getTime()) {
+    daysAhead += 7;
+    next = new Date(Date.UTC(
+      jstNow.getUTCFullYear(),
+      jstNow.getUTCMonth(),
+      jstNow.getUTCDate() + daysAhead,
+      parsed.hour - 9,
+      parsed.minute,
+    ));
+  }
+  return next;
+}
+
+export function formatCountdown(target: Date, from = new Date()): string {
+  const minutes = Math.max(0, Math.ceil((target.getTime() - from.getTime()) / 60000));
+  const days = Math.floor(minutes / 1440);
+  const hours = Math.floor((minutes % 1440) / 60);
+  const remainingMinutes = minutes % 60;
+  if (days > 0) return `${days} 天 ${hours} 小时`;
+  if (hours > 0) return `${hours} 小时 ${remainingMinutes} 分钟`;
+  return `${remainingMinutes} 分钟`;
+}
+
+function escapeIcsText(value: string): string {
+  return value.replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+}
+
+function toIcsUtc(date: Date): string {
+  return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+}
+
+export function buildWeeklyBroadcastIcs(animeItems: Anime[], generatedAt = new Date()): string {
+  const events = animeItems.flatMap((anime) => {
+    if (!anime.broadcast) return [];
+    const start = nextBroadcastDate(anime.broadcast, generatedAt);
+    if (!start) return [];
+    const end = new Date(start.getTime() + 30 * 60 * 1000);
+    const url = anime.externalLinks.find((link) => link.type === 'official')?.url ?? anime.externalLinks[0]?.url ?? '';
+    const description = [
+      formatSeason(anime.year, anime.season),
+      anime.broadcast.platforms.join(' / '),
+      '档期与平台请以官方公告为准。',
+    ].filter(Boolean).join(' · ');
+    return [
+      'BEGIN:VEVENT',
+      `UID:${escapeIcsText(`${anime.id}@dimension-lab`)}`,
+      `DTSTAMP:${toIcsUtc(generatedAt)}`,
+      `DTSTART:${toIcsUtc(start)}`,
+      `DTEND:${toIcsUtc(end)}`,
+      'RRULE:FREQ=WEEKLY',
+      `SUMMARY:${escapeIcsText(anime.title)}`,
+      `DESCRIPTION:${escapeIcsText(description)}`,
+      url ? `URL:${url}` : '',
+      'END:VEVENT',
+    ].filter(Boolean).join('\r\n');
+  });
+
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Dimension Creation Lab//Anime Calendar//ZH-CN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', ...events, 'END:VCALENDAR', ''].join('\r\n');
+}
+
+export function downloadTextFile(filename: string, content: string, type = 'text/plain;charset=utf-8'): void {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}

@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarClock, Clock3, Database, RadioTower, Sparkles, Tv2 } from 'lucide-react';
+import { ArrowRight, Bookmark, CalendarClock, Clock3, Database, Eye, RadioTower, Sparkles, Tv2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aiWorks, articles } from '../data';
 import { AnimeCard } from '../components/AnimeCard';
@@ -6,11 +6,13 @@ import { Cover } from '../components/Cover';
 import { SectionHeader } from '../components/SectionHeader';
 import { StatCard } from '../components/StatCard';
 import { useAnimeList, useAnimeMeta } from '../liveAnime';
+import { useLocalLibrary } from '../localLibrary';
 import { currentWeekday, formatBroadcastEpisode, formatSeason, getActiveSeason, isPersonalRecord, seasonMonths, weekdayLabels } from '../utils';
 
 export function HomePage() {
   const animeList = useAnimeList();
   const animeMeta = useAnimeMeta();
+  const { records } = useLocalLibrary();
   const activeSeason = getActiveSeason(animeList);
   const todayKey = currentWeekday('Asia/Tokyo');
   const currentSeason = animeList.filter((anime) => anime.year === activeSeason.year && anime.season === activeSeason.season);
@@ -27,6 +29,9 @@ export function HomePage() {
   const syncLabel = animeMeta.status === 'live' ? '实时资料已更新' : animeMeta.status === 'loading' ? '正在连接资料源' : '当前显示本地缓存';
   const seasonTitle = formatSeason(activeSeason.year, activeSeason.season);
   const sourcePeriod = `${activeSeason.year} 年 ${seasonMonths[activeSeason.season]}`;
+  const localRecords = Object.values(records);
+  const favoriteCount = localRecords.filter((record) => record.favorite).length;
+  const watchingCount = localRecords.filter((record) => record.status === 'watching').length;
 
   return (
     <>
@@ -59,6 +64,12 @@ export function HomePage() {
         <StatCard label="雷达目标" value={upcomingTargets.length} note="已公开、已定档或延期" icon={RadioTower} />
       </section>
 
+      <section className="container local-home-panel">
+        <div><span className="eyebrow">MY LOCAL LIBRARY</span><h2>我的本地追番</h2><p>收藏和追番状态只保存在当前浏览器，不会改写公开资料。</p></div>
+        <div className="local-home-stats"><span><Bookmark size={18} /><strong>{favoriteCount}</strong><small>已收藏</small></span><span><Eye size={18} /><strong>{watchingCount}</strong><small>在追</small></span></div>
+        <Link className="button secondary" to="/anime">管理收藏与状态 <ArrowRight size={16} /></Link>
+      </section>
+
       <section className="container section-space">
         <SectionHeader eyebrow="ON AIR TODAY" title="今日放送" description="按日本星期与公开表记时间快速查看。" action={<Link className="text-link" to="/calendar">完整放送表 <ArrowRight size={15} /></Link>} />
         {todayAnime.length > 0 ? (
@@ -68,7 +79,7 @@ export function HomePage() {
                 <span className="today-time">{anime.broadcast?.time ?? '未定'}</span>
                 <Cover seed={anime.coverSeed} imageUrl={anime.coverImage} className="today-cover" label={`${anime.title}封面`} />
                 <span className="today-copy"><strong>{anime.title}</strong><small>{formatBroadcastEpisode(anime)} · {anime.broadcast?.platforms.join(' / ')}</small></span>
-                <span className="status-dot"><span />放送中</span>
+                <span className={records[anime.id]?.favorite ? 'status-dot favorite' : 'status-dot'}><span />{records[anime.id]?.favorite ? '已收藏' : '放送中'}</span>
                 <ArrowRight size={18} />
               </Link>
             ))}
