@@ -198,9 +198,6 @@ async function snapshotPage(categoryKey, requestedPage) {
     try { return new URL(item.sourcePage).pathname === expectedPath; } catch { return false; }
   });
   if (!items.length) return undefined;
-  const ids = new Set(items.map((item) => item.id));
-  const details = Object.fromEntries(Object.entries(snapshot.details ?? {}).filter(([id]) => ids.has(id)));
-  const play = Object.fromEntries(Object.entries(snapshot.play ?? {}).filter(([, entry]) => ids.has(entry?.animeId)));
   return {
     kind: "registry-page",
     sourceSite: "cn.agekkkk.com",
@@ -212,8 +209,6 @@ async function snapshotPage(categoryKey, requestedPage) {
     page: requestedPage,
     pageCount: categoryState.pageCount,
     items,
-    details,
-    play,
     siteResources: snapshot.siteResources ?? [],
     snapshot: true,
   };
@@ -339,6 +334,58 @@ function assetResponse(asset, method, cacheControl) {
   });
 }
 
+const COVER_IMAGE_HOSTS = new Set(["as.cfhls.top"]);
+
+async function imageProxyResponse(request) {
+  const requestUrl = new URL(request.url);
+  const rawUrl = requestUrl.searchParams.get("url");
+  if (!rawUrl) return new Response("Missing image URL", { status: 400 });
+
+  let sourceUrl;
+  try {
+    sourceUrl = new URL(rawUrl);
+  } catch {
+    return new Response("Invalid image URL", { status: 400 });
+  }
+  if (sourceUrl.protocol !== "https:" || !COVER_IMAGE_HOSTS.has(sourceUrl.hostname)) {
+    return new Response("Image host is not allowed", { status: 403 });
+  }
+  sourceUrl.pathname = "/" + sourceUrl.pathname.split("/").filter(Boolean).join("/");
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(sourceUrl.toString(), {
+      headers: {
+        "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "referer": "https://cn.agekkkk.com/",
+        "user-agent": "Mozilla/5.0 DimensionLabImageProxy/1.0",
+      },
+      signal: controller.signal,
+      cf: { cacheTtl: 604800, cacheEverything: true },
+    });
+    if (!response.ok) return new Response("Image upstream unavailable", { status: 502 });
+    const contentType = response.headers.get("content-type") ?? "";
+    if (!contentType.toLowerCase().startsWith("image/")) {
+      return new Response("Upstream did not return an image", { status: 415 });
+    }
+    const contentLength = Number(response.headers.get("content-length") ?? 0);
+    if (contentLength > 8 * 1024 * 1024) return new Response("Image is too large", { status: 413 });
+    return new Response(request.method === "HEAD" ? null : response.body, {
+      headers: {
+        "content-type": contentType,
+        "cache-control": "public, max-age=604800, stale-while-revalidate=2592000",
+        "cross-origin-resource-policy": "cross-origin",
+        "x-content-type-options": "nosniff",
+      },
+    });
+  } catch {
+    return new Response("Image proxy timeout", { status: 504 });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -371,6 +418,10 @@ export default {
       return agePlayResponse(request.url);
     }
 
+    if (url.pathname === "/api/image") {
+      return imageProxyResponse(request);
+    }
+
     const exactAsset = ASSETS[url.pathname];
     if (exactAsset) {
       const cacheControl = url.pathname === "/data/age-latest.json" ? "no-cache" : "public, max-age=31536000, immutable";
@@ -393,3 +444,4 @@ await copyFile(
   join(projectRoot, ".openai", "hosting.json"),
   hostingOutputPath,
 );
+

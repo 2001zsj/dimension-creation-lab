@@ -24,9 +24,13 @@ type SearchCategory = '全部' | SearchItem['type'];
 const searchCategories: SearchCategory[] = ['全部', '动漫', '文章', '作品', '提示词'];
 
 const navItems = [
-  ['首页', '/'], ['新番雷达', '/radar'], ['放送日历', '/calendar'], ['季度档案', '/seasons'],
-  ['资源中心', '/resources'], ['写作中心', '/writing'], ['数据审查', '/audit'],
-  ['动漫档案', '/anime'], ['文章', '/articles'], ['AI 实验室', '/ai-lab'], ['作品集', '/works'], ['关于', '/about'],
+  ['首页', '/'], ['新番雷达', '/radar'], ['放送日历', '/calendar'], ['动漫档案', '/anime'],
+  ['资源中心', '/resources'], ['AI 实验室', '/ai-lab'],
+] as const;
+
+const moreNavItems = [
+  ['季度档案', '/seasons'], ['写作中心', '/writing'], ['数据审查', '/audit'],
+  ['文章', '/articles'], ['作品集', '/works'], ['关于', '/about'],
 ] as const;
 
 function matchesSearch(fields: string[], query: string): boolean {
@@ -46,13 +50,22 @@ function RouteScrollManager() {
         document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({ block: 'start' });
         return;
       }
-      const saved = navigationType === 'POP' ? Number(sessionStorage.getItem(storageKey)) : 0;
+      let saved = 0;
+      try {
+        saved = navigationType === 'POP' ? Number(sessionStorage.getItem(storageKey)) : 0;
+      } catch {
+        saved = 0;
+      }
       window.scrollTo({ top: Number.isFinite(saved) ? saved : 0, left: 0, behavior: 'auto' });
     });
 
     return () => {
       window.cancelAnimationFrame(frame);
-      sessionStorage.setItem(storageKey, String(window.scrollY));
+      try {
+        sessionStorage.setItem(storageKey, String(window.scrollY));
+      } catch {
+        // Storage can be disabled in private browsing contexts.
+      }
     };
   }, [location.hash, location.pathname, location.search, navigationType]);
 
@@ -254,18 +267,30 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const [dark, setDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    try {
+      const saved = localStorage.getItem('theme');
+      return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const moreNavRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    try {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    } catch {
+      // Theme still works for this session when storage is unavailable.
+    }
   }, [dark]);
 
-  useEffect(() => setMenuOpen(false), [location.pathname, location.search, location.hash]);
+  useEffect(() => {
+    setMenuOpen(false);
+    if (moreNavRef.current) moreNavRef.current.open = false;
+  }, [location.pathname, location.search, location.hash]);
 
   useEffect(() => {
     const handleShortcut = (event: globalThis.KeyboardEvent) => {
@@ -294,6 +319,14 @@ export function Layout({ children }: LayoutProps) {
             {navItems.map(([label, path]) => (
               <NavLink key={path} to={path} end={path === '/'} className={({ isActive }: { isActive: boolean }) => isActive ? 'nav-link active' : 'nav-link'}>{label}</NavLink>
             ))}
+            <details ref={moreNavRef} className="nav-more">
+              <summary className={moreNavItems.some(([, path]) => location.pathname === path || location.pathname.startsWith(`${path}/`)) ? 'nav-link active' : 'nav-link'}>更多</summary>
+              <div className="nav-more-menu">
+                {moreNavItems.map(([label, path]) => (
+                  <NavLink key={path} to={path} className={({ isActive }: { isActive: boolean }) => isActive ? 'active' : undefined}>{label}</NavLink>
+                ))}
+              </div>
+            </details>
           </nav>
           <div className="header-actions">
             <button className="icon-button search-trigger" onClick={() => setSearchOpen(true)} aria-label="打开全局搜索" title="搜索（Ctrl/⌘ + K）"><Search size={19} /><span>⌘K</span></button>
@@ -311,7 +344,7 @@ export function Layout({ children }: LayoutProps) {
         </div>
         {menuOpen && (
           <nav id="mobile-navigation" className="mobile-nav" aria-label="移动端导航">
-            {navItems.map(([label, path]) => <NavLink key={path} to={path} end={path === '/'} className={({ isActive }: { isActive: boolean }) => isActive ? 'active' : undefined}>{label}</NavLink>)}
+            {[...navItems, ...moreNavItems].map(([label, path]) => <NavLink key={path} to={path} end={path === '/'} className={({ isActive }: { isActive: boolean }) => isActive ? 'active' : undefined}>{label}</NavLink>)}
           </nav>
         )}
       </header>
@@ -327,3 +360,4 @@ export function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+

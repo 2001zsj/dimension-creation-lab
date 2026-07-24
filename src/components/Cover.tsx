@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 
 interface CoverProps {
   seed: number;
@@ -15,29 +15,65 @@ const palettes = [
   ['#a18cd1', '#fbc2eb'], ['#f6d365', '#fda085'], ['#84fab0', '#8fd3f4'],
 ];
 
+function normalizeImageUrl(value?: string): string | undefined {
+  if (!value) return undefined;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return undefined;
+    url.pathname = url.pathname.replace(/\/{2,}/g, '/');
+    return url.toString();
+  } catch {
+    return undefined;
+  }
+}
+
 export function Cover({ seed, className = '', children, label, imageUrl }: CoverProps) {
-  const [imageFailed, setImageFailed] = useState(false);
+  const normalizedUrl = useMemo(() => normalizeImageUrl(imageUrl), [imageUrl]);
+  const candidates = useMemo(() => normalizedUrl
+    ? [`/api/image?url=${encodeURIComponent(normalizedUrl)}`, normalizedUrl]
+    : [], [normalizedUrl]);
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const [from, to] = palettes[Math.abs(seed) % palettes.length];
   const style: CSSProperties = {
     backgroundImage: `radial-gradient(circle at 78% 16%, rgba(255,255,255,.35), transparent 28%), linear-gradient(135deg, ${from}, ${to})`,
   };
 
-  useEffect(() => setImageFailed(false), [imageUrl]);
+  useEffect(() => {
+    setCandidateIndex(0);
+    setLoaded(false);
+  }, [normalizedUrl]);
+
+  const activeSource = candidates[candidateIndex];
+  const showImage = Boolean(activeSource);
 
   return (
-    <div className={`cover ${className}`} style={style} role={!imageUrl && label ? 'img' : undefined} aria-label={!imageUrl ? label : undefined}>
-      {imageUrl && !imageFailed ? (
+    <div
+      className={`cover ${showImage && !loaded ? 'cover-loading' : ''} ${className}`}
+      style={style}
+      role={!showImage && label ? 'img' : undefined}
+      aria-label={!showImage ? label : undefined}
+    >
+      {showImage ? (
         <img
           className="cover-image"
-          src={imageUrl}
+          src={activeSource}
           alt={label ?? ''}
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"
-          onError={() => setImageFailed(true)}
+          onLoad={() => setLoaded(true)}
+          onError={() => {
+            setLoaded(false);
+            setCandidateIndex((current) => current + 1);
+          }}
         />
-      ) : <span className="cover-grid" aria-hidden="true" />}
+      ) : (
+        <span className="cover-grid" aria-hidden="true" />
+      )}
+      {!loaded && <span className="cover-skeleton" aria-hidden="true" />}
       {children}
     </div>
   );
 }
+

@@ -273,5 +273,6 @@ export function downloadTextFile(filename: string, content: string, type = 'text
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
-  URL.revokeObjectURL(url);
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+
