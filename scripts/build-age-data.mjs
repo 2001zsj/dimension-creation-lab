@@ -82,6 +82,18 @@ for (const play of Object.values(snapshot.play ?? {})) {
   playsByAnime.set(play.animeId, entries);
 }
 
+const searchIndex = Object.values(snapshot.items ?? {})
+  .filter((item) => item?.id && item?.title)
+  .map((item) => ({
+    id: item.id,
+    title: item.title,
+    aliases: [item.originalTitle, item.englishTitle, ...(item.aliases ?? [])].filter(Boolean),
+    year: item.year,
+    category: item.category,
+    categoryLabel: item.categoryLabel,
+  }));
+await writeJson(join(outputRoot, 'search-index.json'), { schemaVersion: 1, updatedAt: snapshot.updatedAt, count: searchIndex.length, items: searchIndex });
+
 for (const [key, items] of categoryPages) {
   const [category, pageText] = key.split(':');
   const page = Number(pageText);
@@ -106,7 +118,9 @@ for (const [prefix, items] of itemShards) {
 }
 
 for (const [id, detail] of Object.entries(snapshot.details ?? {})) {
-  await writeJson(join(outputRoot, 'details', `${id}.json`), detail);
+  const { episodes = [], ...metadata } = detail ?? {};
+  await writeJson(join(outputRoot, 'details', `${id}.json`), { ...metadata, episodeCount: episodes.length, episodeShard: episodes.length > 0 });
+  if (episodes.length > 0) await writeJson(join(outputRoot, 'episodes', `${id}.json`), { id, episodes });
 }
 
 for (const [id, plays] of playsByAnime) {

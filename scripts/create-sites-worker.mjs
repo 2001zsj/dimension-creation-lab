@@ -17,6 +17,9 @@ const yucMonth = Number(yucPeriod.slice(4, 6));
 const yucSeason = yucMonth <= 3 ? "winter" : yucMonth <= 6 ? "spring" : yucMonth <= 9 ? "summer" : "autumn";
 const yucSeasonLabel = { winter: "冬季", spring: "春季", summer: "夏季", autumn: "秋季" }[yucSeason];
 
+void yucYear;
+void yucSeasonLabel;
+
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -334,44 +337,84 @@ function assetResponse(asset, method, cacheControl) {
   });
 }
 
-const COVER_IMAGE_HOSTS = new Set(["as.cfhls.top"]);
+const COVER_IMAGE_REFERERS = new Map([
+  ["as.cfhls.top", "https://cn.agekkkk.com/"],
+  ["i0.hdslb.com", "https://yuc.wiki/"],
+]);
+const IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/avif", "image/gif"]);
+const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
+
+function validateImageUrl(value) {
+  let url;
+  try { url = new URL(value); } catch { return undefined; }
+  if (url.protocol !== "https:" || !COVER_IMAGE_REFERERS.has(url.hostname)) return undefined;
+  url.pathname = "/" + url.pathname.split("/").filter(Boolean).join("/");
+  return url;
+}
+
+async function fetchImageFollowingSafeRedirects(initialUrl, signal) {
+  let current = initialUrl;
+  for (let redirect = 0; redirect <= 3; redirect += 1) {
+    const response = await fetch(current.toString(), {
+      redirect: "manual",
+      headers: {
+        "accept": "image/avif,image/webp,image/jpeg,image/png,image/gif,*/*;q=0.5",
+        "referer": COVER_IMAGE_REFERERS.get(current.hostname),
+        "user-agent": "Mozilla/5.0 DimensionLabImageProxy/2.0",
+      },
+      signal,
+      cf: { cacheTtl: 604800, cacheEverything: true },
+    });
+    if (![301, 302, 303, 307, 308].includes(response.status)) return response;
+    const location = response.headers.get("location");
+    const next = location ? validateImageUrl(new URL(location, current).toString()) : undefined;
+    if (!next) throw new Error("Image redirect target is not allowed");
+    current = next;
+  }
+  throw new Error("Too many image redirects");
+}
+
+async function readImageBody(response) {
+  if (!response.body) return new Uint8Array();
+  const reader = response.body.getReader();
+  const chunks = []; let total = 0;
+  try {
+    while (true) {
+      const part = await reader.read();
+      if (part.done) break;
+      total += part.value.byteLength;
+      if (total > MAX_IMAGE_BYTES) { await reader.cancel(); throw new Error("Image is too large"); }
+      chunks.push(part.value);
+    }
+  } finally { reader.releaseLock(); }
+  const body = new Uint8Array(total); let offset = 0;
+  for (const chunk of chunks) { body.set(chunk, offset); offset += chunk.byteLength; }
+  return body;
+}
 
 async function imageProxyResponse(request) {
   const requestUrl = new URL(request.url);
   const rawUrl = requestUrl.searchParams.get("url");
   if (!rawUrl) return new Response("Missing image URL", { status: 400 });
 
-  let sourceUrl;
-  try {
-    sourceUrl = new URL(rawUrl);
-  } catch {
-    return new Response("Invalid image URL", { status: 400 });
-  }
-  if (sourceUrl.protocol !== "https:" || !COVER_IMAGE_HOSTS.has(sourceUrl.hostname)) {
+  const sourceUrl = validateImageUrl(rawUrl);
+  if (!sourceUrl) {
     return new Response("Image host is not allowed", { status: 403 });
   }
-  sourceUrl.pathname = "/" + sourceUrl.pathname.split("/").filter(Boolean).join("/");
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
   try {
-    const response = await fetch(sourceUrl.toString(), {
-      headers: {
-        "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-        "referer": "https://cn.agekkkk.com/",
-        "user-agent": "Mozilla/5.0 DimensionLabImageProxy/1.0",
-      },
-      signal: controller.signal,
-      cf: { cacheTtl: 604800, cacheEverything: true },
-    });
+    const response = await fetchImageFollowingSafeRedirects(sourceUrl, controller.signal);
     if (!response.ok) return new Response("Image upstream unavailable", { status: 502 });
-    const contentType = response.headers.get("content-type") ?? "";
-    if (!contentType.toLowerCase().startsWith("image/")) {
+    const contentType = (response.headers.get("content-type") ?? "").split(";")[0].toLowerCase();
+    if (!IMAGE_TYPES.has(contentType)) {
       return new Response("Upstream did not return an image", { status: 415 });
     }
     const contentLength = Number(response.headers.get("content-length") ?? 0);
-    if (contentLength > 8 * 1024 * 1024) return new Response("Image is too large", { status: 413 });
-    return new Response(request.method === "HEAD" ? null : response.body, {
+    if (contentLength > MAX_IMAGE_BYTES) return new Response("Image is too large", { status: 413 });
+    const body = request.method === "HEAD" ? null : await readImageBody(response);
+    return new Response(body, {
       headers: {
         "content-type": contentType,
         "cache-control": "public, max-age=604800, stale-while-revalidate=2592000",
@@ -379,7 +422,9 @@ async function imageProxyResponse(request) {
         "x-content-type-options": "nosniff",
       },
     });
-  } catch {
+  } catch (error) {
+    if (error instanceof Error && error.message === "Image is too large") return new Response("Image is too large", { status: 413 });
+    if (error instanceof Error && error.message.includes("redirect target")) return new Response("Image redirect target is not allowed", { status: 403 });
     return new Response("Image proxy timeout", { status: 504 });
   } finally {
     clearTimeout(timeout);
@@ -424,7 +469,7 @@ export default {
 
     const exactAsset = ASSETS[url.pathname];
     if (exactAsset) {
-      const cacheControl = url.pathname === "/data/age-latest.json" ? "no-cache" : "public, max-age=31536000, immutable";
+      const cacheControl = url.pathname.startsWith("/data/") ? "no-cache" : "public, max-age=31536000, immutable";
       return assetResponse(exactAsset, request.method, cacheControl);
     }
 

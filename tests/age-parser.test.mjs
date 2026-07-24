@@ -44,7 +44,8 @@ test("AGE detail fixture keeps works, channels and episode routes together", asy
   assert.equal(result.language, "日语");
   assert.equal(result.director, "见里朝希");
   assert.equal(result.channels.length, 4);
-  assert.equal(result.episodes.length, 61);
+  assert.equal(result.episodes.length, 60);
+  assert.equal(new Set(result.episodes.map((entry) => entry.url)).size, result.episodes.length);
   assert.ok(result.episodes.every((entry) => entry.url.includes(`/anime/${result.id}/play/`)));
 });
 
@@ -85,4 +86,11 @@ test("AGE play parser does not crash on malformed percent encoding", () => {
   assert.equal(result.animeId, "38241bf798cf918917082c8e");
   assert.equal(result.resources.length, 1);
   assert.match(result.resources[0].url, /bad%zz$/);
+});
+
+test("AGE episode parsing prefers a numbered entry when an immediate-play duplicate URL exists", () => {
+  const html = `<a href="/anime/work123/play/1/1.html">立即播放</a><a href="/anime/work123/play/1/1.html">第01集</a>`;
+  const result = ageParser.parseAgeDetail(`<title>测试 - 4K动漫</title>${html}`, "https://cn.agekkkk.com/anime/work123.html");
+  assert.equal(result.episodes.length, 1);
+  assert.equal(result.episodes[0].episode, "第01集");
 });

@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { animeList as fallbackAnimeList } from './data';
 import type { Anime, ExternalLink } from './types';
-import { clearAgeStaticCache, fetchAgeManifest, fetchStaticAgeDetail, fetchStaticAgeItem, fetchStaticAgePage, fetchStaticAgePlay } from './ageStaticData';
+import { clearAgeStaticCache, fetchAgeManifest, fetchStaticAgeDetail, fetchStaticAgeItem, fetchStaticAgePage, fetchStaticAgePlay, fetchStaticAgeSearch } from './ageStaticData';
 import {
   auditResourceBindings,
   cleanOptional,
@@ -94,6 +94,7 @@ export interface AgeSiteResource {
   sourcePage: string;
   capturedAt: string;
 }
+export interface AgeSearchIndexItem { id: string; title: string; aliases?: string[]; year?: number; category?: AgeCategoryKey; categoryLabel?: string; }
 
 interface RegistryState {
   items: RegistryItem[];
@@ -105,7 +106,8 @@ interface RegistryState {
   updatedAt?: string;
   sourceUrl: string;
   conflicts: string[];
-  status: 'loading' | 'live' | 'fallback';
+  ageSearchIndex: AgeSearchIndexItem[];
+  status: 'loading' | 'live-api' | 'static-snapshot' | 'offline-fallback' | 'error';
   loadingAgePage?: number;
   loadingAgeCategory?: AgeCategoryKey;
   loadAgePage: (page: number) => Promise<void>;
@@ -113,6 +115,7 @@ interface RegistryState {
   loadAgeItem: (sourceId: string) => Promise<RegistryItem | undefined>;
   loadAgeDetail: (sourceId: string) => Promise<AgeDetail | undefined>;
   loadAgePlay: (sourceUrl: string) => Promise<AgePlayResult | undefined>;
+  loadAgeSearchIndex: () => Promise<AgeSearchIndexItem[]>;
   refresh: () => Promise<void>;
 }
 
@@ -494,12 +497,14 @@ const RegistryContext = createContext<RegistryState>({
   siteResources: [],
   sourceUrl: YUC_URL,
   conflicts: [],
+  ageSearchIndex: [],
   status: 'loading',
   loadAgePage: async () => undefined,
   loadAgeCategoryPage: async () => undefined,
   loadAgeItem: noopAsync,
   loadAgeDetail: noopAsync,
   loadAgePlay: noopAsync,
+  loadAgeSearchIndex: async () => [],
   refresh: async () => undefined,
 });
 
@@ -526,7 +531,8 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
   const siteResourcesRef = useRef(new Map<string, AgeSiteResource>());
   const ageResourcesRef = useRef(new Map<string, ResourceRecord[]>());
   const ageDetailsRef = useRef(new Map<string, AgeDetail>());
-  const [state, setState] = useState<Omit<RegistryState, 'loadAgePage' | 'loadAgeCategoryPage' | 'loadAgeItem' | 'loadAgeDetail' | 'loadAgePlay' | 'refresh'>>({
+  const ageSearchIndexRef = useRef<AgeSearchIndexItem[]>([]);
+  const [state, setState] = useState<Omit<RegistryState, 'loadAgePage' | 'loadAgeCategoryPage' | 'loadAgeItem' | 'loadAgeDetail' | 'loadAgePlay' | 'loadAgeSearchIndex' | 'refresh'>>({
     items: fallback,
     ageCount: 0,
     agePages: 0,
@@ -535,6 +541,7 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
     siteResources: [],
     sourceUrl: YUC_URL,
     conflicts: [],
+    ageSearchIndex: [],
     status: 'loading',
   });
 
@@ -680,19 +687,21 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
     const normalizedPage = Math.max(1, Math.floor(page));
     const loadedPages = loadedCategoryPagesRef.current.get(category) ?? new Set<number>();
     if (loadedPages.has(normalizedPage)) return;
-    setState((current) => ({ ...current, loadingAgePage: normalizedPage, loadingAgeCategory: category }));
+    setState((current) => ({ ...current, loadingAgePage: normalizedPage, loadingAgeCategory: category, status: 'loading' }));
     const { ok, payload } = await fetchJson(`/api/age/current?category=${encodeURIComponent(category)}&page=${normalizedPage}`);
     let effectivePayload = payload;
     let effectiveOk = ok && Array.isArray(payload.items);
+    let sourceStatus: RegistryState['status'] = effectiveOk ? 'live-api' : 'static-snapshot';
     if (!effectiveOk) {
       const staticPage = await fetchStaticAgePage(category, normalizedPage);
       if (staticPage && Array.isArray(staticPage.items)) {
         effectivePayload = staticPage;
         effectiveOk = true;
+        sourceStatus = 'static-snapshot';
       }
     }
     if (!effectiveOk || !Array.isArray(effectivePayload.items)) {
-      setState((current) => ({ ...current, loadingAgePage: undefined, loadingAgeCategory: undefined }));
+      setState((current) => ({ ...current, loadingAgePage: undefined, loadingAgeCategory: undefined, status: 'error' }));
       return;
     }
 
@@ -711,7 +720,7 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
     ageCategoryMetaRef.current.set(category, { pageCount, label: categoryLabel });
     ingestAgeSnapshot(effectivePayload);
     rebuild({
-      status: 'live',
+      status: sourceStatus,
       agePages: category === 'japan' ? pageCount : state.agePages,
       updatedAt: captured,
       loadingAgePage: undefined,
@@ -729,11 +738,14 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
       fetchJson('/api/age/current?category=japan&page=1'),
     ]);
     let anyLive = false;
+    let yucOk = false;
+    let ageOk = false;
     let updatedAt: string | undefined;
     let sourceUrl = YUC_URL;
     let japanPageCount = ageCategoryMetaRef.current.get('japan')?.pageCount ?? 0;
 
     if (yuc.status === 'fulfilled' && yuc.value.ok) {
+      yucOk = true;
       const payload = yuc.value.payload;
       if (Array.isArray(payload.items) && payload.items.length > 0) {
         const previousById = new Map(yucItemsRef.current.map((item) => [item.id, item]));
@@ -746,6 +758,7 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
     }
 
     if (age.status === 'fulfilled' && age.value.ok) {
+      ageOk = true;
       const payload = age.value.payload;
       const captured = typeof payload.updatedAt === 'string' ? payload.updatedAt : new Date().toISOString();
       if (Array.isArray(payload.items) && payload.items.length > 0) {
@@ -782,11 +795,13 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
         loadedPagesRef.current.add(1);
         loadedCategoryPagesRef.current.get('japan')?.add(1);
         anyLive = ageItemsRef.current.size > 0;
+        ageOk = true;
       }
       japanPageCount = ageCategoryMetaRef.current.get('japan')?.pageCount ?? japanPageCount;
     }
 
-    rebuild({ status: anyLive ? 'live' : 'fallback', ...(updatedAt ? { updatedAt } : {}), sourceUrl, agePages: japanPageCount });
+    const anyStatic = !yucOk && ageOk;
+    rebuild({ status: anyLive ? (anyStatic ? 'static-snapshot' : 'live-api') : 'offline-fallback', ...(updatedAt ? { updatedAt } : {}), sourceUrl, agePages: japanPageCount });
   }, [ingestAgeSnapshot, ingestSiteResources, rebuild]);
 
   useEffect(() => { void refresh(); }, [refresh]);
@@ -834,6 +849,15 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
     return result;
   }, [rebuild]);
 
+  const loadAgeSearchIndex = useCallback(async () => {
+    if (ageSearchIndexRef.current.length) return ageSearchIndexRef.current;
+    const payload = await fetchStaticAgeSearch();
+    const values = Array.isArray(payload?.items) ? payload.items : [];
+    ageSearchIndexRef.current = values.filter((item): item is AgeSearchIndexItem => Boolean(item && typeof item === 'object' && typeof (item as AgeSearchIndexItem).id === 'string' && typeof (item as AgeSearchIndexItem).title === 'string'));
+    setState((current) => ({ ...current, ageSearchIndex: ageSearchIndexRef.current }));
+    return ageSearchIndexRef.current;
+  }, []);
+
   const value = useMemo<RegistryState>(() => ({
     ...state,
     loadAgePage,
@@ -841,8 +865,9 @@ export function DataRegistryProvider({ children }: { children: ReactNode }) {
     loadAgeItem,
     loadAgeDetail,
     loadAgePlay,
+    loadAgeSearchIndex,
     refresh,
-  }), [loadAgeCategoryPage, loadAgeDetail, loadAgeItem, loadAgePage, loadAgePlay, refresh, state]);
+  }), [loadAgeCategoryPage, loadAgeDetail, loadAgeItem, loadAgePage, loadAgePlay, loadAgeSearchIndex, refresh, state]);
   return <RegistryContext.Provider value={value}>{children}</RegistryContext.Provider>;
 }
 

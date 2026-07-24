@@ -177,12 +177,12 @@ export function parseAgeWeek(html, sourcePage) {
 }
 
 function parseEpisodeLinks(html, sourcePage, animeId) {
-  const links = [];
+  const links = new Map();
   for (const anchor of anchorBlocks(html)) {
     const url = absoluteUrl(anchor.attrs.href, sourcePage);
     if (!url || !url.includes(`/anime/${animeId}/play/`)) continue;
     const route = url.match(/\/play\/(\d+)\/(\d+)\.html/i);
-    links.push({
+    const entry = {
       episode: decodeHtml(anchor.body),
       url,
       line: route?.[1],
@@ -191,9 +191,12 @@ function parseEpisodeLinks(html, sourcePage, animeId) {
       sourcePage,
       authorizationStatus: 'unknown',
       availability: 'unchecked',
-    });
+    };
+    const previous = links.get(url);
+    const generic = /立即播放|播放$/i.test(entry.episode);
+    if (!previous || (/立即播放|播放$/i.test(previous.episode) && !generic)) links.set(url, entry);
   }
-  return links;
+  return [...links.values()];
 }
 
 function parseDataField(html, label) {

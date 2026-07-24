@@ -3,6 +3,7 @@ import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState
 import { Link, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { aiWorks, articles, prompts } from '../data';
 import { useAnimeList } from '../liveAnime';
+import { useRegistry, type AgeSearchIndexItem } from '../dataRegistry';
 import { useLocalLibrary } from '../localLibrary';
 import { Badge } from './Badge';
 
@@ -74,6 +75,7 @@ function RouteScrollManager() {
 
 function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const animeList = useAnimeList();
+  const { ageSearchIndex, loadAgeSearchIndex } = useRegistry();
   const { records } = useLocalLibrary();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<SearchCategory>('全部');
@@ -83,6 +85,7 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
   const inputRef = useRef<HTMLInputElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const navigate = useNavigate();
+  useEffect(() => { if (open) void loadAgeSearchIndex(); }, [loadAgeSearchIndex, open]);
 
   const results = useMemo<SearchItem[]>(() => {
     const normalizedQuery = deferredQuery.trim().toLowerCase();
@@ -131,6 +134,11 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
         score: score + (anime.season !== 'undecided' ? 12 : 0),
       });
     });
+    ageSearchIndex.forEach((entry: AgeSearchIndexItem) => {
+      if (animeList.some((anime) => anime.sourceIds.age === entry.id)) return;
+      const score = relevance(entry.title, entry.aliases ?? [], [entry.year ? String(entry.year) : '', entry.categoryLabel ?? '']);
+      if (score >= 0) scored.push({ key: `age-index-${entry.id}`, title: entry.title, description: [entry.year, entry.categoryLabel ?? 'AGE'].filter(Boolean).join(' · '), type: '动漫', path: `/anime/age-${entry.id}`, score: score + 4 });
+    });
     articles.forEach((article) => {
       const fields = [article.summary, article.category, ...article.tags, ...article.sections.flatMap((section) => [section.heading, section.body])];
       const score = relevance(article.title, [], fields);
@@ -149,7 +157,7 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
       .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, 'zh-CN'))
       .slice(0, 18)
       .map(({ score: _score, ...item }) => item);
-  }, [animeList, category, deferredQuery, records]);
+  }, [ageSearchIndex, animeList, category, deferredQuery, records]);
 
   useEffect(() => setActive(0), [category, query]);
   useEffect(() => {

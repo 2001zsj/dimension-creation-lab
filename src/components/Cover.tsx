@@ -27,10 +27,13 @@ function normalizeImageUrl(value?: string): string | undefined {
   }
 }
 
+function stableHash(value: string): string { let result = 2166136261; for (const char of value) { result ^= char.charCodeAt(0); result = Math.imul(result, 16777619); } return (result >>> 0).toString(16).padStart(8, '0'); }
+function cachedCoverUrl(value: string): string | undefined { try { const url = new URL(value); if (url.hostname !== 'i0.hdslb.com') return undefined; const extension = url.pathname.match(/\.(jpe?g|png|webp|avif|gif)$/i)?.[1]?.toLowerCase() ?? 'jpg'; return `/assets/covers/yuc/${stableHash(value)}.${extension === 'jpeg' ? 'jpg' : extension}`; } catch { return undefined; } }
+
 export function Cover({ seed, className = '', children, label, imageUrl }: CoverProps) {
   const normalizedUrl = useMemo(() => normalizeImageUrl(imageUrl), [imageUrl]);
   const candidates = useMemo(() => normalizedUrl
-    ? [`/api/image?url=${encodeURIComponent(normalizedUrl)}`, normalizedUrl]
+    ? [cachedCoverUrl(normalizedUrl), `/api/image?url=${encodeURIComponent(normalizedUrl)}`, normalizedUrl].filter((value): value is string => Boolean(value))
     : [], [normalizedUrl]);
   const [candidateIndex, setCandidateIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);

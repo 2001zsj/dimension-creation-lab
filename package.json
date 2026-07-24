@@ -4,15 +4,19 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/build-age-data.mjs",
+    "predev": "node scripts/cache-yuc-covers.mjs && node scripts/build-age-data.mjs",
     "dev": "vite",
     "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc -b",
-    "build": "node scripts/build-age-data.mjs && tsc -b && vite build && node scripts/create-sites-worker.mjs && node scripts/prune-dist.mjs",
+    "build": "node scripts/cache-yuc-covers.mjs && node scripts/build-age-data.mjs && tsc -b && vite build && node scripts/create-sites-worker.mjs && node scripts/prune-dist.mjs",
     "preview": "vite preview",
     "sync:age": "node scripts/sync-age.mjs --all-categories",
     "sync:age:full": "node scripts/sync-age.mjs --all-categories --details --play",
-    "build:age-data": "node scripts/build-age-data.mjs"
+    "build:age-data": "node scripts/build-age-data.mjs",
+    "cache:covers": "node scripts/cache-yuc-covers.mjs",
+    "lint": "eslint scripts/*.mjs tests/*.mjs tests/e2e/*.mjs playwright.config.mjs eslint.config.js",
+    "test:e2e": "playwright test",
+    "test:worker": "node scripts/test-worker.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.25.0",
@@ -21,10 +25,15 @@
     "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.55.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.1",
+    "playwright": "^1.55.0",
     "typescript": "^6.0.2",
+    "vercel": "56.5.0",
     "vite": "^8.1.5"
   }
 }

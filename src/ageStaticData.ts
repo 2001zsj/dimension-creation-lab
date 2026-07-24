@@ -50,7 +50,16 @@ export async function fetchStaticAgeItem(id: string): Promise<AgeItem | undefine
 export async function fetchStaticAgeDetail(id: string): Promise<AgeDetail | undefined> {
   if (!/^[a-z0-9]+$/i.test(id)) return undefined;
   const detail = await fetchStaticJson(`/data/age/details/${encodeURIComponent(id)}.json`);
-  return detail as AgeDetail | undefined;
+  if (!detail) return undefined;
+  if (detail.episodeShard && !Array.isArray(detail.episodes)) {
+    const episodes = await fetchStaticJson(`/data/age/episodes/${encodeURIComponent(id)}.json`);
+    return { ...detail, episodes: Array.isArray(episodes?.episodes) ? episodes.episodes : [] } as unknown as AgeDetail;
+  }
+  return detail as unknown as AgeDetail;
+}
+
+export async function fetchStaticAgeSearch() {
+  return fetchStaticJson('/data/age/search-index.json');
 }
 
 export async function fetchStaticAgePlay(sourceUrl: string): Promise<AgePlayResult | undefined> {

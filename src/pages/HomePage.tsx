@@ -27,7 +27,7 @@ export function HomePage() {
     .flatMap((anime) => anime.logs.map((log) => ({ ...log, anime })))
     .sort((a, b) => b.date.localeCompare(a.date))[0];
   const latestUpdated = [...animeList].sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated))[0];
-  const syncLabel = animeMeta.status === 'live' ? '实时资料已更新' : animeMeta.status === 'loading' ? '正在连接资料源' : '当前显示本地缓存';
+  const syncLabel = animeMeta.status === 'live-api' ? '实时资料已更新' : animeMeta.status === 'static-snapshot' ? '当前显示静态快照' : animeMeta.status === 'loading' ? '正在连接资料源' : animeMeta.status === 'error' ? '资料源加载失败' : '当前显示离线缓存';
   const seasonTitle = formatSeason(activeSeason.year, activeSeason.season);
   const sourcePeriod = `${activeSeason.year} 年 ${seasonMonths[activeSeason.season]}`;
   const localRecords = Object.values(records);
