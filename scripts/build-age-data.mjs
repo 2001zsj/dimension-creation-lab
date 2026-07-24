@@ -86,9 +86,6 @@ for (const [key, items] of categoryPages) {
   const [category, pageText] = key.split(':');
   const page = Number(pageText);
   const meta = snapshot.categories?.[category] ?? {};
-  const ids = new Set(items.map((item) => item.id));
-  const details = Object.fromEntries(Object.entries(snapshot.details ?? {}).filter(([id]) => ids.has(id)));
-  const play = Object.fromEntries([...playsByAnime.entries()].filter(([id]) => ids.has(id)).flatMap(([id, entries]) => entries.map((entry, index) => [`${id}:${index}`, entry])));
   await writeJson(join(outputRoot, 'pages', category, `${page}.json`), {
     kind: 'registry-page',
     sourceSite: snapshot.sourceSite,
@@ -99,8 +96,6 @@ for (const [key, items] of categoryPages) {
     pageCount: meta.pageCount ?? 0,
     count: items.length,
     items,
-    details,
-    play,
     siteResources: snapshot.siteResources ?? [],
     snapshot: true,
   });
@@ -119,3 +114,4 @@ for (const [id, plays] of playsByAnime) {
 }
 
 console.log(`AGE static shards: ${categoryPages.size} pages, ${itemShards.size} item shards, ${Object.keys(snapshot.details ?? {}).length} details, ${playsByAnime.size} play groups.`);
+

@@ -57,7 +57,11 @@ export function LocalLibraryProvider({ children }: { children: ReactNode }) {
   const [records, setRecords] = useState<Record<string, LocalAnimeRecord>>(loadRecords);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    } catch {
+      // Browsers may block storage in private or restricted contexts.
+    }
   }, [records]);
 
   const updateRecord = useCallback((animeId: string, updater: (current: LocalAnimeRecord) => LocalAnimeRecord) => {
@@ -111,3 +115,4 @@ export function useLocalLibrary(): LocalLibraryContextValue {
   if (!value) throw new Error('useLocalLibrary must be used within LocalLibraryProvider');
   return value;
 }
+

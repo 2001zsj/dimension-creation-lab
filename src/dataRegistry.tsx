@@ -504,11 +504,16 @@ const RegistryContext = createContext<RegistryState>({
 });
 
 async function fetchJson(url: string): Promise<{ ok: boolean; payload: Record<string, unknown> }> {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 10000);
   try {
-    const response = await fetch(url, { cache: 'no-store' });
-    return { ok: response.ok, payload: response.ok ? await response.json() as Record<string, unknown> : {} };
+    const response = await fetch(url, { cache: 'no-store', signal: controller.signal });
+    if (!response.ok) return { ok: false, payload: {} };
+    return { ok: true, payload: await response.json() as Record<string, unknown> };
   } catch {
     return { ok: false, payload: {} };
+  } finally {
+    window.clearTimeout(timeout);
   }
 }
 
@@ -846,3 +851,4 @@ export function useResourceRecords() {
   const registry = useContext(RegistryContext);
   return registry.items.flatMap((item) => item.resources);
 }
+
