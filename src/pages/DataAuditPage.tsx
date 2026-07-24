@@ -30,7 +30,7 @@ function inspectItem(item: RegistryItem): AuditRow {
   if (item.broadcast?.startDate && Number.isNaN(new Date(item.broadcast.startDate).getTime())) issues.push('首播日期格式无效');
   if (item.broadcast?.episodeCount !== undefined && item.broadcast.episodeCount <= 0) issues.push('集数必须大于 0');
   if (item.externalLinks.some((link) => !isHttpUrl(link.url))) issues.push('存在无效外部链接');
-  if (item.resources.some((resource) => resource.animeId !== item.id)) issues.push('资源绑定到错误作品 ID');
+  if (item.resources.some((resource) => resource.animeId !== item.id || (resource.workId && resource.workId !== item.id))) issues.push('资源绑定到错误作品 ID');
   if (item.resources.some((resource) => !isHttpUrl(resource.url))) issues.push('存在无效资源 URL');
   if (item.dataSources.includes('age') && !item.sourceIds.age) issues.push('AGE 条目缺少来源 ID');
   if (item.dataSources.includes('yuc') && !item.sourceIds.yuc) issues.push('YUC 条目缺少来源 ID');
@@ -41,6 +41,9 @@ function inspectItem(item: RegistryItem): AuditRow {
   if (requiredMissing.length) issues.push(`必填缺失：${requiredMissing.map(([label]) => label).join('、')}`);
   const present = fields.filter(([, value]) => !isPlaceholder(value)).length;
   const coverage = present / fields.length;
+  const minimumCoverage = item.dataSources.includes('yuc') ? 0.45 : 0.25;
+  if (coverage < minimumCoverage) issues.push(`资料覆盖率偏低（${Math.round(coverage * 100)}%）`);
+  if (item.resources.some((resource) => !resource.authorizationStatus || !resource.availabilityStatus || !resource.capturedAt)) issues.push('资源缺少授权、可用性或抓取时间');
   return { item, coverage, issues, severity: issues.some((issue) => /错误|无效|缺少稳定|错误作品/.test(issue)) ? 'error' : issues.length ? 'warning' : 'ok' };
 }
 

@@ -2,7 +2,7 @@ import { ChevronLeft, ChevronRight, Database, ExternalLink, LoaderCircle, Search
 import { useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { AGE_CATEGORIES, useRegistry, useResourceRecords, type AgeCategoryKey } from '../dataRegistry';
-import type { DataSource, ResourceKind } from '../dataQuality';
+import type { AuthorizationStatus, ResourceKind } from '../dataQuality';
 
 const resourceLabels: Record<ResourceKind, string> = {
   detail: '详情', episode: '分集', media: '媒体', streaming: '播放', download: '下载', cloud_drive: '网盘', subtitle: '字幕', mirror: '镜像', anti_loss: '防走丢', official: '官网', pv: 'PV', reference: '资料',
@@ -12,7 +12,8 @@ export function ResourceCenterPage() {
   const { items, ageCount, ageCategories, siteResources, loadingAgePage, loadingAgeCategory, loadAgeCategoryPage, updatedAt } = useRegistry();
   const resources = useResourceRecords();
   const [keyword, setKeyword] = useState('');
-  const [source, setSource] = useState<'all' | DataSource>('all');
+  const [source, setSource] = useState<'all' | 'yuc' | 'age'>('all');
+  const [authorization, setAuthorization] = useState<'all' | AuthorizationStatus>('all');
   const [kind, setKind] = useState<'all' | ResourceKind>('all');
   const [onlyWithResources, setOnlyWithResources] = useState(false);
   const [page, setPage] = useState(1);
@@ -23,17 +24,19 @@ export function ResourceCenterPage() {
   const filtered = useMemo(() => {
     const tokens = keyword.trim().toLowerCase().split(/\s+/).filter(Boolean);
     return items.filter((item) => {
-      const selectedResources = kind === 'all' ? item.resources : item.resources.filter((resource) => resource.kind === kind);
+      const kindResources = kind === 'all' ? item.resources : item.resources.filter((resource) => resource.kind === kind);
+      const selectedResources = authorization === 'all' ? kindResources : kindResources.filter((resource) => resource.authorizationStatus === authorization);
       const haystack = [item.title, item.originalTitle, ...item.aliases, ...item.resources.flatMap((resource) => [resource.label ?? '', resource.url])].join(' ').toLowerCase();
       return tokens.every((token) => haystack.includes(token))
         && (source === 'all' || item.dataSources.includes(source))
         && (!onlyWithResources || selectedResources.length > 0)
-        && (kind === 'all' || selectedResources.length > 0);
+        && (kind === 'all' || selectedResources.length > 0)
+        && (authorization === 'all' || selectedResources.length > 0);
     });
-  }, [items, keyword, kind, onlyWithResources, source]);
+  }, [authorization, items, keyword, kind, onlyWithResources, source]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
-  useEffect(() => { setPage(1); }, [keyword, kind, onlyWithResources, source]);
+  useEffect(() => { setPage(1); }, [authorization, keyword, kind, onlyWithResources, source]);
   useEffect(() => { if (page > totalPages) setPage(totalPages); }, [page, totalPages]);
   const visible = filtered.slice((page - 1) * pageSize, page * pageSize);
 
@@ -52,7 +55,7 @@ export function ResourceCenterPage() {
       <div className="notice-panel"><ShieldCheck size={18} /><p>本站可索引公开资源，但不对资源授权状态和长期可用性作保证。所有资源均展示来源、抓取时间、授权状态和可用性状态；未知资源不得标记为官方或已授权。</p></div>
       <div className="archive-toolbar archive-toolbar-large resource-toolbar">
         <label className="search-field grow"><Search size={17} /><input value={keyword} onChange={(event: ChangeEvent<HTMLInputElement>) => setKeyword(event.target.value)} placeholder="搜索标题、别名、资源名称或地址" /></label>
-        <label className="select-label">来源<select value={source} onChange={(event: ChangeEvent<HTMLSelectElement>) => setSource(event.target.value as 'all' | DataSource)}><option value="all">全部</option><option value="yuc">YUC</option><option value="age">AGE</option><option value="official">官方</option><option value="platform">平台</option></select></label>
+        <label className="select-label">作品数据来源<select value={source} onChange={(event: ChangeEvent<HTMLSelectElement>) => setSource(event.target.value as 'all' | 'yuc' | 'age')}><option value="all">全部</option><option value="yuc">YUC</option><option value="age">AGE</option></select></label><label className="select-label">授权状态<select value={authorization} onChange={(event: ChangeEvent<HTMLSelectElement>) => setAuthorization(event.target.value as 'all' | AuthorizationStatus)}><option value="all">全部</option><option value="official">官方</option><option value="authorized">已授权</option><option value="unknown">未知</option><option value="unauthorized">未授权</option><option value="disputed">争议</option></select></label>
         <label className="select-label">资源类型<select value={kind} onChange={(event: ChangeEvent<HTMLSelectElement>) => setKind(event.target.value as 'all' | ResourceKind)}><option value="all">全部</option>{Object.entries(resourceLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
         <label className="toggle-label"><input type="checkbox" checked={onlyWithResources} onChange={(event: ChangeEvent<HTMLInputElement>) => setOnlyWithResources(event.target.checked)} /><span aria-hidden="true" />只看有资源</label>
       </div>
@@ -64,10 +67,11 @@ export function ResourceCenterPage() {
         <button className="button secondary" type="button" onClick={() => void fetchAgePage()} disabled={Boolean(loadingAgePage)}>{loadingAgePage ? <LoaderCircle className="spin" size={16} /> : null}{loadingAgePage ? `正在载入${ageCategories[loadingAgeCategory ?? ageCategory].label}第 ${loadingAgePage} 页` : '载入这一页'}</button>
       </div>
       <div className="age-category-summary">{AGE_CATEGORIES.map((category) => { const progress = ageCategories[category.key]; return <button type="button" key={category.key} className={ageCategory === category.key ? 'active' : ''} onClick={() => { setAgeCategory(category.key); setAgePage(1); }}><strong>{category.label}</strong><span>{progress.itemCount} 条 · {progress.loadedPages.length}/{progress.pageCount || '?'} 页</span></button>; })}</div>
-      {siteResources.length > 0 && <section className="site-resource-panel"><div><span className="eyebrow">SITE RESOURCES</span><h2>站点级镜像与防走丢入口</h2></div><div className="resource-link-list horizontal">{siteResources.map((resource) => <a className="text-link" key={resource.id} href={resource.url} target="_blank" rel="noreferrer"><ExternalLink size={14} />{resourceLabels[resource.kind]} · {resource.label}</a>)}</div></section>}
+      {siteResources.filter((resource) => kind === 'all' || resource.kind === kind).length > 0 && <section className="site-resource-panel"><div><span className="eyebrow">SITE RESOURCES</span><h2>站点级镜像与防走丢入口</h2></div><div className="resource-link-list horizontal">{siteResources.filter((resource) => kind === 'all' || resource.kind === kind).map((resource) => <a className="text-link" key={resource.id} href={resource.url} target="_blank" rel="noreferrer"><ExternalLink size={14} />{resourceLabels[resource.kind]} · {resource.label}</a>)}</div></section>}
 
       {visible.length ? <div className="anime-grid three-col">{visible.map((item) => {
-        const selectedResources = kind === 'all' ? item.resources : item.resources.filter((resource) => resource.kind === kind);
+        const kindResources = kind === 'all' ? item.resources : item.resources.filter((resource) => resource.kind === kind);
+      const selectedResources = authorization === 'all' ? kindResources : kindResources.filter((resource) => resource.authorizationStatus === authorization);
         return <article className="anime-card" key={item.id}><div className="anime-card-body"><span className="eyebrow">{item.dataSources.map((value) => value.toUpperCase()).join(' + ')}</span><h3>{item.title}</h3><p>{item.year > 0 ? item.year : '年份未提供'} · {item.resources.length} 个入口</p><div className="resource-link-list">{selectedResources.slice(0, 8).map((resource) => <div key={resource.resourceId ?? resource.id}><a className="text-link" href={resource.originalUrl ?? resource.url} target="_blank" rel="noreferrer"><ExternalLink size={14} />{resourceLabels[resource.resourceType ?? resource.kind]} · {resource.label ?? '打开资源'}</a><small className="resource-meta">来源：{resource.source.toUpperCase()} · 授权：{resource.authorizationStatus ?? 'unknown'} · 可用性：{resource.availabilityStatus ?? 'unchecked'} · 抓取：{resource.capturedAt}{resource.verifiedAt ? ` · 验证：${resource.verifiedAt}` : ''}</small>{resource.sourcePage && <a className="resource-meta resource-source-link" href={resource.sourcePage} target="_blank" rel="noreferrer">来源页</a>}</div>)}</div><Link className="text-link" to={`/anime/${item.id}`}>查看条目</Link></div></article>;
       })}</div> : <div className="empty-panel large"><h2>没有符合条件的资源</h2><p>更换筛选条件，或者载入其他 AGE 页码。</p></div>}
 

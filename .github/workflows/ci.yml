@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, cleanup/remove-legacy-code]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Production build
+        run: npm run build
+
+      - name: Check scripts and server bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in scripts/*.mjs; do
+            node --check "$file"
+          done
+          node --check dist/server/index.js
+

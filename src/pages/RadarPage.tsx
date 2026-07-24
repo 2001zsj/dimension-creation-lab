@@ -31,7 +31,9 @@ export function RadarPage() {
     const futureOrCurrent = anime.season === 'undecided' || seasonSortValue(anime.year, anime.season) >= currentValue;
     const tokens = keyword.trim().toLowerCase().split(/\s+/).filter(Boolean);
     const haystack = [anime.title, anime.originalTitle, anime.englishTitle ?? '', ...anime.genres, ...anime.staff.studio, anime.sourceNote].join(' ').toLowerCase();
-    return futureOrCurrent
+    const isRadarSource = anime.dataSources?.includes('yuc') || anime.fieldSources?.title?.some((entry) => entry.url.includes('/topic'));
+    return isRadarSource
+      && futureOrCurrent
       && anime.informationStatus !== 'finished'
       && tokens.every((token) => haystack.includes(token))
       && (source === 'all' || anime.sourceType === source)

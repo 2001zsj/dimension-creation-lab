@@ -1,6 +1,7 @@
 import { copyFile, mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gzipSync } from "node:zlib";
 
 const projectRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const distRoot = join(projectRoot, "dist");
@@ -49,10 +50,14 @@ async function collectAssets(dir, urlPrefix = "") {
       continue;
     }
 
+    if (relativeUrl.startsWith("/data/age/")) continue;
     const bytes = await readFile(absolutePath);
+    const compress = relativeUrl === "/data/age-latest.json";
+    const payload = compress ? gzipSync(bytes, { level: 9 }) : bytes;
     entries[relativeUrl] = {
-      body: bytes.toString("base64"),
+      body: payload.toString("base64"),
       contentType: contentTypes[extension(relativeUrl)] ?? "application/octet-stream",
+      ...(compress ? { encoding: "gzip" } : {}),
     };
   }
   return entries;
@@ -164,19 +169,26 @@ function ageJson(value, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(value), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...extraHeaders } });
 }
 
-let AGE_SNAPSHOT;
-function readAgeSnapshot() {
-  if (AGE_SNAPSHOT !== undefined) return AGE_SNAPSHOT;
-  const asset = ASSETS["/data/age-latest.json"];
-  if (!asset) { AGE_SNAPSHOT = null; return AGE_SNAPSHOT; }
-  try {
-    AGE_SNAPSHOT = JSON.parse(new TextDecoder().decode(decodeBase64(asset.body)));
-  } catch { AGE_SNAPSHOT = null; }
-  return AGE_SNAPSHOT;
+let AGE_SNAPSHOT_PROMISE;
+async function readAgeSnapshot() {
+  if (AGE_SNAPSHOT_PROMISE) return AGE_SNAPSHOT_PROMISE;
+  AGE_SNAPSHOT_PROMISE = (async () => {
+    const asset = ASSETS["/data/age-latest.json"];
+    if (!asset) return null;
+    try {
+      let bytes = decodeBase64(asset.body);
+      if (asset.encoding === "gzip") {
+        const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+        bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+      }
+      return JSON.parse(new TextDecoder().decode(bytes));
+    } catch { return null; }
+  })();
+  return AGE_SNAPSHOT_PROMISE;
 }
 
-function snapshotPage(categoryKey, requestedPage) {
-  const snapshot = readAgeSnapshot();
+async function snapshotPage(categoryKey, requestedPage) {
+  const snapshot = await readAgeSnapshot();
   const category = AGE_CATEGORIES[categoryKey];
   const categoryState = snapshot?.categories?.[categoryKey];
   if (!snapshot || !category || !categoryState?.completedPages?.includes(requestedPage)) return undefined;
@@ -186,6 +198,9 @@ function snapshotPage(categoryKey, requestedPage) {
     try { return new URL(item.sourcePage).pathname === expectedPath; } catch { return false; }
   });
   if (!items.length) return undefined;
+  const ids = new Set(items.map((item) => item.id));
+  const details = Object.fromEntries(Object.entries(snapshot.details ?? {}).filter(([id]) => ids.has(id)));
+  const play = Object.fromEntries(Object.entries(snapshot.play ?? {}).filter(([, entry]) => ids.has(entry?.animeId)));
   return {
     kind: "registry-page",
     sourceSite: "cn.agekkkk.com",
@@ -197,6 +212,8 @@ function snapshotPage(categoryKey, requestedPage) {
     page: requestedPage,
     pageCount: categoryState.pageCount,
     items,
+    details,
+    play,
     siteResources: snapshot.siteResources ?? [],
     snapshot: true,
   };
@@ -212,7 +229,7 @@ async function ageAnimeResponse(request) {
     const sourceUrl = requestedPage === 1
       ? AGE_ORIGIN + "/type/" + category.typeId + ".html"
       : AGE_ORIGIN + "/type/" + category.typeId + "-" + requestedPage + ".html";
-    const stored = snapshotPage(categoryKey, requestedPage);
+    const stored = await snapshotPage(categoryKey, requestedPage);
     if (stored) return ageJson(stored);
     const parsed = AGE_PARSER.parseAgeCategory(await ageFetch(sourceUrl), sourceUrl);
     if (!parsed.items.length) return ageJson({ error: "AGE parser returned no verified items", sourceUrl, category: categoryKey, page: requestedPage }, 502);
@@ -251,11 +268,26 @@ async function ageAnimeResponse(request) {
   }
 }
 
+async function ageItemResponse(id) {
+  try {
+    if (!/^[a-z0-9]+$/i.test(id)) return ageJson({ error: "Invalid AGE identity" }, 400);
+    const snapshot = await readAgeSnapshot();
+    const item = snapshot?.items?.[id];
+    if (item) return ageJson({ item, updatedAt: snapshot.updatedAt, snapshot: true });
+    const url = AGE_ORIGIN + "/anime/" + encodeURIComponent(id) + ".html";
+    const detail = AGE_PARSER.parseAgeDetail(await ageFetch(url), url);
+    if (!detail) return ageJson({ error: "AGE item identity not verified", sourceUrl: url }, 404);
+    return ageJson({ item: { id, title: detail.title, detailUrl: url, year: detail.year, episodeLabel: detail.episodeLabel, sourcePage: url, status: "announced" }, capturedAt: new Date().toISOString() });
+  } catch (error) {
+    return ageJson({ error: error instanceof Error ? error.message : "Unable to fetch AGE item" }, 502, { "cache-control": "no-store" });
+  }
+}
+
 async function ageDetailResponse(id) {
   try {
     if (!/^[a-z0-9]+$/i.test(id)) return ageJson({ error: "Invalid AGE identity" }, 400);
     const url = AGE_ORIGIN + "/anime/" + encodeURIComponent(id) + ".html";
-    const stored = readAgeSnapshot()?.details?.[id];
+    const stored = (await readAgeSnapshot())?.details?.[id];
     if (stored) return ageJson({ ...stored, snapshot: true });
     const parsed = AGE_PARSER.parseAgeDetail(await ageFetch(url), url);
     if (!parsed) return ageJson({ error: "AGE detail identity not verified", sourceUrl: url }, 422);
@@ -272,7 +304,7 @@ async function agePlayResponse(requestUrl) {
     if (!rawSource) return ageJson({ error: "Missing source" }, 400);
     const sourceUrl = new URL(rawSource, AGE_ORIGIN);
     if (sourceUrl.origin !== AGE_ORIGIN || !/\/anime\/[^/]+\/play\//.test(sourceUrl.pathname)) return ageJson({ error: "Unsupported source URL" }, 400);
-    const stored = readAgeSnapshot()?.play?.[sourceUrl.toString()];
+    const stored = (await readAgeSnapshot())?.play?.[sourceUrl.toString()];
     if (stored) return ageJson({ ...stored, snapshot: true });
     const parsed = AGE_PARSER.parseAgePlay(await ageFetch(sourceUrl.toString()), sourceUrl.toString());
     if (!parsed) return ageJson({ error: "AGE play identity not verified" }, 422);
@@ -302,6 +334,7 @@ function assetResponse(asset, method, cacheControl) {
     headers: {
       "content-type": asset.contentType,
       "cache-control": cacheControl,
+      ...(asset.encoding ? { "content-encoding": asset.encoding } : {}),
     },
   });
 }
@@ -326,6 +359,10 @@ export default {
       return ageAnimeResponse(request);
     }
 
+    if (url.pathname.startsWith("/api/age/item/")) {
+      return ageItemResponse(decodeURIComponent(url.pathname.slice("/api/age/item/".length)));
+    }
+
     if (url.pathname.startsWith("/api/age/detail/")) {
       return ageDetailResponse(decodeURIComponent(url.pathname.slice("/api/age/detail/".length)));
     }
@@ -336,7 +373,8 @@ export default {
 
     const exactAsset = ASSETS[url.pathname];
     if (exactAsset) {
-      return assetResponse(exactAsset, request.method, "public, max-age=31536000, immutable");
+      const cacheControl = url.pathname === "/data/age-latest.json" ? "no-cache" : "public, max-age=31536000, immutable";
+      return assetResponse(exactAsset, request.method, cacheControl);
     }
 
     if (STATIC_FILE_RE.test(url.pathname)) {

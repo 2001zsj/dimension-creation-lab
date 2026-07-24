@@ -1,5 +1,5 @@
 import { Bookmark, Command, Menu, Moon, Search, Sparkles, Sun, X } from 'lucide-react';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type KeyboardEvent, type ReactNode } from 'react';
+import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type KeyboardEvent, type ReactNode } from 'react';
 import { Link, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { aiWorks, articles, prompts } from '../data';
 import { useAnimeList } from '../liveAnime';
@@ -65,19 +65,34 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<SearchCategory>('全部');
   const [active, setActive] = useState(0);
+  const deferredQuery = useDeferredValue(query);
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const navigate = useNavigate();
 
   const results = useMemo<SearchItem[]>(() => {
-    if (!query.trim()) return [];
-    const items: SearchItem[] = [];
+    const normalizedQuery = deferredQuery.trim().toLowerCase();
+    if (!normalizedQuery) return [];
+    const tokens: string[] = normalizedQuery.split(/\s+/).filter(Boolean);
+    const scored: Array<SearchItem & { score: number }> = [];
+    const relevance = (title: string, aliases: string[], fields: string[], favorite = false): number => {
+      if (!matchesSearch([title, ...aliases, ...fields], normalizedQuery)) return -1;
+      const normalizedTitle = title.toLowerCase();
+      const normalizedAliases = aliases.map((value) => value.toLowerCase());
+      let score = favorite ? 35 : 0;
+      if (normalizedTitle === normalizedQuery) score += 500;
+      else if (normalizedTitle.startsWith(normalizedQuery)) score += 300;
+      else if (normalizedTitle.includes(normalizedQuery)) score += 180;
+      if (normalizedAliases.some((value) => value === normalizedQuery)) score += 260;
+      else if (normalizedAliases.some((value) => value.startsWith(normalizedQuery))) score += 140;
+      score += tokens.reduce((sum, token) => sum + (normalizedTitle.includes(token) ? 30 : 0), 0);
+      return score;
+    };
+
     animeList.forEach((anime) => {
+      const aliases = [anime.originalTitle, anime.englishTitle ?? ''].filter(Boolean);
       const fields = [
-        anime.title,
-        anime.originalTitle,
-        anime.englishTitle ?? '',
         ...anime.genres,
         ...anime.staff.studio,
         anime.staff.director ?? '',
@@ -89,35 +104,39 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
         anime.sourceNote,
         ...anime.externalLinks.map((link) => link.label),
       ];
-      if (matchesSearch(fields, query)) {
-        const context = [anime.year, anime.staff.studio[0], anime.broadcast?.platforms[0]].filter(Boolean).join(' · ');
-        items.push({
-          key: `anime-${anime.id}`,
-          title: anime.title,
-          description: context || anime.genres.join(' / '),
-          type: '动漫',
-          path: `/anime/${anime.id}`,
-          favorite: records[anime.id]?.favorite,
-        });
-      }
+      const favorite = Boolean(records[anime.id]?.favorite);
+      const score = relevance(anime.title, aliases, fields, favorite);
+      if (score < 0) return;
+      const context = [anime.year, anime.staff.studio[0], anime.broadcast?.platforms[0]].filter(Boolean).join(' · ');
+      scored.push({
+        key: `anime-${anime.id}`,
+        title: anime.title,
+        description: context || anime.genres.join(' / '),
+        type: '动漫',
+        path: `/anime/${anime.id}`,
+        favorite,
+        score: score + (anime.season !== 'undecided' ? 12 : 0),
+      });
     });
     articles.forEach((article) => {
-      if (matchesSearch([article.title, article.summary, article.category, ...article.tags, ...article.sections.flatMap((section) => [section.heading, section.body])], query)) {
-        items.push({ key: `article-${article.id}`, title: article.title, description: article.category, type: '文章', path: `/articles#${article.id}` });
-      }
+      const fields = [article.summary, article.category, ...article.tags, ...article.sections.flatMap((section) => [section.heading, section.body])];
+      const score = relevance(article.title, [], fields);
+      if (score >= 0) scored.push({ key: `article-${article.id}`, title: article.title, description: article.category, type: '文章', path: `/articles#${article.id}`, score });
     });
     aiWorks.forEach((work) => {
-      if (matchesSearch([work.title, work.type, work.style, work.tool, work.background, work.initialPrompt, work.finalPrompt], query)) {
-        items.push({ key: `work-${work.id}`, title: work.title, description: `${work.type} · ${work.style}`, type: '作品', path: `/works/${work.id}` });
-      }
+      const score = relevance(work.title, [], [work.type, work.style, work.tool, work.background, work.initialPrompt, work.finalPrompt]);
+      if (score >= 0) scored.push({ key: `work-${work.id}`, title: work.title, description: `${work.type} · ${work.style}`, type: '作品', path: `/works/${work.id}`, score });
     });
     prompts.forEach((prompt) => {
-      if (matchesSearch([prompt.name, prompt.scene, prompt.style, prompt.prompt, prompt.negative, prompt.params], query)) {
-        items.push({ key: `prompt-${prompt.id}`, title: prompt.name, description: prompt.scene, type: '提示词', path: `/ai-lab#prompt-${prompt.id}` });
-      }
+      const score = relevance(prompt.name, [], [prompt.scene, prompt.style, prompt.prompt, prompt.negative, prompt.params]);
+      if (score >= 0) scored.push({ key: `prompt-${prompt.id}`, title: prompt.name, description: prompt.scene, type: '提示词', path: `/ai-lab#prompt-${prompt.id}`, score });
     });
-    return items.filter((item) => category === '全部' || item.type === category).slice(0, 18);
-  }, [animeList, category, query, records]);
+    return scored
+      .filter((item) => category === '全部' || item.type === category)
+      .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, 'zh-CN'))
+      .slice(0, 18)
+      .map(({ score: _score, ...item }) => item);
+  }, [animeList, category, deferredQuery, records]);
 
   useEffect(() => setActive(0), [category, query]);
   useEffect(() => {

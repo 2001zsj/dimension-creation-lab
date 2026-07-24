@@ -17,7 +17,8 @@ export function HomePage() {
   const todayKey = currentWeekday('Asia/Tokyo');
   const currentSeason = animeList.filter((anime) => anime.year === activeSeason.year && anime.season === activeSeason.season);
   const todayAnime = currentSeason.filter((anime) => anime.informationStatus === 'airing' && anime.broadcast?.weekday === todayKey);
-  const upcomingTargets = animeList.filter((anime) => ['scheduled', 'announced', 'delayed'].includes(anime.informationStatus));
+  const radarSource = animeList.filter((anime) => anime.dataSources?.includes('yuc') || anime.fieldSources?.title?.some((source) => source.url.includes('/topic')));
+  const upcomingTargets = radarSource.filter((anime) => ['scheduled', 'announced', 'delayed'].includes(anime.informationStatus));
   const upcomingPreview = upcomingTargets.slice(0, 4);
   const featuredCandidates = currentSeason.filter((anime) => anime.featured);
   const featured = (featuredCandidates.length ? featuredCandidates : currentSeason).slice(0, 3);
@@ -59,7 +60,7 @@ export function HomePage() {
 
       <section className="container stats-grid section-space-tight">
         <StatCard label="本季收录" value={currentSeason.length} note="公开资料条目" icon={Tv2} />
-        <StatCard label="正在放送" value={animeList.filter((anime) => anime.informationStatus === 'airing').length} note="按资料状态统计" icon={Database} />
+        <StatCard label="正在放送" value={currentSeason.filter((anime) => anime.informationStatus === 'airing').length} note="当前季度公开排期" icon={Database} />
         <StatCard label="今日放送" value={todayAnime.length} note={`${weekdayLabels[todayKey]} · 日本时间`} icon={CalendarClock} />
         <StatCard label="雷达目标" value={upcomingTargets.length} note="已公开、已定档或延期" icon={RadioTower} />
       </section>
