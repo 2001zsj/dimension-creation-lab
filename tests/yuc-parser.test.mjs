@@ -65,11 +65,25 @@ test('YUC parser keeps missing detail fields empty instead of inventing values',
   assert.deepEqual(item.broadcast.platforms, []);
 });
 
-test('YUC CAST parser supports real cast cells, role/actor labels, actor-only rows, and deduplication', () => {
-  assert.deepEqual(parseCastCredits('<br>角色：小林 / 演员：甲<br>演员：乙<br>甲　小林<br>甲　小林'), [
+test('YUC CAST parser keeps unlabeled columns as separate actors and only creates roles from explicit pairs', () => {
+  assert.deepEqual(parseCastCredits('<br>角色：小林 / 演员：甲<br>演员：乙<br>内田雄马　户谷菊之介<br>小林→丙<br>内田雄马'), [
     { actor: '甲', character: '小林' },
     { actor: '乙' },
+    { actor: '内田雄马' },
+    { actor: '户谷菊之介' },
+    { actor: '丙', character: '小林' },
   ]);
+});
+
+test('YUC CAST parser never interprets a second unlabeled actor as a character', () => {
+  const credits = parseCastCredits('菱川花菜　川石奈奈<br>深见梨加　村濑步');
+  assert.deepEqual(credits, [
+    { actor: '菱川花菜' },
+    { actor: '川石奈奈' },
+    { actor: '深见梨加' },
+    { actor: '村濑步' },
+  ]);
+  assert.ok(credits.every((credit) => credit.character === undefined));
 });
 
 test('three Playwright-captured YUC pages yield real structured CAST records', () => {

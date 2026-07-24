@@ -10,7 +10,7 @@
 - **AGE**：`/api/age/current?category=<分类>&page=<页码>`，按分类、按页读取，不会在一次前台请求中同步抓取全部分页。
 - **AGE 详情**：`/api/age/detail/:id`。
 - **AGE 播放页解析**：`/api/age/play?source=<URL>`，保留原始媒体地址、来源页、线路、集数、授权状态和可用性状态。
-- **可选离线快照**：`public/data/age-latest.json`。Worker 优先读取已成功同步的快照，缺页时再按页读取上游。
+- **同步源快照**：`public/data/age-latest.json`。构建时由 `scripts/build-age-data.mjs` 生成分类页、作品索引、详情和播放资源分片；浏览器只按需读取小文件，不再下载整份 28 MB 快照。Worker 使用压缩快照提供分页与单条 API。
 
 当前 AGE 分类映射：日漫、国漫、动态漫、剧场、特摄和美漫。
 
@@ -75,7 +75,9 @@ node scripts/sync-age.mjs \
   --max-play=500
 ```
 
-同步器支持断点续传、分页失败记录、重试、请求超时和原子快照写入。完整详情与播放页同步数据量较大，应根据上游站点承载能力设置并发、延迟和上限。
+同步器支持断点续传、分页失败记录、重试、请求超时和原子快照写入。播放页候选采用跨作品轮询，避免先耗尽一部长篇作品。完整详情与播放页同步数据量较大，应根据上游站点承载能力设置并发、延迟和上限。
+
+构建流程会生成 `public/data/age/` 分片；Worker 生成完成后会从最终 `dist` 删除未压缩的完整快照，避免静态部署同时携带两份大数据。
 
 ## 主要页面
 
@@ -85,6 +87,22 @@ node scripts/sync-age.mjs \
 - `/writing`：从注册表真实字段生成作品资料、季度简报和更新公告草稿。
 - `/audit`：检查字段覆盖、占位内容、日期、来源、资源绑定、URL 和跨来源冲突。
 
+## 部署支持范围
+
+- **本地开发**：`npm run dev` 使用同一套 `DataRegistryProvider`，支持 YUC、AGE 静态分片和回退快照。
+- **Netlify / Vercel 静态部署**：支持浏览器端的 YUC 静态数据与 AGE 分页、详情、播放资源分片；不提供完整 API 代理能力，不能把它当作完整 API 部署。
+- **Worker 部署**：运行 `scripts/create-sites-worker.mjs` 生成的 Worker，支持 YUC 和 AGE 的完整 API 路由，并以内嵌 gzip 形式提供完整快照；固定名 `/data/age-latest.json` 使用 `no-cache`，分片文件才使用 immutable 缓存。
+- **快照体积**：浏览器不会请求完整 28 MB 未压缩快照；构建后的静态 `dist` 会移除未压缩完整快照，Worker 只嵌入 gzip 编码内容。
+
+如果目标平台不能运行 Worker/API 代理，应明确标注为“静态分片模式”，不得宣称完整 API 功能可用。
+
 ## 验证说明
 
-本次修改已通过项目脚本测试、解析器语法检查、Worker 生成与语法检查，以及不依赖第三方包的临时严格 TypeScript 内部检查。当前执行环境无法从 npm 镜像下载依赖，因此真实 Vite 构建仍需在网络正常环境执行。完整实施情况、验证边界和 Codex 后续任务统一见 [`PROJECT_DELIVERY_HANDOFF.md`](./PROJECT_DELIVERY_HANDOFF.md)。历史分报告保存在 `docs/archive/`。
+本次逻辑整改通过 19 项项目测试、解析器和构建脚本语法检查、真实 `npm ci`、TypeScript 类型检查、Vite 生产构建和 Worker 产物检查。完整实施情况、验证边界和交接结果见 [`DIMENSION_LAB_RECTIFIED_HANDOFF.md`](./DIMENSION_LAB_RECTIFIED_HANDOFF.md)。历史分报告保存在 `docs/archive/`。
+
+## 仓库维护规则
+
+- `public/data/age-latest.json` 是构建和 Worker API 使用的源快照，需要保留。
+- `public/data/age/` 是可再生成的静态分片，不提交 Git；`npm run dev` 和 `npm run build` 会自动生成。
+- `dist/`、浏览器截图、验证日志、临时 ZIP 和历史交接报告不进入主仓库。
+- 当前项目状态只以 `PROJECT_DELIVERY_HANDOFF.md` 为准。

@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { runAgeSync } from '../scripts/sync-age.mjs';
+import { roundRobinEpisodes, runAgeSync } from '../scripts/sync-age.mjs';
 
 const fixture = () => readFile(new URL('./fixtures/age/category.html', import.meta.url), 'utf8');
 
@@ -43,4 +43,14 @@ test('AGE full synchronizer checkpoints category pages and keeps source metadata
     globalThis.fetch = originalFetch;
     await rm(directory, { recursive: true, force: true });
   }
+});
+
+
+test('AGE play candidates are sampled across works instead of exhausting the first title', () => {
+  const selected = roundRobinEpisodes([
+    { id: 'a', episodes: [{ url: 'https://example.com/a1' }, { url: 'https://example.com/a2' }, { url: 'https://example.com/a3' }] },
+    { id: 'b', episodes: [{ url: 'https://example.com/b1' }, { url: 'https://example.com/b2' }] },
+    { id: 'c', episodes: [{ url: 'https://example.com/c1' }] },
+  ], 5);
+  assert.deepEqual(selected.map((item) => item.animeId), ['a', 'b', 'c', 'a', 'b']);
 });

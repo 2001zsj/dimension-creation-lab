@@ -1,5 +1,5 @@
-import { BookOpen, ClipboardCheck, Copy, FileText, RefreshCcw } from 'lucide-react';
-import { useMemo, useState, type ChangeEvent } from 'react';
+import { BookOpen, ClipboardCheck, Copy, FileText, RefreshCcw, Search } from 'lucide-react';
+import { useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import { useRegistry } from '../dataRegistry';
 import { isPlaceholder } from '../dataQuality';
 import { copyToClipboard, formatSeason, informationLabels, sourceLabels, weekdayLabels } from '../utils';
@@ -59,7 +59,19 @@ function generateDraft(item: ReturnType<typeof useRegistry>['items'][number], te
 export function WritingStudioPage() {
   const { items, conflicts } = useRegistry();
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? '');
+  const [query, setQuery] = useState('');
   const [template, setTemplate] = useState<TemplateKind>('profile');
+  const selectableItems = useMemo(() => {
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    return items.filter((item) => {
+      const haystack = [item.title, item.originalTitle, ...item.aliases, ...item.dataSources].join(' ').toLowerCase();
+      return tokens.every((token) => haystack.includes(token));
+    }).slice(0, 200);
+  }, [items, query]);
+  useEffect(() => {
+    if (!items.length) return;
+    if (!items.some((item) => item.id === selectedId)) setSelectedId(items[0].id);
+  }, [items, selectedId]);
   const selected = items.find((item) => item.id === selectedId) ?? items[0];
   const generated = useMemo(() => selected ? generateDraft(selected, template) : '', [selected, template]);
   const [draft, setDraft] = useState<string | null>(null);
@@ -72,7 +84,6 @@ export function WritingStudioPage() {
     selected.resources.length === 0 && '资源入口',
   ].filter(Boolean) as string[] : [];
   const relatedConflicts = selected ? conflicts.filter((conflict) => conflict.includes(selected.title)) : [];
-
   const regenerate = () => setDraft(generated);
 
   return (
@@ -80,7 +91,8 @@ export function WritingStudioPage() {
       <div className="page-title-grid"><div><span className="eyebrow">WRITING STUDIO</span><h1>写作中心</h1><p>从统一资料库选择作品，按真实字段生成草稿；缺失信息保持为空，不自动编造。</p></div><BookOpen size={36} /></div>
       <div className="writing-layout">
         <aside className="writing-sidebar">
-          <label className="select-label">选择作品<select value={selected?.id ?? ''} onChange={(event: ChangeEvent<HTMLSelectElement>) => { setSelectedId(event.target.value); setDraft(null); }}>{items.map((item) => <option key={item.id} value={item.id}>{item.title} · {item.dataSources.join('+')}</option>)}</select></label>
+          <label className="search-field"><Search size={16} /><input value={query} onChange={(event: ChangeEvent<HTMLInputElement>) => setQuery(event.target.value)} placeholder="先搜索标题或来源" aria-label="搜索写作作品" /></label>
+          <label className="select-label">选择作品<select value={selected?.id ?? ''} onChange={(event: ChangeEvent<HTMLSelectElement>) => { setSelectedId(event.target.value); setDraft(null); }}>{selectableItems.map((item) => <option key={item.id} value={item.id}>{item.title} · {item.dataSources.join('+')}</option>)}</select><small>最多展示前 200 个匹配结果，请先输入关键词缩小范围。</small></label>
           <label className="select-label">文章模板<select value={template} onChange={(event: ChangeEvent<HTMLSelectElement>) => { setTemplate(event.target.value as TemplateKind); setDraft(null); }}><option value="profile">作品资料介绍</option><option value="season">季度新番简报</option><option value="update">资料更新公告</option></select></label>
           {selected && <div className="audit-summary-card"><strong>{selected.title}</strong><span>来源：{selected.dataSources.map((source) => source.toUpperCase()).join(' + ')}</span><span>已记录字段来源：{Object.keys(selected.fieldSources).length}</span><span>资源：{selected.resources.length}</span></div>}
           <div className="audit-summary-card"><strong>生成前检查</strong><span>缺失：{missing.join('、') || '无关键缺失'}</span><span>冲突：{relatedConflicts.length}</span>{relatedConflicts.map((conflict) => <small key={conflict}>{conflict}</small>)}</div>

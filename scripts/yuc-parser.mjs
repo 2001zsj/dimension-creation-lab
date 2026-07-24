@@ -143,9 +143,18 @@ export function parseCastCredits(value) {
     } else if (actorOnly) actor = actorOnly[1].trim();
     else if (characterOnly) character = characterOnly[1].trim();
     else {
-      const parts = line.split(/\s{2,}|[　|｜→]+/).map((part) => part.trim()).filter(Boolean);
-      actor = parts[0];
-      character = parts[1];
+      const explicitPair = line.match(/^(.+?)\s*(?:→|=>|⇒|：|:)\s*(.+)$/);
+      if (explicitPair) {
+        character = explicitPair[1].trim();
+        actor = explicitPair[2].trim();
+      } else {
+        // YUC 的 cast_r 无标签双列通常是两个声优姓名，而不是“声优 / 角色”。
+        const actors = line.split(/\s{2,}|[　|｜]+/).map((part) => part.trim()).filter(Boolean);
+        for (const name of actors) {
+          if (!credits.some((entry) => entry.actor === name && !entry.character)) credits.push({ actor: name });
+        }
+        continue;
+      }
     }
     if (!actor) continue;
     const credit = { actor, ...(character ? { character } : {}) };

@@ -244,6 +244,7 @@ export function buildWeeklyBroadcastIcs(animeItems: Anime[], generatedAt = new D
     const description = [
       formatSeason(anime.year, anime.season),
       anime.broadcast.platforms.join(' / '),
+      anime.broadcast.episodeCount ? `按公开总集数生成 ${anime.broadcast.episodeCount} 次周更事件。` : '未提供总集数，仅导出下一次放送，避免永久重复。',
       '档期与平台信息仅在有明确公开来源时展示。',
     ].filter(Boolean).join(' · ');
     return [
@@ -252,7 +253,7 @@ export function buildWeeklyBroadcastIcs(animeItems: Anime[], generatedAt = new D
       `DTSTAMP:${toIcsUtc(generatedAt)}`,
       `DTSTART:${toIcsUtc(start)}`,
       `DTEND:${toIcsUtc(end)}`,
-      'RRULE:FREQ=WEEKLY',
+      anime.broadcast.episodeCount ? `RRULE:FREQ=WEEKLY;COUNT=${anime.broadcast.episodeCount}` : '',
       `SUMMARY:${escapeIcsText(anime.title)}`,
       `DESCRIPTION:${escapeIcsText(description)}`,
       url ? `URL:${url}` : '',

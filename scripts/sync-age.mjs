@@ -220,10 +220,32 @@ async function syncDetails(snapshot, options) {
   if (items.length > 0) await saveSnapshot(options.output, snapshot);
 }
 
+export function roundRobinEpisodes(details, limit) {
+  const queues = details.map((detail) => (detail.episodes || [])
+    .filter((episode) => episode.url)
+    .map((episode) => ({ animeId: detail.id, ...episode })));
+  const selected = [];
+  const seen = new Set();
+  for (let index = 0; selected.length < limit; index += 1) {
+    let added = false;
+    for (const queue of queues) {
+      const episode = queue[index];
+      if (!episode || seen.has(episode.url)) continue;
+      seen.add(episode.url);
+      selected.push(episode);
+      added = true;
+      if (selected.length >= limit) break;
+    }
+    if (!added) break;
+  }
+  return selected;
+}
+
 async function syncPlay(snapshot, options) {
-  const episodes = Object.values(snapshot.details).flatMap((detail) => (detail.episodes || []).map((episode) => ({ animeId: detail.id, ...episode })))
-    .filter((episode) => episode.url && (!options.resume || !snapshot.play[episode.url]))
-    .slice(0, options.maxPlay);
+  const details = Object.values(snapshot.details);
+  const candidates = roundRobinEpisodes(details, Number.isFinite(options.maxPlay) ? options.maxPlay * 2 : Number.MAX_SAFE_INTEGER)
+    .filter((episode) => !options.resume || !snapshot.play[episode.url]);
+  const episodes = candidates.slice(0, options.maxPlay);
   let processed = 0;
   await mapLimit(episodes, options.concurrency, async (episode) => {
     try {
